@@ -1,0 +1,7 @@
+Problems/*.aux
+Problems/*.fdb_latexmk
+Problems/*.fls
+Problems/*.log
+Problems/*.out
+Problems/*.synctex.gz
+Problems/*.xdv
