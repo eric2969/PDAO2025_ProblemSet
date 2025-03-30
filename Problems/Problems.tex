@@ -386,28 +386,27 @@ Given a $10\times9$ array full of characters, where the general, advisor, elepha
 \subsection*{\fontsize{16}{12}Output}
 A single line of "Yes" or "No"
 \subsection*{\fontsize{16}{12}Examples}
-
 \begin{table}[h]
   \centering
   \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
   \hline
   stdin & stdout\\
   \hline
-    RHESGSEHR& No\\
-    .........&\\
-    .C.....C.&\\
-    P.P.P.P.P&\\
+    ...G.....&No\\
+    ..r......&\\
     .........&\\
     .........&\\
-    p.p.p.p.p&\\
-    .c.....c.&\\
     .........&\\
-    rhesgsehr&\\
+    .........&\\
+    .......P.&\\
+    .........&\\
+    .........&\\
+    ....g....&\\
   \hline
-\end{tabularx}
-  
+ \end{tabularx}
 \end{table}
-  \begin{table}[h]
+
+\begin{table}[h]
   \centering
   \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
   \hline
@@ -426,6 +425,9 @@ A single line of "Yes" or "No"
   \hline
  \end{tabularx}
 \end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+Notice that in Sample 1 and Sample 2, both of the black generals are unable to move since all of the spaces near them are being attacked. However, one plays the black has one pawn in Sample 1. Therefore, they are able to move the pawn and the game shall go on. Not like in Sample 2 where they don't have any choice other than move their general, which leads to their general being capture by their opponent.
 
 
 \subsection*{\fontsize{16}{12}Notes}
