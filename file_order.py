@@ -2,8 +2,9 @@ import sys, os, random
 
 def rename_files(directory):
     os.chdir(directory)
+    cnt = int(input("Input the number of max cases number: "))
     case_num = 0
-    for i in range(1, 214):
+    for i in range(1, cnt + 1):
         if(os.path.isfile(str(i) + '.in')):
             case_num += 1
             os.rename(str(i)+'.in', str(case_num)+'.in')
