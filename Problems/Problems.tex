@@ -1260,7 +1260,7 @@ The \textbf{minimum-cost network} has a total maintenance cost of \textbf{7 unit
 
 \noindent
 At NTU, students must use an online system to register for their classes each semester. However, the system has a significant limitation: students cannot insert a class between existing ones directly. Instead, they must manually shift other classes to make space.
-\\\\
+\\
 \noindent
 The rules for class selection are as follows:
 \begin{itemize}
@@ -1285,7 +1285,6 @@ Next \textbf{\( N \)} lines, each contains a command:
 
 \subsection*{\fontsize{16}{12}Output}
 Print a single integer, the minimum number of moves required to execute all operations.
-
 \subsection*{\fontsize{16}{12}Example 1}
 
 \begin{table}[h]
@@ -1303,14 +1302,14 @@ Print a single integer, the minimum number of moves required to execute all oper
   \hline
  \end{tabularx}
 \end{table}
-
+\newpage
 \subsection*{\fontsize{16}{12}Explanation}
 \begin{enumerate}
-    \item Insert class at \textbf{position 1} $\rightarrow$ \(\{\underline{A}\}\).
-    \item Insert class at \textbf{position 2} $\rightarrow$ \(\{A, \underline{B}\}\).
-    \item Insert class at \textbf{position 3} $\rightarrow$ \(\{A, B, \underline{C}\}\).
-    \item Insert class at \textbf{position 1}: Shift \( A, B, C \) down by 1 \(\{\underline{D}, A, B, C\}\) (\textbf{3 moves}).
-    \item Delete class at \textbf{position 1} $\rightarrow$ \(\{A, B, C\}\) (removal itself is not counted).
+    \item Insert class at \textbf{position 1} $\rightarrow$ \(\{\underline{A}\}\). (\textbf{1 move})
+    \item Insert class at \textbf{position 2} $\rightarrow$ \(\{A, \underline{B}\}\). (\textbf{1 move})
+    \item Insert class at \textbf{position 3}  $\rightarrow$ \(\{A, B, \underline{C}\}\). (\textbf{1 move})
+    \item Insert class at \textbf{position 1}: Shift \( A, B, C \) down by 1 \(\{\underline{D}, A, B, C\}\) (\textbf{4 moves. 3 moves by moving classes, 1 move by insertion the classes}).
+    \item Delete class at \textbf{position 1} $\rightarrow$ \(\{\underline{\ \ }, A, B, C\}\) (\textbf{1 move}).
 \end{enumerate}
 Total moves: \textbf{8}.
 
@@ -1334,11 +1333,11 @@ Total moves: \textbf{8}.
 
 \subsection*{\fontsize{16}{12}Explanation}
 \begin{enumerate}
-    \item Insert class at \textbf{position 1} $\rightarrow$ \(\{\underline{A}\}\).
-    \item Insert class at \textbf{position 2} $\rightarrow$ \(\{A, \underline{B}\}\).
-    \item Insert class at \textbf{position 3} $\rightarrow$ \(\{A, B, \underline{C}\}\).
-    \item Delete class at \textbf{position 2} $\rightarrow$ \(\{A, \_, C\}\) (creates a gap).
-    \item Insert class at \textbf{position 1}: Shift \( A \) down by 1 \(\{\underline{D}, A, C\}\) (\textbf{1 move}).
+    \item Insert class at \textbf{position 1} $\rightarrow$ \(\{\underline{A}\}\). (\textbf{1 move})
+    \item Insert class at \textbf{position 2} $\rightarrow$ \(\{A, \underline{B}\}\). (\textbf{1 move})
+    \item Insert class at \textbf{position 3} $\rightarrow$ \(\{A, B, \underline{C}\}\). (\textbf{1 move})
+    \item Delete class at \textbf{position 2} $\rightarrow$ \(\{A, \_, C\}\) (\textbf{1 move, creates a gap}).
+    \item Insert class at \textbf{position 1}: Shift \( A \) down by 1 \(\{\underline{D}, A, C\}\) (\textbf{2 moves}).
 \end{enumerate}
 Total moves: \textbf{6}.
 
@@ -1346,8 +1345,7 @@ Total moves: \textbf{6}.
 \begin{itemize}
     \item Each class occupies exactly one position and cannot overlap unless deleted.
     \item Empty spaces may remain after deletions.
-    \item Moves are counted only when shifting existing classes up or down.
-    \item All operations are legal.
+    \item Moves are counted when shifting existing classes up or down, inserting, or deleting classes.
 \end{itemize}
 
 \newpage
