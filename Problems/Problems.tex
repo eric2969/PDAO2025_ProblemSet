@@ -866,7 +866,7 @@ Since both formulas contain the same elements in the same quantities, they repre
 \begin{alignat*} {2}
  &   \text{Input file:}   \quad     &&\text{stdin}\\
  &   \text{Output file:}  \quad     &&\text{stdout}\\
- &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Time limit:}   \quad     &&\text{500 milliseconds}\\
  &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 
@@ -889,22 +889,14 @@ Both players play \textbf{optimally}, meaning they make the best possible moves 
 Your task is to determine whether \textbf{Merlin} can guarantee a win, or if \textbf{Morgana} will inevitably win. Print ``Yes`` if \textbf{Merlin} wins and ``No`` if \textbf{Morgana} wins.
 
 \subsection*{\fontsize{16}{12}Input}
-Line 1 contains a single integer \(t\), denoting the number of test cases, and each case contains two lines.
+Line 1 contains a single integer \( n \) \((1 \leq n \leq 100000)\), representing the number of potion bottles.
 \\\\
 \noindent
-First line of each case contains an integer \( n \), representing the number of potion bottles.
-\\\\
-\noindent
-Second line of each case contains \( n \) integers $k_i$, denoting the magical essence in the \( i^{th} \) potion bottle.
-\begin{itemize}
-    \item \(1 \leq t \leq 50\)
-    \item \(1 \leq n \leq 10^5\)
-    \item \(1 \leq k_i \leq 10^4\) (where \(k_i\) is the magical essence in the \(i^{th}\) potion bottle)
-\end{itemize}
+Line 2 contains \( n \) space-separated integers, where the \( i^{th} \) integer represents the magical essence in the \( i^{th} \) potion bottle. Each integer \( k \) satisfies \( 1 \leq k \leq 10000 \).
 
 \subsection*{\fontsize{16}{12}Output}
-For each case, print "Yes" if \textbf{Merlin} can force a win; otherwise, print "No".
-\newpage
+Print "Yes" if \textbf{Merlin} can force a win; otherwise, print "No".
+
 \subsection*{\fontsize{16}{12}Example 1}
 \begin{table}[h]
   \centering
@@ -913,23 +905,33 @@ For each case, print "Yes" if \textbf{Merlin} can force a win; otherwise, print 
   \textbf{stdin} & \textbf{stdout} \\
   \hline
   2 & Yes \\
-  2 & No \\
   2 1 & \\
-  5 & \\
-  5 1 2 4 3 & \\
   \hline
   \end{tabularx}
 \end{table}
 
 \subsection*{\fontsize{16}{12}Explanation}
-\subsubsection*{\fontsize{16}{12}Case 1:}
 The game proceeds as follows:
 \begin{itemize}
     \item \textbf{Turn 1:} \textbf{Merlin} removes either potion bottle.
     \item \textbf{Turn 2:} \textbf{Morgana} removes the remaining bottle. 
 \end{itemize}
 The sum of the destroyed potion bottles is \( 2 + 1 = 3 \), which is divisible by 3. Since \textbf{Morgana} made the move that resulted in this, she \textbf{loses}, and \textbf{Merlin} wins.
-\subsubsection*{\fontsize{16}{12}Case 2:}
+
+\subsection*{\fontsize{16}{12}Example 2}
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  \textbf{stdin} & \textbf{stdout} \\
+  \hline
+  5 & No \\
+  5 1 2 4 3 & \\
+  \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
 One possible sequence of moves for \textbf{Morgana} to win:
 \begin{itemize}
     \item \textbf{Turn 1:} \textbf{Merlin} removes the potion with value 1. Sum = \( 1 \).
@@ -1554,12 +1556,13 @@ In a mysterious world, multiple ancient kingdoms exist, each ruled by powerful m
     \item Each of you has a shadow that is either circular or triangular.
     \item There are at least one person with triangular shadow in each kingdom.
     \item You can see the shadows of others, but you cannot see your own.
-    \item Every night, during the Moonlight Ritual, you may declare the shape of your shadow. If you are correct, you will awaken; if you are wrong, you will be forever lost in darkness.
+    \item Every night, during the Moonlight Ritual, you may declare the shape of your shadow. If you are correct, you will be awaken; if you are wrong, you will be forever lost in darkness.
     \item The chosen individuals cannot communicate with each other and must deduce their shadow's shape over time.  
+    \item Everyone in this trial plays optimally, meaning they will only declare their shadow shape when they are sure of it.
 \end{itemize}
 \noindent
 The trial's objective is clear:
-The first kingdom whose envoys all successfully identify their own shadow shapes and break the curse will claim ultimate victory.
+The first kingdom whose envoys all successfully identify their own shadow shapes and no one lost in darkness will claim ultimate victory.
 
 \subsection*{\fontsize{16}{12}Input}
 Line 1 contains an integer $K$, denoting the number of countries participating the Trial.
@@ -1617,7 +1620,7 @@ Thus, country 2 will win the Moonlight Trial.
 \end{table}
 
 \subsection*{\fontsize{16}{12}Explanation}
-Since we know those two country will all identify their shadows in the same night, but country 1 has more people.
+Since we know those two countries will all identify their shadows in the same night, but country 1 has more people.
 \\\\
 \noindent
 Thus, country 1 will win the Moonlight Trial.
