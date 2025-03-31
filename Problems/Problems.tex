@@ -704,7 +704,7 @@ The next \(m\) lines each contain \(n\) space-separated integers representing th
 \end{itemize}
 \subsection*{\fontsize{16}{12}Output}
 Output \(m\) lines, each containing \(n\) space-separated integers, representing the reconfigured security grid.
-
+\newpage
 \subsection*{\fontsize{16}{12}Example 1}
 \begin{table}[h]
   \centering
@@ -866,7 +866,7 @@ Since both formulas contain the same elements in the same quantities, they repre
 \begin{alignat*} {2}
  &   \text{Input file:}   \quad     &&\text{stdin}\\
  &   \text{Output file:}  \quad     &&\text{stdout}\\
- &   \text{Time limit:}   \quad     &&\text{500 milliseconds}\\
+ &   \text{Time limit:}   \quad     &&\text{1 second}\\
  &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 
@@ -889,14 +889,22 @@ Both players play \textbf{optimally}, meaning they make the best possible moves 
 Your task is to determine whether \textbf{Merlin} can guarantee a win, or if \textbf{Morgana} will inevitably win. Print ``Yes`` if \textbf{Merlin} wins and ``No`` if \textbf{Morgana} wins.
 
 \subsection*{\fontsize{16}{12}Input}
-Line 1 contains a single integer \( n \) \((1 \leq n \leq 100000)\), representing the number of potion bottles.
+Line 1 contains a single integer \(t\), denoting the number of test cases, and each case contains two lines.
 \\\\
 \noindent
-Line 2 contains \( n \) space-separated integers, where the \( i^{th} \) integer represents the magical essence in the \( i^{th} \) potion bottle. Each integer \( k \) satisfies \( 1 \leq k \leq 10000 \).
+First line of each case contains an integer \( n \), representing the number of potion bottles.
+\\\\
+\noindent
+Second line of each case contains \( n \) integers $k_i$, denoting the magical essence in the \( i^{th} \) potion bottle.
+\begin{itemize}
+    \item \(1 \leq t \leq 50\)
+    \item \(1 \leq n \leq 10^5\)
+    \item \(1 \leq k_i \leq 10^4\) (where \(k_i\) is the magical essence in the \(i^{th}\) potion bottle)
+\end{itemize}
 
 \subsection*{\fontsize{16}{12}Output}
-Print "Yes" if \textbf{Merlin} can force a win; otherwise, print "No".
-
+For each case, print "Yes" if \textbf{Merlin} can force a win; otherwise, print "No".
+\newpage
 \subsection*{\fontsize{16}{12}Example 1}
 \begin{table}[h]
   \centering
@@ -905,33 +913,23 @@ Print "Yes" if \textbf{Merlin} can force a win; otherwise, print "No".
   \textbf{stdin} & \textbf{stdout} \\
   \hline
   2 & Yes \\
+  2 & No \\
   2 1 & \\
-  \hline
-  \end{tabularx}
-\end{table}
-
-\subsection*{\fontsize{16}{12}Explanation}
-The game proceeds as follows:
-\begin{itemize}
-    \item \textbf{Turn 1:} \textbf{Merlin} removes either potion bottle.
-    \item \textbf{Turn 2:} \textbf{Morgana} removes the remaining bottle. 
-\end{itemize}
-The sum of the destroyed potion bottles is \( 2 + 1 = 3 \), which is divisible by 3. Since \textbf{Morgana} made the move that resulted in this, she \textbf{loses}, and \textbf{Merlin} wins.
-
-\subsection*{\fontsize{16}{12}Example 2}
-\begin{table}[h]
-  \centering
-  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
-  \hline
-  \textbf{stdin} & \textbf{stdout} \\
-  \hline
-  5 & No \\
+  5 & \\
   5 1 2 4 3 & \\
   \hline
   \end{tabularx}
 \end{table}
 
 \subsection*{\fontsize{16}{12}Explanation}
+\subsubsection*{\fontsize{16}{12}Case 1:}
+The game proceeds as follows:
+\begin{itemize}
+    \item \textbf{Turn 1:} \textbf{Merlin} removes either potion bottle.
+    \item \textbf{Turn 2:} \textbf{Morgana} removes the remaining bottle. 
+\end{itemize}
+The sum of the destroyed potion bottles is \( 2 + 1 = 3 \), which is divisible by 3. Since \textbf{Morgana} made the move that resulted in this, she \textbf{loses}, and \textbf{Merlin} wins.
+\subsubsection*{\fontsize{16}{12}Case 2:}
 One possible sequence of moves for \textbf{Morgana} to win:
 \begin{itemize}
     \item \textbf{Turn 1:} \textbf{Merlin} removes the potion with value 1. Sum = \( 1 \).
