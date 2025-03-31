@@ -79,7 +79,7 @@ left=2cm, right=2cm, top=1.5cm
 \fancyfoot[C]{Page \thepage \ of \pageref{LastPage}}
 
 \begin{document}
-\title{\textbf{Programming Design And Optimization}\\ Saturday, April 19, 2025}
+\title{\textbf{Programming Design And Optimization}\\ April 19, 2025}
 \date{}
 \maketitle
 \thispagestyle{fancy}
@@ -93,7 +93,7 @@ left=2cm, right=2cm, top=1.5cm
     \item Each team can only use a single computer with at most one mouse, one screen and one keyboard, so your team members cannot code simultaneously. Allocate your time wisely! 
     \item \textbf{Online Judge}: You have to login to \textbf{PDOGS} with the username and password provided via email to make submissions.
     \item Communicating with any creature other than your teammates is strictly forbidden. Violating this rule may result in a disqualification.
-    \item If you have questions, request a clarification via the Google form link in \textbf{PDOGS info}. The judges will clarify with either \textquotedblleft Yes\textquotedblright, \textquotedblleft No\textquotedblright, \textquotedblleft No Comment\textquotedblright\ or \textquotedblleft Pardon\textquotedblright.
+    \item If you have any questions, request a clarification via the Google form in \textbf{PDOGS info}. The judges (i.e. some members in the PDAO Team) will clarify with either \textquotedblleft Yes\textquotedblright, \textquotedblleft No\textquotedblright, \textquotedblleft No Comment\textquotedblright\ or \textquotedblleft Pardon\textquotedblright.
 \end{itemize}
 %\includegraphics[width=0.3\textwidth]{Line.JPG}
 \begin{center}
@@ -105,7 +105,6 @@ left=2cm, right=2cm, top=1.5cm
 \end{minipage}
 \end{center}
 
-\blankpage
 
 \newpage
 \section*{\fontsize{18}{12}Problem A. The Mischievous Elves and the Magic Sorting Spell}
@@ -428,7 +427,7 @@ A single line of "Yes" or "No"
 \end{table}
 
 \subsection*{\fontsize{16}{12}Explanation}
-Notice that in Sample 1 and Sample 2, both of the black generals (G) are unable to move since all of the spaces near them are being attacked, which indicates potential stalemate. However, what makes Sample 2 a real stalemate and Sample 1 not one is that the black player has one pawn in Sample 1. Therefore, they are able to move the pawn and the game shall go on. Not like in Sample 2 where they don't have any choice other than move their general (G), which leads to their general (G) being capture by their opponent.
+Notice that in Sample 1 and Sample 2, both of the black generals are unable to move since all of the spaces near them are being attacked. However, one plays the black has one pawn in Sample 1. Therefore, they are able to move the pawn and the game shall go on. Not like in Sample 2 where they don't have any choice other than move their general, which leads to their general being capture by their opponent.
 
 
 \subsection*{\fontsize{16}{12}Notes}
@@ -440,15 +439,13 @@ cross the river.
 \end{itemize}
 
 \newpage
-\blankpage
-\newpage
 
 \section*{\fontsize{18}{12}Problem D. Pirate Code: The Black Spot Game}
 
 \begin{alignat*} {2}
  &   \text{Input file:}   \quad     &&\text{stdin}\\
  &   \text{Output file:}  \quad     &&\text{stdout}\\
- &   \text{Time limit:}   \quad     &&\text{100 milliseconds}\\
+ &   \text{Time limit:}   \quad     &&\text{1 second}\\
  &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 \noindent
@@ -666,8 +663,6 @@ For example, the winner was in the $1^{st}$ group, and was the $3^{rd}$ pirate i
 \end{table}
 
 \newpage
-\blankpage
-\newpage
 
 \section*{\fontsize{18}{12}Problem E. The Museum's Security Grid}
 
@@ -699,7 +694,7 @@ The next \(m\) lines each contain \(n\) space-separated integers representing th
 \begin{itemize}
     \item \(1 \leq m, n \leq 1000\)
     \item $1\leq p \leq 10^5$
-    \item $p \text{ is }\textbf{unique}$
+    \item $p \text{ is unique}$
     \item \(m \cdot n \leq 10^5\)
 \end{itemize}
 \subsection*{\fontsize{16}{12}Output}
@@ -871,22 +866,22 @@ Since both formulas contain the same elements in the same quantities, they repre
 \end{alignat*}
 
 \noindent
-In the dark ages of wizardry, the legendary sorcerers \textbf{Merlin} and \textbf{Morgana} engaged in a fierce \textbf{Magic Potion Battle}. In this battle, they took turns casting spells to destroy potion bottles infused with magical essence. 
+In the dark ages of wizardry, the legendary sorcerers Merlin and Morgana engaged in a fierce \textbf{Magic Potion Battle}. In this battle, they took turns casting spells to destroy potion bottles infused with magical essence. 
 \\\\
 \noindent
 The game follows these rules:
 \begin{itemize}
-    \item \textbf{Merlin} and \textbf{Morgana} take turns destroying exactly one potion bottle per turn.
-    \item \textbf{Merlin} always plays first.
+    \item Merlin and Morgana take turns destroying exactly one potion bottle per turn.
+    \item Merlin always plays first.
     \item The game ends immediately if the total amount of magical essence destroyed becomes \textbf{divisible by 3}. The player who made that move \textbf{loses}.
-    \item If all potions are destroyed and the total essence is \textbf{not divisible by 3}, \textbf{Morgana automatically wins}.
+    \item If all potions are destroyed and the total essence is \textbf{not divisible by 3}, Morgana \textbf{automatically wins}.
 \end{itemize}
 
 \noindent
 Both players play \textbf{optimally}, meaning they make the best possible moves to maximize their chances of winning. 
 \\\\
 \noindent
-Your task is to determine whether \textbf{Merlin} can guarantee a win, or if \textbf{Morgana} will inevitably win. Print ``Yes`` if \textbf{Merlin} wins and ``No`` if \textbf{Morgana} wins.
+Your task is to determine whether Merlin can guarantee a win, or if Morgana will inevitably win. Print `"true"` if Merlin wins and `"false"` if Morgana wins.
 
 \subsection*{\fontsize{16}{12}Input}
 Line 1 contains a single integer \( n \) \((1 \leq n \leq 100000)\), representing the number of potion bottles.
@@ -895,7 +890,7 @@ Line 1 contains a single integer \( n \) \((1 \leq n \leq 100000)\), representin
 Line 2 contains \( n \) space-separated integers, where the \( i^{th} \) integer represents the magical essence in the \( i^{th} \) potion bottle. Each integer \( k \) satisfies \( 1 \leq k \leq 10000 \).
 
 \subsection*{\fontsize{16}{12}Output}
-Print "Yes" if \textbf{Merlin} can force a win; otherwise, print "No".
+Print "Yes" if Merlin can force a win; otherwise, print "No".
 
 \subsection*{\fontsize{16}{12}Example 1}
 \begin{table}[h]
@@ -913,10 +908,10 @@ Print "Yes" if \textbf{Merlin} can force a win; otherwise, print "No".
 \subsection*{\fontsize{16}{12}Explanation}
 The game proceeds as follows:
 \begin{itemize}
-    \item \textbf{Turn 1:} \textbf{Merlin} removes either potion bottle.
-    \item \textbf{Turn 2:} \textbf{Morgana} removes the remaining bottle. 
+    \item \textbf{Turn 1:} Merlin removes either potion bottle.
+    \item \textbf{Turn 2:} Morgana removes the remaining bottle. 
 \end{itemize}
-The sum of the destroyed potion bottles is \( 2 + 1 = 3 \), which is divisible by 3. Since \textbf{Morgana} made the move that resulted in this, she \textbf{loses}, and \textbf{Merlin} wins.
+The sum of the destroyed potion bottles is \( 2 + 1 = 3 \), which is divisible by 3. Since Morgana made the move that resulted in this, she \textbf{loses}, and Merlin wins.
 
 \subsection*{\fontsize{16}{12}Example 2}
 \begin{table}[h]
@@ -932,15 +927,15 @@ The sum of the destroyed potion bottles is \( 2 + 1 = 3 \), which is divisible b
 \end{table}
 
 \subsection*{\fontsize{16}{12}Explanation}
-One possible sequence of moves for \textbf{Morgana} to win:
+One possible sequence of moves for Morgana to win:
 \begin{itemize}
-    \item \textbf{Turn 1:} \textbf{Merlin} removes the potion with value 1. Sum = \( 1 \).
-    \item \textbf{Turn 2:} \textbf{Morgana} removes the potion with value 3. Sum = \( 1 + 3 = 4 \).
-    \item \textbf{Turn 3:} \textbf{Merlin} removes the potion with value 4. Sum = \( 1 + 3 + 4 = 8 \).
-    \item \textbf{Turn 4:} \textbf{Morgana} removes the potion with value 2. Sum = \( 1 + 3 + 4 + 2 = 10 \).
-    \item \textbf{Turn 5:} \textbf{Merlin} removes the potion with value 5. Sum = \( 1 + 3 + 4 + 2 + 5 = 15 \).
+    \item \textbf{Turn 1:} Merlin removes the potion with value 1. Sum = \( 1 \).
+    \item \textbf{Turn 2:} Morgana removes the potion with value 3. Sum = \( 1 + 3 = 4 \).
+    \item \textbf{Turn 3:} Merlin removes the potion with value 4. Sum = \( 1 + 3 + 4 = 8 \).
+    \item \textbf{Turn 4:} Morgana removes the potion with value 2. Sum = \( 1 + 3 + 4 + 2 = 10 \).
+    \item \textbf{Turn 5:} Merlin removes the potion with value 5. Sum = \( 1 + 3 + 4 + 2 + 5 = 15 \).
 \end{itemize}
-Since 15 is divisible by 3, \textbf{Merlin loses}, meaning \textbf{Morgana} wins. Thus, the output is "No".
+Since 15 is divisible by 3, Merlin \textbf{loses}, meaning Morgana wins. Thus, the output is "No".
 
 \newpage
 
@@ -1259,7 +1254,7 @@ The \textbf{minimum-cost network} has a total maintenance cost of \textbf{7 unit
 \begin{alignat*} {2}
  &   \text{Input file:}   \quad     &&\text{stdin}\\
  &   \text{Output file:}  \quad     &&\text{stdout}\\
- &   \text{Time limit:}   \quad     &&\text{100 milliseconds}\\
+ &   \text{Time limit:}   \quad     &&\text{1 second}\\
  &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 
@@ -1360,7 +1355,7 @@ Total moves: \textbf{6}.
 \begin{alignat*} {2}
  &   \text{Input file:}   \quad     &&\text{stdin}\\
  &   \text{Output file:}  \quad     &&\text{stdout}\\
- &   \text{Time limit:}   \quad     &&\text{1.5 seconds}\\
+ &   \text{Time limit:}   \quad     &&\text{2.5 seconds}\\
  &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 \noindent
@@ -1449,7 +1444,7 @@ Where:
 \end{itemize}
 \noindent
 If multiple segments have the same maximum value, print the one with the \textbf{smallest starting index}.
-If there is no segment with positive value, print ``\textbf{Oiiaioiiiai}''.
+If there is no segment with positive value, print \( 0\ 0\ 0 \).
 
 % Example 1
  \subsection*{\fontsize{16}{12}Example 1}
@@ -1534,20 +1529,19 @@ Finding the best segment of length \( LN = 4 \):
 \end{itemize}
 
 Since there is no any segment has positive value, the output is:
+
 \[
-\textbf{Oiiaioiiiai}
+0\ 0\ 0
 \]
 
 \newpage
-\blankpage
-\newpage
 
-\section*{\fontsize{18}{12}Problem M. Cursed Envoys and Race for Awakening}
+\section*{\fontsize{18}{12}Problem M. The Cursed Envoys and the Race for Awakening}
 
 \begin{alignat*} {2}
  &   \text{Input file:}   \quad     &&\text{stdin}\\
  &   \text{Output file:}  \quad     &&\text{stdout}\\
- &   \text{Time limit:}   \quad     &&\text{100 milliseconds}\\
+ &   \text{Time limit:}   \quad     &&\text{1 second}\\
  &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 \noindent

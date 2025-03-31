@@ -20,6 +20,6 @@ int main() {
         cin >> potions[i];
     }
     
-    cout << (magicPotionBattle(potions) ? "true" : "false") << endl;
+    cout << (magicPotionBattle(potions) ? "Yes" : "No") << endl;
     return 0;
 }
