@@ -1729,8 +1729,8 @@ If there are multiple valid arrays, print any one of them. any number you write 
 \subsection*{\fontsize{16}{12}Explanation}
 To recover each $a_i$, type-$A$ drones perform XOR on every window of $k_1 = 2$ elements from $c$:
 \begin{itemize}
-    \item $c_1 \oplus c_2 = 3 \oplus 1 = 2 = a_1$
-    \item $c_2 \oplus c_3 = 1 \oplus 0 = 1 = a_2\dots$
+    \item $c_1 \oplus c_2 = 2 \oplus 0 = 2 = a_1$
+    \item $c_2 \oplus c_3 = 0 \oplus 2 = 2 = a_2\dots$
 \end{itemize}
 Type-$B$ drones apply XOR on $k_2 = 4$-element windows, and the values match perfectly with $b$.
 \\\\
