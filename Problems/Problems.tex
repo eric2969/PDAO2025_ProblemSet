@@ -699,7 +699,7 @@ The next \(m\) lines each contain \(n\) space-separated integers representing th
 \end{itemize}
 \subsection*{\fontsize{16}{12}Output}
 Output \(m\) lines, each containing \(n\) space-separated integers, representing the reconfigured security grid.
-
+\newpage
 \subsection*{\fontsize{16}{12}Example 1}
 \begin{table}[h]
   \centering
@@ -1550,12 +1550,13 @@ In a mysterious world, multiple ancient kingdoms exist, each ruled by powerful m
     \item Each of you has a shadow that is either circular or triangular.
     \item There are at least one person with triangular shadow in each kingdom.
     \item You can see the shadows of others, but you cannot see your own.
-    \item Every night, during the Moonlight Ritual, you may declare the shape of your shadow. If you are correct, you will awaken; if you are wrong, you will be forever lost in darkness.
+    \item Every night, during the Moonlight Ritual, you may declare the shape of your shadow. If you are correct, you will be awaken; if you are wrong, you will be forever lost in darkness.
     \item The chosen individuals cannot communicate with each other and must deduce their shadow's shape over time.  
+    \item Everyone in this trial plays optimally, meaning they will only declare their shadow shape when they are sure of it.
 \end{itemize}
 \noindent
 The trial's objective is clear:
-The first kingdom whose envoys all successfully identify their own shadow shapes and break the curse will claim ultimate victory.
+The first kingdom whose envoys all successfully identify their own shadow shapes and no one lost in darkness will claim ultimate victory.
 
 \subsection*{\fontsize{16}{12}Input}
 Line 1 contains an integer $K$, denoting the number of countries participating the Trial.
@@ -1613,7 +1614,7 @@ Thus, country 2 will win the Moonlight Trial.
 \end{table}
 
 \subsection*{\fontsize{16}{12}Explanation}
-Since we know those two country will all identify their shadows in the same night, but country 1 has more people.
+Since we know those two countries will all identify their shadows in the same night, but country 1 has more people.
 \\\\
 \noindent
 Thus, country 1 will win the Moonlight Trial.
