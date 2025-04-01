@@ -122,8 +122,8 @@ Deep in an enchanted forest, a group of mischievous elves love playing a game ca
 The Elf King, however, has established a \textbf{sacred rule} for how these number stones should be arranged:
 
 \begin{itemize}
-    \item At least one of the \textbf{largest} number stones must be placed at the \textbf{rightmost} position.
-    \item At least one of the \textbf{smallest} number stones must be placed at the \textbf{leftmost} position.
+    \item One of the \textbf{largest} number stones must be placed at the \textbf{rightmost} position.
+    \item One of the \textbf{smallest} number stones must be placed at the \textbf{leftmost} position.
 \end{itemize}
 
 \noindent
@@ -133,11 +133,11 @@ The elves have a special power -- the \textbf{Adjacent Swap Spell}, which allows
 What is the \textbf{minimum number of swapping} needed to rearrange the stones to satisfy his rule?
 
 \subsection*{\fontsize{16}{12}Input}
-Line 1 contains a single integer $n$, denoting the number of stones. \\\\
-Line 2 contains $n$ integers $v_i$, denoting the value of each stone. 
+Line 1 contains a single integer $N$, denoting the number of stones. \\\\
+Line 2 contains $N$ integers $v_i$, denoting the value of each stone. 
 
 \begin{itemize}
-    \item $1 \leq n \leq 100000$
+    \item $1 \leq N \leq 100000$
     \item $1 \leq v_i \leq 100000$
 \end{itemize}
 
@@ -188,33 +188,31 @@ HappyCorp, a top investment firm, predicts stock prices daily. However, when com
 Analysts have access to two positive integer sequences of stock prices:
 
 \begin{itemize}
-    \item \texttt{predicted\_prices}: The predicted stock prices over a period of $n$ days.
-    \item \texttt{actual\_prices}: The actual stock prices observed over the same period of $n$ days.
+    \item \textbf{predicted prices}: The predicted stock prices over a period of $n$ days.
+    \item \textbf{actual prices}: The actual stock prices observed over the same period of $n$ days.
 \end{itemize}
 
 \noindent 
 The \textbf{total prediction error} is defined as the sum:
 
 \[
-\sum_{i=0}^{n-1} \left| \texttt{actual\_prices}[i] - \texttt{predicted\_prices}[i] \right|
+\sum_{i=0}^{n-1} \left| \textbf{actual prices}_i - \textbf{predicted prices}_i \right|
 \]
 
-\noindent You are allowed to replace \textbf{at most one} element of \texttt{predicted\_prices} with \textbf{any} other element in \texttt{predicted\_prices} to \textbf{minimize} the total prediction error. 
+\noindent You are allowed to replace \textbf{at most one} element of \textbf{predicted prices} with \textbf{any} other element in \textbf{predicted prices} to \textbf{minimize} the total prediction error. 
 \\\\
 \noindent
 Your task is to determine the \textbf{minimum possible total prediction error} after making at most one such replacement.
 
 \subsection*{\fontsize{16}{12}Input}
-Line 1 contains a single integer $n$, denoting the number of days. \\\\
-Line 2 contains $n$ space-separated positive integers representing the \textbf{predicted} stock prices. \\\\
-Line 3 contains $n$ space-separated positive integers representing the \textbf{actual} stock prices.
+Line 1 contains a single integer $N$, denoting the number of days. \\\\
+Line 2 contains $N$ positive integers $p_i$, denoting the \textbf{predicted stock prices}. \\\\
+Line 3 contains $N$ positive integers $a_i$, denoting the \textbf{actual stock prices}.
 \\\\
 \noindent Constraints:
 \begin{itemize}
-    \item \( 1 \leq n \leq 10^5 \)
-    \item \( n = \texttt{predicted\_prices.length} \)
-    \item \( n = \texttt{actual\_prices.length} \)
-    \item \( 1 \leq \texttt{predicted\_prices}[i], \texttt{actual\_prices}[i] \leq 10^5 \)
+    \item \( 1 \leq N \leq 10^5 \)
+    \item \( 1 \leq p_i, a_i \leq 10^5\quad\forall i \in [0, N)\)
 \end{itemize}
 
 \subsection*{\fontsize{16}{12}Output}
@@ -237,7 +235,7 @@ Print a single integer, the minimum possible total prediction error after at mos
 \subsection*{\fontsize{16}{12}Explanation}
 Given:
 \[
-\texttt{predicted\_prices} = [1, 7, 5], \quad \texttt{actual\_prices} = [2, 3, 5]
+\textbf{predicted prices} = [1, 7, 5], \quad \textbf{actual prices} = [2, 3, 5]
 \]
 The initial absolute sum difference is:
 \[
@@ -453,17 +451,17 @@ During the Golden Age of Piracy, Captain Henry Ironhook Vance and his crew of \(
 But greed is a pirate's curse, and the crew fell into a deadly dispute over who would claim it.\\
 \noindent\\
 Following the ancient Pirate Code, they resorted to the dreaded Black Spot Game to decide. 
-Here, we will first introduce the famous Black Spot Game: forming a circle, the \(m\) pirates passed around the cursed medallion. 
-Every \(k^{th}\) pirate to receive the medallion was marked for doom and thrown overboard. 
+Here, we will first introduce the famous Black Spot Game: forming a circle, the \(M\) pirates passed around the cursed medallion. 
+Every \(K^{th}\) pirate to receive the medallion was marked for doom and thrown overboard. 
 The process repeated until only one pirate remained.\\
 \noindent\\
 Here is a detailed description of the Black Spot Game:
 Before the game starts, there will be \(m\) pirates in total and an elimination number \(k\) will be pre-decided.
 \begin{enumerate}
     \setlength{\itemsep}{-3pt} % Reduce space between items
-    \item A total of \(m\) pirates (numbered 1 to \(m\)) stand in a circle.
-    \item The game starts at pirate 1.
-    \item Counting proceeds \textbf{clockwise}, eliminating every \(k^{th}\) pirate.
+    \item A total of \(M\) pirates (numbered 0 to \(M-1\)) stand in a circle.
+    \item The game starts at pirate 0.
+    \item Counting proceeds \textbf{clockwise}, eliminating every \(K^{th}\) pirate.
     \item The pirate who is eliminated is \textbf{removed} from the circle.
     \item The next round starts with the pirate immediately clockwise to the eliminated one.
     \item The process continues until only one pirate remains.
@@ -471,7 +469,7 @@ Before the game starts, there will be \(m\) pirates in total and an elimination 
 
 \noindent
 For a more detailed illustration of how Black Spot Game proceeds, below is an illustration of the 
-Black Spot Game with a total of \(m = 5\) pirates and elimination number \(k = 2\).
+Black Spot Game with a total of \(M = 5\) pirates and elimination number \(K = 2\).
 \begin{center}
     \begin{tikzpicture}[scale=0.9]
         
@@ -486,80 +484,79 @@ Black Spot Game with a total of \(m = 5\) pirates and elimination number \(k = 2
             \draw[thick] (0,0) circle (2.5cm);
         
             % Draw remaining pirates (white)
-            \foreach \i/\label in {90/1, -54/3, -126/4, 162/5} {
+            \foreach \i/\label in {90/0, -54/2, -126/3, 162/4} {
                 \node[circle, draw, fill=white!50, minimum size=1cm] (\label) at (\i:2.5cm) {\textbf{\label}};
             }
             % Draw eliminated pirate
-            \node[circle, draw, fill=white!50, minimum size=1cm] (2) at (18:2.5cm) {\textbf{2}};
+            \node[circle, draw, fill=white!50, minimum size=1cm] (2) at (18:2.5cm) {\textbf{1}};
 
             % Label step number
             \node at (-3, 2.5) {\textbf{1)}};
         \end{scope}
 
-        % Second Circle (After eliminating 2)
+        % Second Circle (After eliminating 1)
         \begin{scope}[shift={(0,0)}]
             % Draw eliminated pirate (red)
             \node[circle, draw, fill=white!50, minimum size=1.2cm] (4) at (-126:2.5cm) {\textbf{4}};
         \end{scope}
         
-        % Second Circle (After eliminating 2)
+        % Second Circle (After eliminating 1)
         \begin{scope}[shift={(0,0)}] % Adjust position for second diagram
             % Draw large outer circle
             \draw[thick] (0,0) circle (2.5cm);
         
             % Draw remaining pirates
-            \foreach \i/\label in {90/1, -54/3, 162/5} {
+            \foreach \i/\label in {90/0, -54/2, 162/4} {
                 \node[circle, draw, fill=white!50, minimum size=1cm] (\label) at (\i:2.5cm) {\textbf{\label}};
             }
             % Draw eliminated pirate
-            \node[circle, draw, fill=white!50, minimum size=1cm] (4) at (-126:2.5cm) {\textbf{4}};
+            \node[circle, draw, fill=white!50, minimum size=1cm] (4) at (-126:2.5cm) {\textbf{3}};
             
             % Label step number
             \node at (-3, 2.5) {\textbf{2)}};
         \end{scope}
 
-        % Third Circle (After eliminating 4)
+        % Third Circle (After eliminating 3)
         \begin{scope}[shift={(6,0)}]
             % Draw eliminated pirate (red)
             \node[circle, draw, fill=white!50, minimum size=1.2cm] (1) at (90:2.5cm) {\textbf{1}};
         \end{scope}
 
-        % Third Circle (After eliminating 4)
+        % Third Circle (After eliminating 3)
         \begin{scope}[shift={(6,0)}] % Adjust position for third diagram
             % Draw large outer circle
             \draw[thick] (0,0) circle (2.5cm);
         
             % Draw remaining pirates
-            \foreach \i/\label in {-54/3, 162/5} {
+            \foreach \i/\label in {-54/2, 162/4} {
                 \node[circle, draw, fill=white!50, minimum size=1cm] (\label) at (\i:2.5cm) {\textbf{\label}};
             }
             % Draw eliminated pirate
-            \node[circle, draw, fill=white!50, minimum size=1cm] (1) at (90:2.5cm) {\textbf{1}};
+            \node[circle, draw, fill=white!50, minimum size=1cm] (1) at (90:2.5cm) {\textbf{0}};
 
             % Label step number
             \node at (-3, 2.5) {\textbf{3)}};
         \end{scope}
     \end{tikzpicture}
-    \newline
-    \newline
+    \newpage
     \begin{tikzpicture}[scale=0.9] % Adjust scale to fit better
 
-        % Fourth Circle (After eliminating 1)
+        % Fourth Circle (After eliminating 0)
         \begin{scope}[shift={(-3,-4)}] 
             % Draw eliminated pirate (red)
-            \node[circle, draw, fill=white!50, minimum size=1.2cm] (5) at (162:2.5cm) {\textbf{5}};
+            \node[circle, draw, fill=white!50, minimum size=1.2cm] (4) at (162:2.5cm) {\textbf{4}};
         \end{scope}
         
-        % Fourth Circle (After eliminating 1)
+        % Fourth Circle (After eliminating 0)
         \begin{scope}[shift={(-3,-4)}] % Position fourth diagram
             % Draw large outer circle
             \draw[thick] (0,0) circle (2.5cm);
         
             % Draw remaining pirate
-            \node[circle, draw, fill=white!50, minimum size=1cm] (3) at (-54:2.5cm) {\textbf{3}};
+            \node[circle, draw, fill=white!50, minimum size=1cm] (2) at (-54:2.5cm) {\textbf{2}};
             
             % Draw eliminated pirate (red)
-            \node[circle, draw, fill=white!50, minimum size=1cm] (5) at (162:2.5cm) {\textbf{5}};
+            \node[circle, draw, fill=white!50, minimum size=1cm] (4) at (162:2.5cm) {\textbf{4}};
 
             % Label step number
             \node at (-3, 2.3) {\textbf{4)}};
@@ -571,7 +568,7 @@ Black Spot Game with a total of \(m = 5\) pirates and elimination number \(k = 2
             \draw[thick] (0,0) circle (2.5cm);
         
             % Draw winner pirate (green)
-            \node[circle, draw, fill=white!50, minimum size=1cm] (3) at (-54:2.5cm) {\textbf{3}};
+            \node[circle, draw, fill=white!50, minimum size=1cm] (2) at (-54:2.5cm) {\textbf{2}};
 
             % Label step number
             \node at (-2.5, 2.3) {\textbf{5)}};
@@ -580,35 +577,35 @@ Black Spot Game with a total of \(m = 5\) pirates and elimination number \(k = 2
 \end{center}
 
 \noindent
-Each pirate is labeled with a number from 1 to 5 in clockwise direction. Each round, one pirate will be eliminated. 
-The eliminated pirate is labeled in a double-circle. The winner is the last remaining pirate, which is pirate number 3.\\
+Each pirate is labeled with a number from 0 to 4 in clockwise direction. Each round, one pirate will be eliminated. 
+The eliminated pirate is labeled in a double-circle. The winner is the last remaining pirate, which is pirate number 2.\\
 
 \noindent
 However, after listening to the explanation of the game, the pirates thought that it was too plain and simple.
-To make the game more complex and sophisticated, the pirates decide to elevate the game to another level. The \(N\) pirates will be divided into \(n\) \textbf{non-identical groups}, 
-each group \(i \in \{1, 2, ..., n\}\) will consist of \(m_i\) pirates, and the group will be assigned an elimination number \(k_i\).
+To make the game more complex and sophisticated, the pirates decide to elevate the game to another level. The \(P\) pirates will be divided into \(N\) \textbf{non-identical groups}, 
+each group \(i \in \{0, 1, ..., N-1\}\) will consist of \(M_i\) pirates, and the group will be assigned an elimination number \(K_i\).
 \textbf{Every group will play the Black Spot Game until only one pirate remain in the group.} After all groups have sort out a final survivor,
-the \(n\) remaining pirates (one from each group) will gather to \textbf{play one final round} of the Black Spot Game, and their numbers in the last round are their own group number.The last pirate to survive this round will be the true heir to the untold treasures.\\
+the \(N\) remaining pirates (one from each group) will gather to \textbf{play one final round} of the Black Spot Game, their numbers in the last round are their own group number, and the final round will be assigned an elimination number \(K_f\).The last pirate to survive this round will be the true heir to the untold treasures.\\
 
 \noindent
 Your task is to determine which pirate will outlast the curse and claim their fortune.
 You will need to determine which group the winning pirate was originally in, and the pirate's number in that original group. 
 
 \subsection*{\fontsize{16}{12}Input}
-The first line of input consists of two integers \(n\) and \(k_f\):\\
+The first line of input consists of two integers \(N\) and \(K_f\):\\
 \begin{itemize}
-    \item \(1 \leq n \leq 500\) Representing the number of groups to split the pirates in,
-    \item \(1 \leq k_f \leq 500\) Denoting the elimination number for the \textbf{final round}.
+    \item \(1 \leq N \leq 500\) Representing the number of groups to split the pirates in,
+    \item \(1 \leq K_f \leq N\) Denoting the elimination number for the \textbf{final round}.
 \end{itemize}
-The following \(n\) lines (line \(2\) to line \(n + 1\)) will each represent every group of pirates, each line consist of two integers \(m_i\) and \(k_i\), \(i\) denotes the group number.\\
+The following \(N\) lines will each represent every group of pirates, each line consist of two integers \(M_i\) and \(K_i\), \(i\) denotes the group number.\\
 \indent
 \begin{itemize}
-    \item \(1 \leq m_i \leq 500\) Denoting the number of pirates in group \(i\),
-    \item \(1 \leq k_i \leq m_i\) Denoting the assigned elimination number for group \(i\).
+    \item \(1 \leq M_i \leq 500\) Denoting the number of pirates in group \(i\),
+    \item \(1 \leq K_i \leq M_i\) Denoting the assigned elimination number for group \(i\).
 \end{itemize}
 \noindent
-Note that we did not explicitely input the total number of pirates onboard \(N\), since 
-\(\Sigma_{i=1}^n=N\) (number of pirates in each group will naturally sum up to \(N\)).\\
+Note that we did not explicitely input the total number of pirates onboard \(P\), since 
+\(\Sigma_{i=0}^{N-1}=P\) (number of pirates in each group will naturally sum up to \(P\)).\\
 
 \noindent
 Please also note that the groups are non-identical, so the number of pirates in each group varies, 
@@ -623,7 +620,7 @@ You should output two integers to tell us who the winner is:\\
 2. The number of the winner in the group.\\
 
 \noindent
-For example, the winner was in the $1^{st}$ group, and was the $3^{rd}$ pirate in the group, output 1 3. 
+For example, the winner was in the group $0$, and was the number $2$ pirate in the group, output 0 2. 
 \subsection*{\fontsize{16}{12}Example 1}
 % Example Table
 \begin{table}[h]
@@ -632,7 +629,7 @@ For example, the winner was in the $1^{st}$ group, and was the $3^{rd}$ pirate i
     \hline
     \textbf{stdin} & \textbf{stdout} \\
     \hline
-    5 2 & 3 4 \\
+    5 2 & 2 3 \\
     6 3 & \\
     7 4 & \\
     10 3 & \\
@@ -650,7 +647,7 @@ For example, the winner was in the $1^{st}$ group, and was the $3^{rd}$ pirate i
     \hline
     \textbf{stdin} & \textbf{stdout} \\
     \hline
-    7 3 & 4 3 \\
+    7 3 & 3 2 \\
     10 2 & \\
     5 3 & \\
     4 3 & \\
