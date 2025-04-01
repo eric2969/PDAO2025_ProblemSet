@@ -378,11 +378,11 @@ Please be noted that only the soldier, horse, canon and chariot can cross the ri
 \\
 \noindent
 Now give you a table of later game, you need to check if you have already won the game. It's not necessary mean checkmate (Stalemate also indicates a win in Xiangqi).
-You always play red (i.e., the one on the bottom). You have already made your move while the other hasn't.
+\textbf{You always play red} (i.e., the one on the bottom). You have already made your move while the other hasn't.
 \subsection*{\fontsize{16}{12}Input}
 Given a $10\times9$ array full of characters, where the general, advisor, elephant, chariot, horse, canon, soldier, and empty space are represented by G, S, E, R, H, C, P, and . (a single dot) respectively. Upper cases indicate Black player while lower cases indicate red player.
 \subsection*{\fontsize{16}{12}Output}
-A single line of "Yes" or "No"
+A single line of "Yes" or "No", indicating if you(\textbf{Red player}) have already won the game.
 \subsection*{\fontsize{16}{12}Examples}
 \begin{table}[h]
   \centering
@@ -966,10 +966,10 @@ The order in which missions are selected does not matter; only the set of missio
 \subsection*{\fontsize{16}{12}Input}
 Line 1 contains three integers \( N \), \( R \), \( M \), denoting the \textbf{number of agents available}, the \textbf{minimum required benefit}, and the \textbf{number of missions}, respectively.
 \\\\
-The next \( M \) lines each contain two integers \( G \) and \( B \), denoting the \textbf{agents required to execute the mission}, the \textbf{benefit received from the mission}, respectively.
+The next \( M \) lines each contain two integers \( G_i \) and \( B_i \), denoting the \textbf{agents required to execute the mission}, the \textbf{benefit received from the mission}, respectively.
 \begin{itemize}
     \item \(1 \leq N,R,M \leq 100\)
-    \item \(1 \leq G,B \leq 100\)
+    \item \(1 \leq G_i,B_i \leq 100\quad \forall\ i \in [0, M)\)
 \end{itemize}
 
 \subsection*{\fontsize{16}{12}Output}
@@ -995,9 +995,9 @@ Print a single integer, the total number of valid mission schemes modulo \( 10^9
 
 There are 3 missions:
 \begin{itemize}
- \item \textbf{Mission 0}: Requires 2 agents, yields a benefit of 2.
- \item \textbf{Mission 1}: Requires 2 agents, yields a benefit of 3.
- \item \textbf{Mission 2}: Requires 1 agent, yields a benefit of 1.
+ \item \textbf{Mission 0}: Requires 2 agents($G_0$), yields a benefit of 2($B_0$).
+ \item \textbf{Mission 1}: Requires 2 agents($G_1$), yields a benefit of 3($B_1$).
+ \item \textbf{Mission 2}: Requires 1 agent($G_2$), yields a benefit of 1($B_2$).
 \end{itemize}
 
 \noindent
@@ -1171,20 +1171,19 @@ The ICN Administration seeks to establish a \textbf{minimum-cost network} that c
 \end{itemize}
 
 \noindent
-Your task is to:
+Your task is to identify:
 \begin{itemize}
-    \item Identify all \textbf{critical channels }that, if damaged, would increase the minimum network maintenance cost.
-    \item Identify all \textbf{backup-ready channels} that can replace critical channels without increasing the total cost.
+    \item All \textbf{critical channels }would raise the minimum network maintenance cost if damaged.
+    \item All \textbf{backup-ready channels} that can replace critical channels without raising total cost.
 \end{itemize}
 
 \subsection*{\fontsize{16}{12}Input}
 Line 1 contains two integers \( N \) and \( M \), denoting the number of space stations and communication channels:
     \[
-    2 \leq N \leq 100, \quad N-1 \leq M \leq \min(5000, \frac{N(N-1)}{2}).
+    2 \leq N \leq 100, \quad N-1 \leq M \leq 10^5.
     \]
-\\\\
 \noindent
-The next \( M \) lines each contain three integers \( U, V, W \), representing a communication channel:
+The next \( M \) lines each contain three integers \( U, V, W \), denoting a communication channel:
     \begin{itemize}
         \item \( U \) and \( V \) are space stations connected by the channel \((0 \leq U, V < N)\).
         \item \( W \) is the bandwidth capacity of the channel \((1 \leq W \leq 1000)\).
@@ -1227,6 +1226,28 @@ The \textbf{minimum-cost network} has a total maintenance cost of \textbf{7 unit
     \item \textbf{Channels 0 and 1} are critical because removing either would increase the minimum network cost.
     \item \textbf{Channels 2, 3, 4, and 5} are backup-ready since they can replace a critical channel without increasing the cost.
 \end{itemize}
+
+\begin{center}
+    \scalebox{1.5}{
+    \begin{tikzpicture}
+    % Draw vertices
+    \node (0) at (0, 0) [circle, draw, minimum size=1cm] {0};
+    \node (1) at (3, 0) [circle, draw, minimum size=1cm] {1};
+    \node (2) at (5, -2) [circle, draw, minimum size=1cm] {2};
+    \node (3) at (3, -3) [circle, draw, minimum size=1cm] {3};
+    \node (4) at (0, -3) [circle, draw, minimum size=1cm] {4};
+    
+    % Draw edges with weights
+    \draw[double, thick] (0) -- node[above] {1} (1); % Highlighted edge 0-1 with double line
+    \draw[double, thick] (1) -- node[above right] {1} (2); % Normal edge 1-2 in thick gray
+    \draw[gray, very thick] (2) -- node[below] {2} (3); % Normal edge 2-3 in thick gray
+    \draw[gray, very thick] (0) -- node[below left, xshift=0.55cm, yshift=-0.35cm] {2} (3); % Normal edge 0-3 in thick gray
+    \draw[gray, very thick] (0) -- node[left] {3} (4); % Normal edge 0-4 in thick gray
+    \draw[gray, very thick] (3) -- node[below left] {3} (4); % Normal edge 3-4 in thick gray
+    \draw[thick] (1) -- node[above right, xshift=0.2cm, yshift=0.5cm] {6} (4); % Normal edge 1-4 in thick gray
+
+    \end{tikzpicture}}
+\end{center}
 
 \subsection*{\fontsize{16}{12}Example 2}
 \begin{table}[h]
@@ -1694,10 +1715,11 @@ Line 3 contains $N$ integers $b_1, b_2, \dots, b_N$ the message to be extracted 
 \end{itemize}
 
 \subsection*{\fontsize{16}{12}Output}
-Print $N$ non-negative integers $c_1, c_2, \dots, c_N$ representing the encrypted signal such that the XOR constraints allow recovery of both messages.
+Print $N$ non-negative integers $c_1, c_2, \dots, c_N$ representing the encrypted signal such that the XOR constraints allow recovery of both messages.\\
+It is promoised that there \textbf{exists at least one valid} $c$ extracted to recover both messages.
 \\\\
 \noindent
-If there are multiple valid arrays, print any one of them. any number you write to the output must be in the range of $[0, 2^{30})$, or you'll get a "Wrong Answer".
+If there are multiple valid arrays, print any one of them. any number you write to the output must be in the range of $[0, 2^{30})$, or you'll get a "\textbf{Wrong Answer}".
 
 \subsection*{\fontsize{16}{12}Example 1}
 \begin{table}[h]
@@ -1720,9 +1742,9 @@ To recover each $a_i$, type-$A$ drones perform XOR on every window of $k_1 = 2$ 
     \item $c_2 \oplus c_3 = 0 \oplus 2 = 2 = a_2\dots$
 \end{itemize}
 Type-$B$ drones apply XOR on $k_2 = 4$-element windows, and the values match perfectly with $b$.
-\\\\
+\\
 \noindent
-Thus, the encrypted array is valid.
+Thus, the encrypted array is \textbf{valid}.
 
 \subsection*{\fontsize{16}{12}Example 2}
 \begin{table}[h]
