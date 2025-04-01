@@ -79,7 +79,7 @@ left=2cm, right=2cm, top=1.5cm
 \fancyfoot[C]{Page \thepage \ of \pageref{LastPage}}
 
 \begin{document}
-\title{\textbf{Programming Design And Optimization}\\ April 19, 2025}
+\title{\textbf{NTUIM PDAO 2025}\\ April 19}
 \date{}
 \maketitle
 \thispagestyle{fancy}
@@ -133,8 +133,8 @@ The elves have a special power -- the \textbf{Adjacent Swap Spell}, which allows
 What is the \textbf{minimum number of swapping} needed to rearrange the stones to satisfy his rule?
 
 \subsection*{\fontsize{16}{12}Input}
-Line 1 contains a single integer $N$, denoting the number of stones. \\\\
-Line 2 contains $N$ integers $v_i$, denoting the value of each stone. 
+Line 1 contains a single integer $N$, denoting the quantity of stones. \\\\
+Line 2 contains $N$ integers $v_i$, denoting the number of each stone. 
 
 \begin{itemize}
     \item $1 \leq N \leq 100000$
@@ -167,8 +167,8 @@ Given the initial arrangement: \{3, 4, 1, 5, 5, 3\}
 
 \begin{enumerate}
     \item Swap index 1 and 2: \{3, \underline{1}, \underline{4}, 5, 5, 3\}
-    \item Swap index 0 and 1: \{\underline{1}, \underline{3}, 4, 5, 5, 3\} (smallest value is now at the leftmost position)
-    \item Swap index 4 and 5: \{1, 3, 4, 5, \underline{3}, \underline{5}\} (largest value is now at the rightmost position)
+    \item Swap index 0 and 1: \{\underline{1}, \underline{3}, 4, 5, 5, 3\} (smallest number is now at the leftmost position)
+    \item Swap index 4 and 5: \{1, 3, 4, 5, \underline{3}, \underline{5}\} (largest number is now at the rightmost position)
 \end{enumerate}
 Thus, the minimum number of swaps required is \textbf{3}.
 \newpage
@@ -605,7 +605,7 @@ The following \(N\) lines will each represent every group of pirates, each line 
 \end{itemize}
 \noindent
 Note that we did not explicitely input the total number of pirates onboard \(P\), since 
-\(\Sigma_{i=0}^{N-1}=P\) (number of pirates in each group will naturally sum up to \(P\)).\\
+\(\Sigma_{i=0}^{N-1}M_i=P\) (number of pirates in each group will naturally sum up to \(P\)).\\
 
 \noindent
 Please also note that the groups are non-identical, so the number of pirates in each group varies, 
@@ -671,31 +671,32 @@ For example, the winner was in the group $0$, and was the number $2$ pirate in t
 \end{alignat*}
 
 \noindent
-The prestigious National Museum of Technology operates a high-tech security system based on an \(m \times n\) grid of laser sensors. Each sensor has a \textbf{unique} power level used to detect intruders. However, the chief security officer has noticed that the power levels are unnecessarily high, leading to excessive energy consumption.
+The prestigious National Museum of Technology operates a high-tech security system based on an \(M \times N\) grid of laser sensors. Each sensor has a \textbf{unique} power level used to detect intruders. However, the chief security officer has noticed that the power levels are unnecessarily high, leading to excessive energy consumption.
 \\\\
 \noindent
 To optimize energy efficiency, the power levels must be reconfigured while preserving the system's effectiveness. The new configuration must satisfy the following conditions:
 \begin{itemize}
     \item If a sensor originally had a higher power level than another sensor in the \textbf{same row or column}, it must remain more powerful in the new configuration.
     \item The highest power level in the new configuration must be \textbf{as low as possible}.
+    \item The minimum power level in the new configuration must be \textbf{at least 1}.
 \end{itemize}
 
 \noindent
 As the museum's security consultant, your task is to determine the optimal power levels for each sensor in the grid while ensuring that the conditions above are met.
 
 \subsection*{\fontsize{16}{12}Input}
-Line 1 contains two integers \(m\) and \(n\), denoting the number of rows and columns in security grid.
+Line 1 contains two integers \(M\) and \(N\), denoting the number of rows and columns in security grid.
 \\\\
 \noindent
-The next \(m\) lines each contain \(n\) space-separated integers representing the power levels of the sensors in the grid and denote the power levels of the sensors as $p$. Each power level in the initial configuration is unique.
+The next \(M\) lines each contain \(N\) integers, denoting the number of the sensors in the grid and $P$ denoting the power levels of the sensors. Each power level in initial configuration is \textbf{unique}.
 \begin{itemize}
-    \item \(1 \leq m, n \leq 1000\)
-    \item $1\leq p \leq 10^5$
-    \item $p \text{ is unique}$
-    \item \(m \cdot n \leq 10^5\)
+    \item \(1 \leq M, N \leq 1000\)
+    \item $1\leq P \leq 10^5$
+    \item $P \text{ is unique}$
+    \item \(M \cdot N \leq 10^5\)
 \end{itemize}
 \subsection*{\fontsize{16}{12}Output}
-Output \(m\) lines, each containing \(n\) space-separated integers, representing the reconfigured security grid.
+Output \(M\) lines, each containing \(N\) space-separated integers, denoting the reconfigured security grid.
 
 \subsection*{\fontsize{16}{12}Example 1}
 \begin{table}[h]
@@ -771,7 +772,7 @@ Upon further investigation, Dr. Yee noticed that some of the formulas appeared s
 Can you help Dr. Yee verify whether the ancient formula matches the modern one?
 
 \subsection*{\fontsize{16}{12}Input}
-Line 1 contains two integers $n_1$ and $n_2$, denoting the length of following two formulas.
+Line 1 contains two integers $N_1$ and $N_2$, denoting the length of following two formulas.
 \\\\
 \noindent
 Line 2 - 3 each contains a string represents ancient and modern formula respectively.\\\\
@@ -784,7 +785,7 @@ A formula follows these rules:
     \item Parentheses are used to group elements and can be followed by a number, indicating how many times the group should be repeated.
     \item Parentheses may be used to group elements, with a maximum nesting depth of \( 10 \).
     \item The number of every atom in each formula will not exceed \(10^4\).
-    \item $1 \leq n_1, n_2 \leq 10^4$
+    \item $1 \leq N_1, N_2 \leq 10^4$
 \end{itemize}  
 \noindent
 \textit{Note: The atoms and elements in these formulas may not necessarily exist on Earth, as Dr. Yee lives in a different universe.}  
@@ -881,10 +882,10 @@ Both players play \textbf{optimally}, meaning they make the best possible moves 
 Your task is to determine whether Merlin can guarantee a win, or if Morgana will inevitably win. Print `"true"` if Merlin wins and `"false"` if Morgana wins.
 
 \subsection*{\fontsize{16}{12}Input}
-Line 1 contains a single integer \( n \) \((1 \leq n \leq 100000)\), representing the number of potion bottles.
+Line 1 contains a single integer \( N \) \((1 \leq N \leq 10^5)\), representing the number of potion bottles.
 \\\\
 \noindent
-Line 2 contains \( n \) space-separated integers, where the \( i^{th} \) integer represents the magical essence in the \( i^{th} \) potion bottle. Each integer \( k \) satisfies \( 1 \leq k \leq 10000 \).
+Line 2 contains \( N \) space-separated integers, where the \( i^{th} \) integer represents the magical essence in the \( i^{th} \) potion bottle. Each integer \( K \) satisfies \( 1 \leq K \leq 10^4 \).
 
 \subsection*{\fontsize{16}{12}Output}
 Print "Yes" if Merlin can force a win; otherwise, print "No".
@@ -963,12 +964,12 @@ Each mission has specific requirements:
 The order in which missions are selected does not matter; only the set of missions chosen determines the outcome.
 
 \subsection*{\fontsize{16}{12}Input}
-Line 1 contains three integers \( n \), \( r \), \( m \), denoting the \textbf{number of agents available}, the \textbf{minimum required benefit}, and the \textbf{number of missions}, respectively.
+Line 1 contains three integers \( N \), \( R \), \( M \), denoting the \textbf{number of agents available}, the \textbf{minimum required benefit}, and the \textbf{number of missions}, respectively.
 \\\\
-The next \( m \) lines each contain two integers \( g \) and \( b \), denoting the \textbf{agents required to execute the mission}, the \textbf{benefit received from the mission}, respectively.
+The next \( M \) lines each contain two integers \( G \) and \( B \), denoting the \textbf{agents required to execute the mission}, the \textbf{benefit received from the mission}, respectively.
 \begin{itemize}
-    \item \(1 \leq n,r,m \leq 100\)
-    \item \(1 \leq g,b \leq 100\)
+    \item \(1 \leq N,R,M \leq 100\)
+    \item \(1 \leq G,B \leq 100\)
 \end{itemize}
 
 \subsection*{\fontsize{16}{12}Output}
@@ -1077,7 +1078,7 @@ In the popular game \textbf{"Block Builder's Challenge"}, players design landsca
 Your task is to determine the \textbf{total volume of trapped water} after rainfall, following these rules:
 
 \begin{itemize}
-	\item The landscape is represented as an \( m \times n \) grid.
+	\item The landscape is represented as an \( M \times N \) grid.
 	\item Each grid cell contains a non-negative integer representing the height of a block.
 	\item Water flows downward and seeks the lowest available space.
 	\item Water can only flow horizontally or vertically (not diagonally).
@@ -1086,12 +1087,12 @@ Your task is to determine the \textbf{total volume of trapped water} after rainf
 \end{itemize}
 
 \subsection*{\fontsize{16}{12}Input}
-Line 1 contains two integers \( m \) and \( n \), representing the grid dimensions.
+Line 1 contains two integers \( M \) and \( N \), representing the grid dimensions.
 \\\\
 \noindent
-The next \( m \) lines contain \( n \) space-separated integers, where each integer represents the height of a block. The constraints are:
+The next \( M \) lines contain \( N \) space-separated integers, where each integer represents the height of a block. The constraints are:
 \begin{itemize}
-    \item \(1 \leq m, n \leq 200\)
+    \item \(1 \leq M, N \leq 200\)
     \item \( 0 \leq \text{height} \leq 10^4\)
 \end{itemize}
 
@@ -1183,10 +1184,10 @@ Line 1 contains two integers \( N \) and \( M \), denoting the number of space s
     \]
 \\\\
 \noindent
-The next \( M \) lines each contain three integers \( u, v, w \), representing a communication channel:
+The next \( M \) lines each contain three integers \( U, V, W \), representing a communication channel:
     \begin{itemize}
-        \item \( u \) and \( v \) are space stations connected by the channel \((0 \leq u, v < N)\).
-        \item \( w \) is the bandwidth capacity of the channel \((1 \leq w \leq 1000)\).
+        \item \( U \) and \( V \) are space stations connected by the channel \((0 \leq U, V < N)\).
+        \item \( W \) is the bandwidth capacity of the channel \((1 \leq W \leq 1000)\).
         \item Each channel connects \textbf{two distinct} space stations.
         \item There is at most \textbf{one direct channel} between any pair of stations.
         \item All space stations are \textbf{initially connected} through at least one path.
@@ -1370,12 +1371,12 @@ You need to help uncle Roger manage his forest by keeping track of the growth an
 And sometimes, uncle Roger may wonder which part is the \textbf{most valuable segment} of the forest, of fixed length \textbf{\(LN\)}, to determine which part to sell. The value of a segment is determined by the following formula:
 
 \[
-\text{Value} = (\max(H_L, H_{L+1}, \dots, H_{L+LN-1}) \times P_1) + (\sum_{i=L}^{L+LN-1} H_i \times P_2)
+\text{Value} = (\max(H_L, H_{L+1}, \dots, H_{L+\textbf{LEN}-1}) \times P_1) + (\sum_{i=L}^{L+\textbf{LEN}-1} H_i \times P_2)
 \]
 \noindent
 Where:
 \begin{itemize}
-    \item \( \max(H_L, H_{L+1}, \dots, H_{L+LN-1}),\ \sum_{i=L}^{L+LN-1} H_i \) is the \textbf{maximum and sum of tree height} in the segment, respectively.
+    \item \( \max(H_L, H_{L+1}, \dots, H_{L+\textbf{LEN}-1}),\ \sum_{i=L}^{L+\textbf{LEN}-1} H_i \) is the \textbf{maximum and sum of tree height} in the segment, respectively.
     \item \( P_1 \) and \( P_2 \) are the given price coefficients.
 \end{itemize}
 \noindent
@@ -1416,17 +1417,17 @@ The $3$ to $Q+2$ lines contain operation in one of the following formats:
     
     \item \textbf{Query of Most Valuable Segment}
     \[
-    3 \quad LN \quad P_1 \quad P_2
+    3 \quad \textbf{LEN} \quad P_1 \quad P_2
     \]
     \begin{itemize}
         \item Find the best value segment of length $LN$.
-        \item Constraints: \( 1 \leq LN \leq min(1000, N) \), \( 1 \leq P_1,\ P_2 \leq 1000 \).
+        \item Constraints: \( 1 \leq \textbf{LEN} \leq min(1000, N) \), \( 1 \leq P_1,\ P_2 \leq 1000 \).
         \item There will be at most $100$ query operation.
     \end{itemize}
 \end{enumerate}
 
 \subsection*{\fontsize{16}{12}Output}
-If there is a query operation, print the segment of length \( LN \) that has the highest value.\\
+If there is a query operation, print the segment of length \textbf{LEN} that has the highest value.\\
 \noindent
 Print the best segment in the format:
 \[
@@ -1440,7 +1441,7 @@ Where:
 \end{itemize}
 \noindent
 If multiple segments have the same maximum value, print the one with the \textbf{smallest starting index}.
-If there is no segment with positive value, print \( 0\ 0\ 0 \).
+If there is no segment with positive value, print \textbf{Oiiaioiiiai}.
 
 % Example 1
  \subsection*{\fontsize{16}{12}Example 1}
@@ -1467,7 +1468,7 @@ After operation 1-2 , the forest heights are:
 [3, 4, 3, 4, 4]
 \]
 \noindent
-Finding the best segment of length \( LN = 4 \):
+Finding the best segment of length \( \textbf{LEN} = 4 \):
 
 \begin{itemize}
     \item Segment \( [1,4] \): \( \max(3,4,3,4) = 4 \), \( \sum = 3+4+3+4 = 14 \)  
@@ -1494,7 +1495,7 @@ Thus, the best segment is:
  \hline
  \textbf{stdin} & \textbf{stdout} \\
  \hline
- 5 3 & 0 0 0 \\ 
+ 5 3 & Oiiaioiiiai \\ 
  1 2 1 3 0 &  \\  
  2 1 5 8 &  \\ 
  3 4 2 1 &  \\ 
@@ -1511,7 +1512,7 @@ After operation 1, the forest heights are:
 [-7, -6, -7, -5, -8]
 \]
 
-Finding the best segment of length \( LN = 4 \):
+Finding the best segment of length \( \textbf{LEN} = 4 \):
 
 \begin{itemize}
     \item Segment \( [1,4] \): \( \max(-7,-6,-7,-5) = -5 \), \( \sum = -7+(-6)+(-7)+(-5) = -25 \)  
@@ -1525,10 +1526,7 @@ Finding the best segment of length \( LN = 4 \):
 \end{itemize}
 
 Since there is no any segment has positive value, the output is:
-
-\[
-0\ 0\ 0
-\]
+$$\textbf{Oiiaioiiiai}$$
 
 \newpage
 
@@ -1681,7 +1679,7 @@ Thus the result in binary and its decimal of $12\oplus10$ is:
 \]
 
 \subsection*{\fontsize{16}{12}Input}
-Line 1 contains three integers $N$, $k_1$, and $k_2$.
+Line 1 contains three integers $N$, $K_1$, and $K_2$.
 \\\\
 \noindent
 Line 2 contains $N$ integers $a_1, a_2, \dots, a_N$ the message to be extracted by type-$A$ drones.
@@ -1691,7 +1689,7 @@ Line 3 contains $N$ integers $b_1, b_2, \dots, b_N$ the message to be extracted 
 
 \begin{itemize}
     \item $1 \leq N \leq 10^5$
-    \item $1 \leq k_1, k_2 \leq N\wedge k_1 \ne k_2$
+    \item $1 \leq K_1, K_2 \leq N\wedge K_1 \ne K_2$
     \item $0 \leq a_i, b_i < 2^{30}$
 \end{itemize}
 
