@@ -1168,7 +1168,7 @@ This terrain forms a \textbf{closed basin} with walls of height 3:
 \end{alignat*}
 
 \noindent
-The year is 2184, and humanity has successfully colonized multiple planets in the solar system. The Interplanetary Communication Network (ICN) consists of \( N \) space stations connected by \( M \) bidirectional communication channels. Each channel has a specific bandwidth capacity.
+The year is 2184, and humanity has successfully colonized multiple planets in the solar system. The Interplanetary Communication Network (ICN) consists of \( N \) space stations connected by \( M \) bidirectional communication channels. Each channel has a specific maintenance cost.
 \\\\
 \noindent
 The ICN Administration seeks to establish a \textbf{minimum-cost network} that connects all space stations while ensuring its reliability. However, given the harsh space environment and potential meteor strikes, they must classify the communication channels into two types:
@@ -1188,7 +1188,7 @@ Your task is to identify:
 \subsection*{\fontsize{16}{12}Input}
 Line 1 contains two integers \( N \) and \( M \), denoting the number of space stations and communication channels:
     \[
-    2 \leq N \leq 100, \quad N-1 \leq M \leq 10^5.
+    2 \leq N \leq 100, \quad N-1 \leq M \leq \text{min}(\frac{n(n-1)}{2},10^5).
     \]
 \noindent
 The next \( M \) lines each contain three integers \( U, V, W \), denoting a communication channel:
