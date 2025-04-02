@@ -15,7 +15,7 @@
 \usepackage{enumitem}
 \usepackage{lastpage}
 \usepackage{textcomp}
-\newfontfamily\linesans[Path=C:/Users/jacob/AppData/Local/Microsoft/Windows/Fonts/]{LINESeedSans_XBd}
+\newfontfamily\linesans[Path=Font.assets/]{LINESeedSans_XBd}
 
 \geometry{
 a4paper,
@@ -58,9 +58,11 @@ left=2cm, right=2cm, top=1.5cm
 \lstset{style=mystyle}
 
 \newcommand*{\blankpage}{%
+\newpage
 \vspace*{\fill}
 {\centering \huge This page is intentionally left blank.\par}
-\vspace{\fill}}
+\vspace{\fill}
+\newpage}
 \makeatletter
 \renewcommand*{\cleardoublepage}{\clearpage\if@twoside \ifodd\c@page\else
 \blankpage
@@ -113,8 +115,8 @@ left=2cm, right=2cm, top=1.5cm
 %\end{minipage}
 %\end{center}
 
+\blankpage
 
-\newpage
 \section*{\fontsize{18}{12}Problem A. Mischievous Elves and Magic Sorting Spell}
 
 \begin{alignat*} {2}
@@ -280,7 +282,7 @@ The initial absolute sum difference is:
  &   \text{Input file:}   \quad     &&\text{stdin}\\
  &   \text{Output file:}  \quad     &&\text{stdout}\\
  &   \text{Time limit:}   \quad     &&\text{1 second}\\
- &   \text{Memory limit:} \quad     &&\text {64 MB}
+ &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 \noindent
 Two Xiangqi masters Tokugawa and Gashuin said they've beaten every other master in the world. However, some said that there
@@ -444,14 +446,14 @@ cross the river.
 \item You cannot be checked.
 \end{itemize}
 
-\newpage
+\blankpage
 
 \section*{\fontsize{18}{12}Problem D. Pirate Code: The Black Spot Game}
 
 \begin{alignat*} {2}
  &   \text{Input file:}   \quad     &&\text{stdin}\\
  &   \text{Output file:}  \quad     &&\text{stdout}\\
- &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Time limit:}   \quad     &&\text{100 milliseconds}\\
  &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 \noindent
@@ -667,7 +669,7 @@ For example, the winner was in the group $0$, and was the number $2$ pirate in t
     \end{tabularx}
 \end{table}
 
-\newpage
+\blankpage
 
 \section*{\fontsize{18}{12}Problem E. The Museum's Security Grid}
 
@@ -862,7 +864,7 @@ Since both formulas contain the same elements in the same quantities, they repre
 
 \newpage
 
-\section*{\fontsize{18}{12} Problem G. Magic Potion Battle}
+\section*{\fontsize{18}{12}Problem G. Magic Potion Battle}
 
 \begin{alignat*} {2}
  &   \text{Input file:}   \quad     &&\text{stdin}\\
@@ -1281,7 +1283,7 @@ The \textbf{minimum-cost network} has a total maintenance cost of \textbf{7 unit
 \begin{alignat*} {2}
  &   \text{Input file:}   \quad     &&\text{stdin}\\
  &   \text{Output file:}  \quad     &&\text{stdout}\\
- &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Time limit:}   \quad     &&\text{100 milliseconds}\\
  &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 
@@ -1381,7 +1383,7 @@ Total moves: \textbf{6}.
 \begin{alignat*} {2}
  &   \text{Input file:}   \quad     &&\text{stdin}\\
  &   \text{Output file:}  \quad     &&\text{stdout}\\
- &   \text{Time limit:}   \quad     &&\text{2.5 seconds}\\
+ &   \text{Time limit:}   \quad     &&\text{1.5 seconds}\\
  &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 \noindent
@@ -1557,14 +1559,14 @@ Finding the best segment of length \( \textbf{LEN} = 4 \):
 Since there is no any segment has positive value, the output is:
 $$\textbf{Oiiaioiiiai}$$
 
-\newpage
+\blankpage
 
 \section*{\fontsize{18}{12}Problem M. Cursed Envoys and Race for Awakening}
 
 \begin{alignat*} {2}
  &   \text{Input file:}   \quad     &&\text{stdin}\\
  &   \text{Output file:}  \quad     &&\text{stdout}\\
- &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Time limit:}   \quad     &&\text{100 milliseconds}\\
  &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 \noindent
