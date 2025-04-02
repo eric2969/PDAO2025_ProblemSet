@@ -15,7 +15,7 @@
 \usepackage{enumitem}
 \usepackage{lastpage}
 \usepackage{textcomp}
-\newfontfamily\linesans[Path=C:/Users/jacob/AppData/Local/Microsoft/Windows/Fonts/]{LINESeedSans_XBd}
+\newfontfamily\linesans[Path=Font.assets/]{LINESeedSans_XBd}
 
 \geometry{
 a4paper,
@@ -58,9 +58,11 @@ left=2cm, right=2cm, top=1.5cm
 \lstset{style=mystyle}
 
 \newcommand*{\blankpage}{%
+\newpage
 \vspace*{\fill}
 {\centering \huge This page is intentionally left blank.\par}
-\vspace{\fill}}
+\vspace{\fill}
+\newpage}
 \makeatletter
 \renewcommand*{\cleardoublepage}{\clearpage\if@twoside \ifodd\c@page\else
 \blankpage
@@ -98,23 +100,13 @@ left=2cm, right=2cm, top=1.5cm
     \item If you have any questions, request a clarification via the Google form in \textbf{PDOGS info}. The judges (i.e. some members in the PDAO Team) will clarify with either \textquotedblleft Yes\textquotedblright, \textquotedblleft No\textquotedblright, \textquotedblleft No Comment\textquotedblright\ or \textquotedblleft Pardon\textquotedblright.
 \end{itemize}
 
-%\begin{flushright}
-%    PDAO 2025 is sponsored by \textbf{© LINE}
-%\end{flushright}
-
 \noindent\vfill
 \begin{minipage}{0.97\textwidth}
  \noindent\hfill PDAO 2025 is sponsored by \textcopyright \space {\linesans LINE}
 \end{minipage}
-%\includegraphics[width=0.3\textwidth]{Line.JPG}
-%\begin{center}
-%\begin{minipage}{0.35\textwidth}
-%    PDAO 2025 is sponsored by \\ \textcopyright \space {\linesans LINE}
-%\end{minipage}
-%\end{center}
 
+\blankpage
 
-\newpage
 \section*{\fontsize{18}{12}Problem A. Mischievous Elves and Magic Sorting Spell}
 
 \begin{alignat*} {2}
@@ -280,7 +272,7 @@ The initial absolute sum difference is:
  &   \text{Input file:}   \quad     &&\text{stdin}\\
  &   \text{Output file:}  \quad     &&\text{stdout}\\
  &   \text{Time limit:}   \quad     &&\text{1 second}\\
- &   \text{Memory limit:} \quad     &&\text {64 MB}
+ &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 \noindent
 Two Xiangqi masters Tokugawa and Gashuin said they've beaten every other master in the world. However, some said that there
@@ -444,14 +436,14 @@ cross the river.
 \item You cannot be checked.
 \end{itemize}
 
-\newpage
+\blankpage
 
 \section*{\fontsize{18}{12}Problem D. Pirate Code: The Black Spot Game}
 
 \begin{alignat*} {2}
  &   \text{Input file:}   \quad     &&\text{stdin}\\
  &   \text{Output file:}  \quad     &&\text{stdout}\\
- &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Time limit:}   \quad     &&\text{100 milliseconds}\\
  &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 \noindent
@@ -668,7 +660,7 @@ For example, the winner was in the group $0$, and was the number $2$ pirate in t
     \end{tabularx}
 \end{table}
 
-\newpage
+\blankpage
 
 \section*{\fontsize{18}{12}Problem E. The Museum's Security Grid}
 
@@ -863,7 +855,7 @@ Since both formulas contain the same elements in the same quantities, they repre
 
 \newpage
 
-\section*{\fontsize{18}{12} Problem G. Magic Potion Battle}
+\section*{\fontsize{18}{12}Problem G. Magic Potion Battle}
 
 \begin{alignat*} {2}
  &   \text{Input file:}   \quad     &&\text{stdin}\\
@@ -1195,7 +1187,7 @@ Line 1 contains two integers \( N \) and \( M \), denoting the number of space s
 The next \( M \) lines each contain three integers \( U, V, W \), denoting a communication channel:
     \begin{itemize}
         \item \( U \) and \( V \) are space stations connected by the channel \((0 \leq U, V < N)\).
-        \item \( W \) is the bandwidth capacity of the channel \((1 \leq W \leq 1000)\).
+        \item \( W \) is the maintenance of the channel \((1 \leq W \leq 1000)\).
         \item Each channel connects \textbf{two distinct} space stations.
         \item There is at most \textbf{one direct channel} between any pair of stations.
         \item All space stations are \textbf{initially connected} through at least one path.
@@ -1282,7 +1274,7 @@ The \textbf{minimum-cost network} has a total maintenance cost of \textbf{7 unit
 \begin{alignat*} {2}
  &   \text{Input file:}   \quad     &&\text{stdin}\\
  &   \text{Output file:}  \quad     &&\text{stdout}\\
- &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Time limit:}   \quad     &&\text{100 milliseconds}\\
  &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 
@@ -1382,7 +1374,7 @@ Total moves: \textbf{6}.
 \begin{alignat*} {2}
  &   \text{Input file:}   \quad     &&\text{stdin}\\
  &   \text{Output file:}  \quad     &&\text{stdout}\\
- &   \text{Time limit:}   \quad     &&\text{2.5 seconds}\\
+ &   \text{Time limit:}   \quad     &&\text{1.5 seconds}\\
  &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 \noindent
@@ -1558,14 +1550,14 @@ Finding the best segment of length \( \textbf{LEN} = 4 \):
 Since there is no any segment has positive value, the output is:
 $$\textbf{Oiiaioiiiai}$$
 
-\newpage
+\blankpage
 
 \section*{\fontsize{18}{12}Problem M. Cursed Envoys and Race for Awakening}
 
 \begin{alignat*} {2}
  &   \text{Input file:}   \quad     &&\text{stdin}\\
  &   \text{Output file:}  \quad     &&\text{stdout}\\
- &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Time limit:}   \quad     &&\text{100 milliseconds}\\
  &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 \noindent

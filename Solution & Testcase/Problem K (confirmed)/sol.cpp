@@ -6,8 +6,6 @@ const int MAXN = 1e6 + 5;
 
 bool a[MAXN] = {0};
 
-
-
 int main(){
     int n;
     int sum = 0;
