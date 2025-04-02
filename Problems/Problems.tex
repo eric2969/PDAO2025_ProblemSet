@@ -1174,8 +1174,8 @@ The ICN Administration seeks to establish a \textbf{minimum-cost network} that c
 \noindent
 Your task is to identify:
 \begin{itemize}
-    \item All \textbf{critical channels } -- those would increase the minimum network maintenance cost if damaged.
-    \item All \textbf{backup-ready channels }-- those could replace critical channels without increasing total cost.
+    \item All \textbf{critical channels} will increase the minimum maintenance cost if damaged.
+    \item All \textbf{backup-ready channels} can replace critical channels without increasing total cost.
 \end{itemize}
 
 \subsection*{\fontsize{16}{12}Input}
@@ -1187,7 +1187,7 @@ Line 1 contains two integers \( N \) and \( M \), denoting the number of space s
 The next \( M \) lines each contain three integers \( U, V, W \), denoting a communication channel:
     \begin{itemize}
         \item \( U \) and \( V \) are space stations connected by the channel \((0 \leq U, V < N)\).
-        \item \( W \) is the maintenance of the channel \((1 \leq W \leq 1000)\).
+        \item \( W \) is the maintenance cost of the channel \((1 \leq W \leq 1000)\).
         \item Each channel connects \textbf{two distinct} space stations.
         \item There is at most \textbf{one direct channel} between any pair of stations.
         \item All space stations are \textbf{initially connected} through at least one path.
@@ -1199,7 +1199,7 @@ The output consists of two lines:
     \item The first line contains the set of \textbf{critical channels} (space-separated indices).
     \item The second line contains the set of \textbf{backup-ready channels} (space-separated indices).
     \item If either set is empty, print \texttt{no channels} for that line.
-    \item The indices of the channels should be sorted in ascending order.
+    \item The indices of the channels should be printed in ascending order.
 \end{itemize}
 
 \subsection*{\fontsize{16}{12}Example 1}
@@ -1250,7 +1250,6 @@ The \textbf{minimum-cost network} has a total maintenance cost of \textbf{7 unit
 
     \end{tikzpicture}}
 \end{center}
-\newpage
 \subsection*{\fontsize{16}{12}Example 2}
 \begin{table}[h]
   \centering
@@ -1280,7 +1279,7 @@ The \textbf{minimum-cost network} has a total maintenance cost of \textbf{7 unit
 \end{alignat*}
 
 \noindent
-At NTU, students must use an online system to register for their classes each semester. However, the system has a significant limitation: students cannot insert a class between two existing classes directly. Instead, they must manually shift other classes to make space for the new class.
+At NTU, students use online system to register for their classes each semester. However, the system has a significant limitation: students cannot insert a class between two existing classes directly. Instead, they must manually shift other classes to make space for the new class.
 \\
 \noindent
 There are some rules to follow when selecting classes:
