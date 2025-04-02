@@ -1,6 +1,6 @@
 import sys, os, random
 
-def rename_files(directory):
+def rename_files(directory, rnd = 0):
     os.chdir(directory)
     case_num = 1
     if(os.path.isfile('01.a')):
@@ -26,7 +26,8 @@ def rename_files(directory):
     print("Testcase type found:", type)
     print("Testcase amount:", case_num)
     index_mapping = [x for x in range(1, case_num + 1)]
-    random.shuffle(index_mapping)
+    if rnd == 1:
+        random.shuffle(index_mapping)
     if type == "PDOGS":
         for i in range(1, case_num + 1):
             os.rename(str(i)+'.in', str(i)+'-tmp.in')
@@ -41,9 +42,10 @@ def rename_files(directory):
     print("Rename and testcase randomization finished")
 
 script_type = int(input("Input 1 a single testcase, 2 for whole testcase: "))
+rnd = int(input("Input 1 for randomize, 0 for no randomize: "))
 if(script_type == 1):
     folder_path = input("Input folder path: ")
-    rename_files(folder_path)
+    rename_files(folder_path, rnd)
 elif(script_type == 2):
     folder_path = input("Input folder path: ")
     problem_count = int(input("Input problem amount: "))
@@ -54,4 +56,4 @@ elif(script_type == 2):
             print("Problem", chr(i+a_chr), "folder does not exist")
             continue
         print("Renaming and randomizing testcase for problem", chr(i+a_chr))
-        rename_files(problem_folder)
+        rename_files(problem_folder, rnd)

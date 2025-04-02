@@ -1181,7 +1181,7 @@ Your task is to identify:
 \subsection*{\fontsize{16}{12}Input}
 Line 1 contains two integers \( N \) and \( M \), denoting the number of space stations and communication channels:
     \[
-    2 \leq N \leq 100, \quad N-1 \leq M \leq 10^5.
+    2 \leq N \leq 10^4, \quad N-1 \leq M \leq \text{min}(\frac{N(N-1)}{2},10^5).
     \]
 \noindent
 The next \( M \) lines each contain three integers \( U, V, W \), denoting a communication channel:
@@ -1199,6 +1199,7 @@ The output consists of two lines:
     \item The first line contains the set of \textbf{critical channels} (space-separated indices).
     \item The second line contains the set of \textbf{backup-ready channels} (space-separated indices).
     \item If either set is empty, print \texttt{no channels} for that line.
+    \item The indices of the channels should be sorted in ascending order.
 \end{itemize}
 
 \subsection*{\fontsize{16}{12}Example 1}
