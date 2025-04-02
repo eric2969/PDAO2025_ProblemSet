@@ -881,14 +881,14 @@ The game follows these rules:
     \item Merlin and Morgana take turns destroying exactly one potion bottle per turn.
     \item Merlin always plays first.
     \item The game ends immediately if the total amount of magical essence destroyed becomes \textbf{divisible by 3}. The player who made that move \textbf{loses}.
-    \item If all potions are destroyed and the total essence is \textbf{not divisible by 3}, Morgana \textbf{automatically wins}.
+    \item If all potions are destroyed and the total essence is \textbf{not} divisible by 3, \textbf{Morgana automatically wins}.
 \end{itemize}
 
 \noindent
 Both players play \textbf{optimally}, meaning they make the best possible moves to maximize their chances of winning. 
 \\\\
 \noindent
-Your task is to determine whether Merlin can guarantee a win, or if Morgana will inevitably win. Print `"true"` if Merlin wins and `"false"` if Morgana wins.
+Your task is to determine whether Merlin can guarantee a win, or if Morgana will inevitably win. Print `"Yes"` if Merlin wins and `"No"` if Morgana wins.
 
 \subsection*{\fontsize{16}{12}Input}
 Line 1 contains a single integer \( N \) \((1 \leq N \leq 10^5)\), representing the number of potion bottles.
@@ -956,17 +956,17 @@ Since 15 is divisible by 3, Merlin \textbf{loses}, meaning Morgana wins. Thus, t
 \end{alignat*}
 
 \noindent
-You are the mastermind behind a covert operations unit tasked with executing high-stakes missions. Your team has a fixed number of agents and a list of \( m \) planned missions. 
+You are the mastermind behind a covert operations unit tasked with executing high-stakes missions. Your team consist of a fixed number of agents and a list of \( m \) planned missions. 
 \\\\
 \noindent
 Your goal is to select a subset of missions to achieve \textbf{at least} a total benefit of \( r \) while using \textbf{at most} \( n \) agents in total.
 \\\\
 \noindent
-Each mission has specific requirements:
+There are some requirements for each mission:
 \begin{itemize}
-  \item A mission requires a certain number of agents and yields a corresponding benefit.
+  \item Each mission requires a specific number of agents and yields a corresponding benefit.
   \item Each mission can be executed at most once.
-  \item Each agent can be assigned to at most one mission.
+  \item Each agent can be assigned to only one mission.
 \end{itemize}
 
 \noindent
@@ -1081,10 +1081,10 @@ In conclusion, there are \textbf{5} valid schemes. The output is:
 \end{alignat*}
 
 \noindent
-In the popular game \textbf{"Block Builder's Challenge"}, players design landscapes using cubic blocks arranged in a grid. After completing a creation, the game enters the \textbf{"Rainfall Simulation"} phase, where water falls from the sky and fills the terrain's low points. The objective is to calculate how much water is trapped within the block structure.
+In the popular game \textbf{"Block Builder's Challenge"}, players design landscapes using cubic blocks arranged in a grid. After completing their creation, the game enters the \textbf{"Rainfall Simulation"} phase, where water falls from the sky and fills the terrain's low points. The objective is to calculate how much water is trapped within the block structure.
 \\\\
 \noindent
-Your task is to determine the \textbf{total volume of trapped water} after rainfall, following these rules:
+Your task is to determine the \textbf{total volume of trapped water} after rainfall while following these rules:
 
 \begin{itemize}
 	\item The landscape is represented as an \( M \times N \) grid.
@@ -1182,8 +1182,8 @@ The ICN Administration seeks to establish a \textbf{minimum-cost network} that c
 \noindent
 Your task is to identify:
 \begin{itemize}
-    \item All \textbf{critical channels }would raise the minimum network maintenance cost if damaged.
-    \item All \textbf{backup-ready channels} that can replace critical channels without raising total cost.
+    \item All \textbf{critical channels } -- those would increase the minimum network maintenance cost if damaged.
+    \item All \textbf{backup-ready channels }-- those could replace critical channels without increasing total cost.
 \end{itemize}
 
 \subsection*{\fontsize{16}{12}Input}
@@ -1257,7 +1257,7 @@ The \textbf{minimum-cost network} has a total maintenance cost of \textbf{7 unit
 
     \end{tikzpicture}}
 \end{center}
-
+\newpage
 \subsection*{\fontsize{16}{12}Example 2}
 \begin{table}[h]
   \centering
@@ -1287,10 +1287,10 @@ The \textbf{minimum-cost network} has a total maintenance cost of \textbf{7 unit
 \end{alignat*}
 
 \noindent
-At NTU, students must use an online system to register for their classes each semester. However, the system has a significant limitation: students cannot insert a class between existing ones directly. Instead, they must manually shift other classes to make space.
+At NTU, students must use an online system to register for their classes each semester. However, the system has a significant limitation: students cannot insert a class between two existing classes directly. Instead, they must manually shift other classes to make space for the new class.
 \\
 \noindent
-The rules for class selection are as follows:
+There are some rules to follow when selecting classes:
 \begin{itemize}
     \item Classes are arranged in a sequential order, with each class occupying a unique position.
     \item To insert a class at position \textbf{\( P \)}, all existing classes at position \textbf{\( P \)} and beyond must be shifted down by one position.
@@ -1386,7 +1386,7 @@ Total moves: \textbf{6}.
  &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 \noindent
-Your uncle, Roger, a humble lumberyard farmer, sells the best part of his forest to earn a living. However, there is one big problem: he has absolutely no idea how to handle it! 
+Your uncle, Roger, a humble lumberyard farmer, sells the best part of his forest to earn a living. However, there is a big problem: he has absolutely no idea how to handle it! 
 \\\\
 \noindent
 For years, he has been growing trees and selling them blindly, never knowing whether he was cutting down the most valuable part of the forest. But this year, during the Lunar New Year, something changed. As you were trying to survive the usual storm of nosy relatives asking about your studies, uncle Roger overheard that you were studying at \textbf{NTUIM}.  
@@ -1398,7 +1398,7 @@ With his eyes full of hope (and possibly tears), he asked for your help, being t
 You need to help uncle Roger manage his forest by keeping track of the growth and changes in tree heights over time. The forest consists of \textbf{\(N\) trees} planted in a straight line, each with an initial height. Over time, various events such as fertilization or natural disasters will alter the trees' heights.
 \\\\
 \noindent
-And sometimes, uncle Roger may wonder which part is the \textbf{most valuable segment} of the forest, of fixed length \textbf{\(LN\)}, to determine which part to sell. The value of a segment is determined by the following formula:
+And sometimes, uncle Roger may wonder which part is the \textbf{most valuable segment} of the forest, of fixed length \textbf{\(LEN\)}, to determine which part to sell. The value of a segment is determined by the following formula:
 
 \[
 \text{Value} = (\max(H_L, H_{L+1}, \dots, H_{L+\textbf{LEN}-1}) \times P_1) + (\sum_{i=L}^{L+\textbf{LEN}-1} H_i \times P_2)
