@@ -283,9 +283,7 @@ to challenge master Junpi and Mahiro. There will be an award if they win or be a
 Therefore, they're careful about their play and clench every chance to win.
 \subsubsection*{Now let\textquotesingle s introduce the rules of Xiangqi:}
 Xiangqi is a game represents a battle between two armies with the goal
-of capturing the enemy's \textbf{general} piece. In this problem, you are
-given a situation of later stages in the game, you need to check
-whether you've already win, i.e. you can't be \textbf{checkmated} while black has \textbf{no available moves} to prevent themself from being \textbf{checked} or \textbf{stalemate}.
+of capturing the enemy's \textbf{general} piece.
 \\\\
 \noindent
 Xiangqi is played on a $10\times9$ board and pieces are
@@ -301,20 +299,25 @@ by an enemy piece, in which case the enemy piece is \textbf{captured} and
 removed from the board. 
 \\\\
 \noindent
+When the \textbf{general} is in danger of captured
+by the enemy player on the enemy player's next move, the enemy player is
+said to have \textbf{delivered a check}. If the general's player can make no
+move to prevent the general's capture by next enemy move, the situation called \textbf{checkmate}.\\\\
+\noindent
 Each piece\textquotesingle s introduction is as follows:
 \\\noindent
-\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_General.png}General(G):}
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_General.png}General(G,g):}
 the generals can move and capture one point either vertically or
 horizontally and cannot leave the \textbf{palace} unless the situation called
 \textbf{flying general}. \textbf{Flying general} means that
 one general can \textbf{fly} across the board to capture the enemy general if
 they stand on the same line without intervening pieces.
 \\\noindent
-\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Advisor.png}Advisor(S):}
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Advisor.png}Advisor(S,s):}
 the advisors can move and capture one point diagonally and may not leave
 the palace, which confines them to five points on the board.
 \\\noindent
-\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Elephant.png}Elephant(E):}
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Elephant.png}Elephant(E,e):}
 the elephants move and capture exactly two points diagonally and may not
 jump over the intervening pieces; the move like the
 character \textbf{田}, in reference to the board\textquotesingle s squares. 
@@ -322,22 +325,22 @@ However, it is possible to block an elephant with a diagonally adjacent piece, k
 elephant\textquotesingle s eye} (see the figure below). When this
 happens, it cannot move or capture in that direction. The elephant cannot cross the river.
 \\\noindent
-\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Chariot.png}Chariot(R):}
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Chariot.png}Chariot(R,r):}
 the chariots can move and capture vertically and horizontally by any
 distance, but may not jump over the intervening pieces.
 \\\noindent
-\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Cannon.png}Cannon(C):}
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Cannon.png}Cannon(C,c):}
 the cannons move like the chariots, horizontally and vertically, but
 capture by jumping exactly one piece (whether it is friendly or enemy)
 over to its target.
 \\\noindent
-\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Horse.png}Horse(H):}
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Horse.png}Horse(H,h):}
 the horses have 8 kinds of jumps to move and capture shown in the figure below. However, if there is any pieces lying on a point away from the
 horse horizontally or vertically it cannot move or capture in that
 direction (see the figure below), called \textbf{hobbling horse's
 leg}.
 \\\noindent
-\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Soldier.png}Soldier(S):}
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Soldier.png}Soldier(S,s):}
 the solders move and capture by advancing one point. Once they have
 crossed the river, they may also move and capture one point
 horizontally. Soldiers cannot move backward, and therefore cannot
@@ -363,13 +366,13 @@ soldier may still move sideways at the enemy\textquotesingle s edge.
 \end{figure}
 \\
 \noindent
-Please be noted that only the soldier, horse, canon and chariot can cross the river.
+Please be noted that only the \textbf{soldier}, \textbf{horse}, \textbf{canon} and \textbf{chariot} can \textbf{cross the river}.
 \\\\
 \noindent
-You're given a later game board. Now it's black's turn to move, determine whether it's possible for you, i.e. the red/bottom player to capture the black general immediately after the black player's turn. However, if you're already checked, the black player will, without a doubt, capture your general, which indicates your lost. Please be noted that in Xiangqi. Each player is forced to make one move in their turn. Therefore, being stalemated also count as losing.
+You're given a later game board. Now it's \textbf{black's turn} to move, determine whether it's possible for you, i.e. the \textbf{red/bottom} player to \textbf{capture} the \textbf{black general} immediately after the black player's turn. However, if you're already checked, the black player will, without a doubt, capture your general, which indicates your lost. Please be noted that in Xiangqi. Each player is \textbf{forced to make one move} in their turn. Therefore, being \textbf{stalemated} also count as losing.
 \\
 \subsection*{\fontsize{16}{12}Input}
-Given a $10\times9$ array full of characters, where the general, advisor, elephant, chariot, horse, canon, soldier, and empty space are represented by G, S, E, R, H, C, P, and . (a single dot) respectively. Upper cases indicate Black player while lower cases indicate red player.
+Given a $10\times9$ array full of characters, where the general, advisor, elephant, chariot, horse, canon, soldier, and empty space are represented by G, S, E, R, H, C, P, and . (a single dot) respectively. Upper cases indicate \textbf{Black player} while lower cases indicate \textbf{Red player}.
 \subsection*{\fontsize{16}{12}Output}
 A single line of "Yes" or "No", indicating if \textbf{Red player} can and will capture the \textbf{Black general} immediately after \textbf{Black player} make their move without losing.
 \subsection*{\fontsize{16}{12}Examples}
@@ -1280,7 +1283,7 @@ Line 1 contains an integer \(\textbf{N}\) \((1 \leq N \leq 1000)\), denoting the
 Next \textbf{\( N \)} lines, each contains a command:
     \begin{itemize}
         \item \textbf{I P} $\rightarrow$ Insert a class at position \( P \) \((1 \leq P \leq 1000)\).
-        \item \textbf{D P} $\rightarrow$ Delete a class at position \( P \) \((1 \leq P \leq 1000)\). It's guaranteed that the deletion only happens when the position given exists a class.
+        \item \textbf{D P} $\rightarrow$ Delete a class at position \( P \) \((1 \leq P \leq 1000)\). Position $P$ must contain a class.
     \end{itemize}
 
 \subsection*{\fontsize{16}{12}Output}
