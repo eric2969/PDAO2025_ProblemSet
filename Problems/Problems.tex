@@ -1287,7 +1287,7 @@ Line 1 contains an integer \(\textbf{N}\) \((1 \leq N \leq 1000)\), denoting the
 Next \textbf{\( N \)} lines, each contains a command:
     \begin{itemize}
         \item \textbf{I P} $\rightarrow$ Insert a class at position \( P \) \((1 \leq P \leq 1000)\).
-        \item \textbf{D P} $\rightarrow$ Delete a class at position \( P \) \((1 \leq P \leq 1000)\).
+        \item \textbf{D P} $\rightarrow$ Delete a class at position \( P \) \((1 \leq P \leq 1000)\). It's guaranteed that the deletion only happens when the position given exists a class.
     \end{itemize}
 
 \subsection*{\fontsize{16}{12}Output}
@@ -1353,6 +1353,7 @@ Total moves: \textbf{6}.
     \item Each class occupies exactly one position and cannot overlap unless deleted.
     \item Empty spaces may remain after deletions.
     \item Moves are counted when shifting existing classes up or down, inserting, or deleting classes.
+    \item Deletion only happens when the position given exists a class.
 \end{itemize}
 
 \newpage
