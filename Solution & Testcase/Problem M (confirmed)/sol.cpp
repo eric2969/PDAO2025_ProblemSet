@@ -9,11 +9,11 @@ signed main() {
     int days;
     cin >> n;
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 0; i < n; i++)
         cin >> cntry[i][0] >> cntry[i][1];
 
     
-    for (int i = 1; i <= n; i++) {
+    for (int i = 0; i < n; i++) {
         days = cntry[i][1] + (cntry[i][0] != cntry[i][1]);
         if(min_ctry == -1 || days < min_day || (days == min_day && cntry[i][0] > max_people)) {
             max_people = cntry[i][0];

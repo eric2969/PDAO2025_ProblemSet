@@ -134,7 +134,7 @@ What is the \textbf{minimum number of swaps} needed to rearrange the stones to s
 
 \subsection*{\fontsize{16}{12}Input}
 Line 1 contains a single integer $N$, denoting the quantity of stones. \\\\
-Line 2 contains $N$ integers $v_i$, denoting the number of each stone. 
+Line 2 contains $N$ integers $v_i$, denoting the value of each stone. 
 
 \begin{itemize}
     \item $1 \leq N \leq 100000$
@@ -217,6 +217,8 @@ Line 3 contains $N$ positive integers $a_i$, denoting the \textbf{actual stock p
 
 \subsection*{\fontsize{16}{12}Output}
 Print a single integer, the minimum possible total prediction error after at most one replacement.
+
+\newpage
 
 \subsection*{\fontsize{16}{12}Example}
 \begin{table}[h]
@@ -442,8 +444,6 @@ During the Golden Age of Piracy, Captain Henry Ironhook Vance and his crew of \(
 But greed is a pirate's curse, and the crew soon fell into a deadly dispute over who would claim it.\\
 \noindent\\
 Following the ancient Pirate Code, they resorted to the dreaded Black Spot Game to decide. 
-%Here, we will first introduce the famous Black Spot Game: forming a circle, the \(M\) pirates passed around the cursed medallion. 
-%Every \(K^{th}\) pirate to receive the medallion was marked for doom and thrown overboard. 
 In this infamous game, the $M$ pirates formed a circle and passed around the cursed medallion. Every $K^{th}$ pirate to receive the medallion was marked for doom and thrown overboard.
 The process repeated until only one pirate remained.\\
 \noindent\\
@@ -575,7 +575,7 @@ The eliminated pirate is labeled in a double-circle. The winner is the last rema
 \noindent
 However, after listening to the explanation of the game, the pirates thought that it was too plain and simple.
 To make the game more complex and sophisticated, the pirates decide to elevate the game to another level. The \(P\) pirates will be divided into \(N\) \textbf{non-identical groups}, 
-each group \(i \in \{0, 1, ..., N-1\}\) will consist of \(M_i\) pirates, and the group will be assigned an elimination number \(K_i\).
+each group \(i \in [0,n)\) will consist of \(M_i\) pirates, and the group will be assigned an elimination number \(K_i\).
 \textbf{Every group will play the Black Spot Game until only one pirate remain in the group.} After all groups have sort out a final survivor,
 the \(N\) remaining pirates (one from each group) will gather to \textbf{play one final round} of the Black Spot Game, their numbers in the last round are their own group number, and the final round will be assigned an elimination number \(K_f\).The last pirate to survive this round will be the true heir to the untold treasures.\\
 
@@ -584,13 +584,12 @@ Your task is to determine which pirate will outlast the curse and claim their fo
 You will need to determine which group the winning pirate was originally in, and the pirate's number in that original group. 
 
 \subsection*{\fontsize{16}{12}Input}
-The first line of input consists of two integers \(N\) and \(K_f\):\\
+The first line of input consists of two integers \(N\) and \(K_f\):
 \begin{itemize}
     \item \(1 \leq N \leq 500\) Representing the number of groups to split the pirates in,
     \item \(1 \leq K_f \leq N\) Denoting the elimination number for the \textbf{final round}.
 \end{itemize}
-The following \(N\) lines will each represent every group of pirates, each line consist of two integers \(M_i\) and \(K_i\), \(i\) denotes the group number.\\
-\indent
+The following \(N\) lines represent group information for groups \(0\) to \(N-1\) in order. Each line consists of two integers, \(M_i\) and \(K_i\), where \(i\) denotes the group number.
 \begin{itemize}
     \item \(1 \leq M_i \leq 500\) Denoting the number of pirates in group \(i\),
     \item \(1 \leq K_i \leq M_i\) Denoting the assigned elimination number for group \(i\).
@@ -601,18 +600,16 @@ Note that we did not explicitely input the total number of pirates onboard \(P\)
 
 \noindent
 Please also note that the groups are non-identical, so the number of pirates in each group varies, 
-the elimination number for each group also varies.\\
-
+the elimination number for each group also varies.
 
 \subsection*{\fontsize{16}{12}Output}
-You should output two integers to tell us who the winner is:\\
-\indent
-1. The group the winner was initially in.\\
-\indent
-2. The number of the winner in the group.\\
-
+You should output two integers to tell us who the winner is:
+\begin{enumerate}
+    \item The group the winner was initially in.
+    \item The number of the winner in the group.
+\end{enumerate}
 \noindent
-For example, the winner was in the group $0$, and was the number $2$ pirate in the group, output 0 2. 
+For example, the winner was in the group $0$ and the number $2$ pirate in the group, output 0 2. 
 \subsection*{\fontsize{16}{12}Example 1}
 % Example Table
 \begin{table}[h]
@@ -752,39 +749,44 @@ Since there is only one sensor, it must be assigned the minimum power level of 1
  &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 \noindent
-During an archaeological dig, Dr. Yee discovered a collection of ancient tablets containing strange chemical formulas written in an old script. After careful translation by his research team, the formulas were finally decoded.
+During an archaeological dig, Dr. Yee uncovered ancient tablets inscribed with strange chemical formulas in an old script. After careful translation, the formulas were finally decoded.
 \\\\
 \noindent
-As a modern chemist, Dr. Yee recognized some of the symbols as elements, but the structure seemed unusual. Was this an early attempt at chemical notation, or could it represent something valuable?
+As a chemist, Dr. Yee recognized some symbols as elements, though the structures seemed unusual. Were these early chemical notations—or something more valuable?
 \\\\
 \noindent
-Upon further investigation, Dr. Yee noticed that some of the formulas resembled those in his notes. However, the ancient formulas used parentheses and had different groupings, raising an important question: Were they describe the same compound, but in a different notation system?
+On closer examination, some formulas resembled those in his own notes, but used parentheses and different groupings. Could they represent the same compounds, written in another notation system?
 \\\\
 \noindent
-Can you help Dr. Yee verify whether the ancient formula matches the modern one?
+Can you help Dr. Yee verify if the ancient formula matches the modern one?
+\subsubsection*{The chemical formula are defined as follows:}
+\begin{itemize}
+    \item Atom Symbol: An Atom Symbol represents a single atom type. It consists of one uppercase letter, optionally followed by one lowercase letter.
+    \item An Atom Symbol followed immediately by a Count is a chemical formula. This indicates the multiplicity of that atom. If no Count is present, the multiplicity is 1.
+    \begin{itemize}
+        \item e.x. H, O, Na, Fe, H1, O2, Na3, Fe4 are chemical formulas.
+    \end{itemize}
+    \item If $S$ is a chemical formula, then $(S)$ follows optionally by a count is a chemical formula. The count indicates the multiplicity of the entire group.
+    \item If $S_1$ and $S_2$ are both chemical formulas, then their concatenation $S_1S_2$ is also a chemical formula.
+    \item Any string that can't be constructed by applying the rules above is invalid chemical formula.
+\end{itemize}
 
 \subsection*{\fontsize{16}{12}Input}
 Line 1 contains two integers $N_1$ and $N_2$, denoting the length of following two formulas.
 \\\\
 \noindent
-Line 2 - 3 each contains a string represents ancient and modern formula respectively.\\\\
-\noindent
-A formula follows these rules:  
+Line 2 - 3 each contains a string represents valid ancient and modern formula respectively.
 \begin{itemize}
-    \item An atom is denoted as a uppercase letter and may followed by a lowercase letter. 
-    \item An element can be a group of atoms, elements, or both.
-    \item Digits (ranging from 1 to 100) following an atom or element indicate the quantity. If no digit is present, the quantity is assumed to be 1.  
-    \item Parentheses are used to group elements and can be followed by a number, indicating how many times the group should be repeated.
-    \item Parentheses may be used to group elements, with a maximum nesting depth of \( 15 \).
-    \item The number of every atom in each formula will not exceed \(10^5\).
     \item $1 \leq N_1, N_2 \leq 10^4$
+    \item The number of every atom in each formula will not exceed \(10^5\).
+    \item Parentheses are with a maximum nesting depth of \( 15 \).
 \end{itemize}  
 \noindent
-\textit{Note: The atoms and elements in these formulas may not necessarily exist on Earth, as Dr. Yee lives in a different universe.}  
+\textit{Note: Atoms, elements and formulas may not exist on Earth.}  
 
 
 \subsection*{\fontsize{16}{12}Output}
-Two formulas are considered to represent the same compound if they contain exactly the same atoms in identical quantities, regardless of how they are grouped. Therefore, the output will be either "Yes" or "No".
+Print "Yes" if the two formulas have same number of atoms; otherwise, print "No".
 
 \subsection*{\fontsize{16}{12}Example 1}
 \begin{table}[h]
@@ -794,8 +796,8 @@ Two formulas are considered to represent the same compound if they contain exact
     stdin & stdout \\
     \hline
     10 8 & No \\
-    (X3(OR)2)3 & \\
-    X8(OR2)3 &  \\
+    (X3(OeR)2)3 & \\
+    X8(OeR2)3 &  \\
     \hline
   \end{tabularx}
 \end{table}
@@ -804,19 +806,19 @@ Two formulas are considered to represent the same compound if they contain exact
 
 Expanding the formulas:
 \begin{itemize}
-    \item \texttt{(X3(OR)2)3} expands as:
+    \item \texttt{(X3(OeR)2)3} expands as:
       \begin{itemize}
           \item \texttt{X3} is repeated 3 times $\rightarrow$ \texttt{X9}
-          \item \texttt{(OR)2} expands to \texttt{O2R2}, and repeating this 3 times gives \texttt{O6R6}.
+          \item \texttt{(OeR)2} expands to \texttt{Oe2R2}, and repeating this 3 times gives \texttt{Oe6R6}.
       \end{itemize}
-      So, the full expansion is \texttt{X9O6R6}.
+      So, the full expansion is \texttt{X9Oe6R6}.
       
-    \item \texttt{X8(OR2)3} expands as:
+    \item \texttt{X8(OeR2)3} expands as:
       \begin{itemize}
           \item \texttt{X8} remains as is.
-          \item \texttt{(OR2)3} expands to \texttt{O3R6}.
+          \item \texttt{(OeR2)3} expands to \texttt{Oe3R6}.
       \end{itemize}
-      So, the full expansion is \texttt{X8O3R6}.
+      So, the full expansion is \texttt{X8Oe3R6}.
 \end{itemize}
 \noindent
 Since the number of atoms does not match, the two formulas represent different compounds.
@@ -834,15 +836,6 @@ Since the number of atoms does not match, the two formulas represent different c
     \hline
   \end{tabularx}
 \end{table}
-
-\subsection*{\fontsize{16}{12}Explanation}
-Expanding both formulas:
-\begin{itemize}
-    \item \texttt{SO2(ORe)4} expands to \texttt{S1O6Re4}.
-    \item \texttt{(ORe)2S(ORe)2O2} expands to \texttt{S1O6Re4}.
-\end{itemize}
-
-Since both formulas contain the same elements in the same quantities, they represent the same compound.
 
 \newpage
 
@@ -1568,10 +1561,11 @@ The first kingdom whose envoys all successfully identify their own shadow shapes
 Line 1 contains an integer $K$, denoting the number of countries participating the Trial.
 \\\\
 \noindent
-Line 2 to $K + 1$ each contains two interger, $N_i$ and $M_i$, denoting the number of chosen individuals and the number of people with triangular shadows in country $i$, respectively.
+The next \(K\) lines represent information for countries \(0\) to \(K-1\) in order. Each line consists of two integers, \(N_i\) and \(M_i\), where \(i\) denotes the country number.
 \begin{itemize}
-    \item $1 \leq K \leq 10000$
-    \item $1 \leq M_i \leq N_i \leq 100000$
+    \item $1 \leq K \leq 10^4$
+    \item $1 \leq N_i \leq 10^5$ Denoting the number of chosen individuals in country \(i\).
+    \item $1 \leq M_i \leq N_i$ Denoting the number of people with triangular shadows in country \(i\).
 \end{itemize}
 \subsection*{\fontsize{16}{12}Output}
 Print a single integer, the number of country that will win the Moonlight Trial. 
@@ -1581,6 +1575,7 @@ If there are more than one country that will win, print the country with the mos
 \\\\
 \noindent
 But if there still are more than one country with the same number of people, print the one with the smaller number since they are lucky.
+\newpage
 % Example 1
 \subsection*{\fontsize{16}{12}Example 1}
 \begin{table}[h]
@@ -1589,7 +1584,7 @@ But if there still are more than one country with the same number of people, pri
         \hline
         \textbf{stdin} & \textbf{stdout} \\
         \hline
-        2 & 2 \\
+        2 & 1 \\
         10 2 &\\
         2 1 &\\
         \hline
@@ -1597,13 +1592,16 @@ But if there still are more than one country with the same number of people, pri
 \end{table}
 
 \subsection*{\fontsize{16}{12}Explanation}
-In country 2, there is only one person with a triangular shadow, the one with triangular shadow will find everyone is circular shadow. But there must be one person with triangular shadow, thus itself can determine its shape and awaken. And the second night everyone will find they are all circular shadow.
+In country 1, there is only one person with a triangular shadow, the one with triangular shadow
+will find everyone is circular shadow. But there must be one person with triangular shadow,
+thus itself can determine its shape and awaken. And the second night everyone will find they
+are all circular shadow. It takes 2 days in total for country 1.
 \\\\
 \noindent
-And in country 1, there are 2 people with triangular shadow, thus they definitely will need more days than country 2 to determine their shape.\\
+Obviously 2 days are not enough for country 0 to determine everyone's shape.
 \\\\
 \noindent
-Thus, country 2 will win the Moonlight Trial.
+Thus, country 1 will win the Moonlight Trial.
 
 \subsection*{\fontsize{16}{12}Example 2}
 \begin{table}[h]
@@ -1612,7 +1610,7 @@ Thus, country 2 will win the Moonlight Trial.
         \hline
         \textbf{stdin} & \textbf{stdout} \\
         \hline
-        2 & 1 \\
+        2 & 0 \\
         3 1 &\\
         2 1 &\\
         \hline
@@ -1620,10 +1618,10 @@ Thus, country 2 will win the Moonlight Trial.
 \end{table}
 
 \subsection*{\fontsize{16}{12}Explanation}
-Since we know those two country will all identify their shadows in the same night, but country 1 has more people.
+Since we know those two country will all identify their shadows in the same night, but country 0 has more people.
 \\\\
 \noindent
-Thus, country 1 will win the Moonlight Trial.
+Thus, country 0 will win the Moonlight Trial.
 
 \newpage
 \section*{\fontsize{18}{12}Problem N. Signal Synchronization in the Sky Port}
