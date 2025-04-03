@@ -277,13 +277,13 @@ The initial absolute sum difference is:
 \noindent
 Two Xiangqi masters Tokugawa and Gashuin said they've beaten every other master in the world. However, some said that there
 are some players with sharper skills. This brought them here
-to challenge master Junpi and Mahiro. There will be an award if they win or be a punishment.
+to challenge master Junpi and Mahiro. There will be an award if they win or be a punishment if they lose.
 Therefore, they're careful about their play and clench every chance to win.
 \subsubsection*{Now let\textquotesingle s introduce the rules of Xiangqi:}
 Xiangqi is a game represents a battle between two armies with the goal
 of capturing the enemy's \textbf{general} piece. In this problem, you are
 given a situation of later stages in the game, you need to check
-whether you've already win after your move, i.e. you can't be \textbf{checkmated} while black has \textbf{no available moves} to prevent themself from being \textbf{checked} or \textbf{stalemate}.
+whether you've already win, i.e. you can't be \textbf{checkmated} while black has \textbf{no available moves} to prevent themself from being \textbf{checked} or \textbf{stalemate}.
 \\\\
 \noindent
 Xiangqi is played on a $10\times9$ board and pieces are
@@ -301,18 +301,18 @@ removed from the board.
 \noindent
 Each piece\textquotesingle s introduction is as follows:
 \\\noindent
-\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_General.png}General:}
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_General.png}General(G):}
 the generals can move and capture one point either vertically or
 horizontally and cannot leave the \textbf{palace} unless the situation called
 \textbf{flying general}. \textbf{Flying general} means that
 one general can \textbf{fly} across the board to capture the enemy general if
 they stand on the same line without intervening pieces.
 \\\noindent
-\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Advisor.png}Advisor:}
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Advisor.png}Advisor(S):}
 the advisors can move and capture one point diagonally and may not leave
 the palace, which confines them to five points on the board.
 \\\noindent
-\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Elephant.png}Elephant:}
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Elephant.png}Elephant(E):}
 the elephants move and capture exactly two points diagonally and may not
 jump over the intervening pieces; the move like the
 character \textbf{田}, in reference to the board\textquotesingle s squares. 
@@ -320,23 +320,22 @@ However, it is possible to block an elephant with a diagonally adjacent piece, k
 elephant\textquotesingle s eye} (see the figure below). When this
 happens, it cannot move or capture in that direction. The elephant cannot cross the river.
 \\\noindent
-\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Chariot.png}Chariot:}
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Chariot.png}Chariot(R):}
 the chariots can move and capture vertically and horizontally by any
 distance, but may not jump over the intervening pieces.
 \\\noindent
-\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Cannon.png}Cannon:}
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Cannon.png}Cannon(C):}
 the cannons move like the chariots, horizontally and vertically, but
 capture by jumping exactly one piece (whether it is friendly or enemy)
 over to its target.
 \\\noindent
-\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Horse.png}Horse:}
-the horses have 8 kinds of jumps to move and capture shown in the left
-figure. However, if there is any pieces lying on a point away from the
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Horse.png}Horse(H):}
+the horses have 8 kinds of jumps to move and capture shown in the figure below. However, if there is any pieces lying on a point away from the
 horse horizontally or vertically it cannot move or capture in that
 direction (see the figure below), called \textbf{hobbling horse's
 leg}.
 \\\noindent
-\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Soldier.png}Soldier:}
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Soldier.png}Soldier(S):}
 the solders move and capture by advancing one point. Once they have
 crossed the river, they may also move and capture one point
 horizontally. Soldiers cannot move backward, and therefore cannot
@@ -365,15 +364,12 @@ soldier may still move sideways at the enemy\textquotesingle s edge.
 Please be noted that only the soldier, horse, canon and chariot can cross the river.
 \\\\
 \noindent
-Now give you a table of later game, a situation only containing a black general, a
-red general and several red chariots, cannons and horses, and \textbf{red player}(i.e., the one on the \textbf{bottom}) has made a \textbf{move}. Now it is now \textbf{black player's turn}.
-\\\\
-\noindent
-Your job is to determine that whether \textbf{Red player} will capture \textbf{Black general} in \textbf{Red player's next turn} no matter what \textbf{Black player} does in their turn.
+You're given a later game board. Now it's black's turn to move, determine whether it's possible for you, i.e. the red/bottom player to capture the black general immediately after the black player's turn. However, if you're already checked, the black player will, without a doubt, capture your general, which indicates your lost. Please be noted that in Xiangqi. Each player is forced to make one move in their turn. Therefore, being stalemated also count as losing.
+\\
 \subsection*{\fontsize{16}{12}Input}
 Given a $10\times9$ array full of characters, where the general, advisor, elephant, chariot, horse, canon, soldier, and empty space are represented by G, S, E, R, H, C, P, and . (a single dot) respectively. Upper cases indicate Black player while lower cases indicate red player.
 \subsection*{\fontsize{16}{12}Output}
-A single line of "Yes" or "No", indicating if \textbf{Red player} will capture the \textbf{Black general} after \textbf{Black player} make their move.
+A single line of "Yes" or "No", indicating if \textbf{Red player} can and will capture the \textbf{Black general} immediately after \textbf{Black player} make their move without losing.
 \subsection*{\fontsize{16}{12}Examples}
 \begin{table}[h]
   \centering
@@ -423,7 +419,7 @@ In Sample 1 and 2, both \textbf{Black generals} only can move to the spaces that
 \begin{itemize}
 \item The situation presented will always be achievable in normal game play, and you have already made your move while your opponent hasn't.
 \item Every player in this game is a master, so they will play optimally.
-\item Only the soldier, horse, canon and chariot can cross the river.
+\item Only the soldier, horse, canon, and chariot can cross the river.
 \item You cannot be checked.
 \end{itemize}
 
