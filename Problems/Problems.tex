@@ -266,7 +266,7 @@ The initial absolute sum difference is:
 \noindent Since both cases yield a minimum absolute sum difference of \( 3 \), the output is: $3$
 \newpage
 
-\section*{\fontsize{18}{12}Problem C. Xiangqi }
+\section*{\fontsize{18}{12}Problem C. Xiangqi}
 
 \begin{alignat*} {2}
  &   \text{Input file:}   \quad     &&\text{stdin}\\
@@ -279,10 +279,7 @@ Two Xiangqi masters Tokugawa and Gashuin said they've beaten every other master 
 are some players with sharper skills. This brought them here
 to challenge master Junpi and Mahiro. There will be an award if they win or be a punishment.
 Therefore, they're careful about their play and clench every chance to win.
-\\\\
-\noindent
-Now let\textquotesingle s introduce the rules of Xiangqi:
-\\\noindent
+\subsubsection*{Now let\textquotesingle s introduce the rules of Xiangqi:}
 Xiangqi is a game represents a battle between two armies with the goal
 of capturing the enemy's \textbf{general} piece. In this problem, you are
 given a situation of later stages in the game, you need to check
@@ -300,12 +297,6 @@ Each player, in turn, moves one piece from its own point to another point. No tw
 same point at the same time. A piece can be moved to a point occupied
 by an enemy piece, in which case the enemy piece is \textbf{captured} and
 removed from the board. 
-\\\\
-\noindent
-When the \textbf{general} is in danger of captured
-by the enemy player on the enemy player's next move, the enemy player is
-said to have \textbf{delivered a check}. If the general's player can make no
-move to prevent the general's capture by next enemy move, the situation called \textbf{checkmate}.
 \\\\
 \noindent
 Each piece\textquotesingle s introduction is as follows:
@@ -343,10 +334,7 @@ the horses have 8 kinds of jumps to move and capture shown in the left
 figure. However, if there is any pieces lying on a point away from the
 horse horizontally or vertically it cannot move or capture in that
 direction (see the figure below), called \textbf{hobbling horse's
-leg}. Now you are given a situation only containing a black general, a
-red general and several red chariots, cannons and horses, and the red
-side has delivered a check. Now it turns to black side's move. Your job
-is to determine that whether this situation is \textbf{checkmate}.
+leg}.
 \\\noindent
 \textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Soldier.png}Soldier:}
 the solders move and capture by advancing one point. Once they have
@@ -375,14 +363,17 @@ soldier may still move sideways at the enemy\textquotesingle s edge.
 \\
 \noindent
 Please be noted that only the soldier, horse, canon and chariot can cross the river.
-\\
+\\\\
 \noindent
-Now give you a table of later game, you need to check if you have already won the game. It's not necessary mean checkmate (Stalemate also indicates a win in Xiangqi).
-\textbf{You always play red} (i.e., the one on the bottom). You have already made your move while the other hasn't.
+Now give you a table of later game, a situation only containing a black general, a
+red general and several red chariots, cannons and horses, and \textbf{red player}(i.e., the one on the \textbf{bottom}) has made a \textbf{move}. Now it is now \textbf{black player's turn}.
+\\\\
+\noindent
+Your job is to determine that whether \textbf{Red player} will capture \textbf{Black general} in \textbf{Red player's next turn} no matter what \textbf{Black player} does in their turn.
 \subsection*{\fontsize{16}{12}Input}
 Given a $10\times9$ array full of characters, where the general, advisor, elephant, chariot, horse, canon, soldier, and empty space are represented by G, S, E, R, H, C, P, and . (a single dot) respectively. Upper cases indicate Black player while lower cases indicate red player.
 \subsection*{\fontsize{16}{12}Output}
-A single line of "Yes" or "No", indicating if you(\textbf{Red player}) have already won the game.
+A single line of "Yes" or "No", indicating if \textbf{Red player} will capture the \textbf{Black general} after \textbf{Black player} make their move.
 \subsection*{\fontsize{16}{12}Examples}
 \begin{table}[h]
   \centering
@@ -425,14 +416,14 @@ A single line of "Yes" or "No", indicating if you(\textbf{Red player}) have alre
 \end{table}
 
 \subsection*{\fontsize{16}{12}Explanation}
-Notice that in Sample 1 and Sample 2, both of the black generals are unable to move since all of the spaces near them are being attacked. However, one plays the black has one pawn in Sample 1. Therefore, they are able to move the pawn and the game shall go on. Not like in Sample 2 where they don't have any choice other than move their general, which leads to their general being capture by their opponent.
+In Sample 1 and 2, both \textbf{Black generals} only can move to the spaces that will being attacked. However in Sample 1, the black has one pawn. Therefore, they are able to move the pawn and the game shall go on. Not like in Sample 2 where they don't have any choice other than move their general, which leads to their general being capture by their opponent.
 
 
 \subsection*{\fontsize{16}{12}Notes}
 \begin{itemize}
-\item  The situation presented will always be achievable in normal game play, and you have already made your move while your opponent hasn't.
-\item Only the soldier, horse, canon and chariot can
-cross the river.
+\item The situation presented will always be achievable in normal game play, and you have already made your move while your opponent hasn't.
+\item Every player in this game is a master, so they will play optimally.
+\item Only the soldier, horse, canon and chariot can cross the river.
 \item You cannot be checked.
 \end{itemize}
 
