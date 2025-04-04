@@ -860,15 +860,15 @@ Since the number of atoms does not match, the two formulas represent different c
 \end{alignat*}
 
 \noindent
-In the dark ages of wizardry, the legendary sorcerers Merlin and Morgana engaged in a fierce \textbf{Magic Potion Battle}. In this battle, they took turns casting spells to destroy potion bottles infused with magical essence. 
+In the dark ages of wizardry, the legendary sorcerers \textbf{Merlin} and \textbf{Morgana} engaged in a fierce \textbf{Magic Potion Battle}. In this battle, they took turns casting spells to destroy potion bottles infused with magical essence. 
 \\\\
 \noindent
 The game follows these rules:
 \begin{itemize}
-    \item Merlin and Morgana take turns destroying exactly one potion bottle per turn.
-    \item Merlin always plays first.
+    \item \textbf{Merlin} always plays first.
+    \item \textbf{Merlin} and \textbf{Morgana} take turns destroying exactly one potion bottle per turn.
     \item The game ends immediately if the total amount of magical essence destroyed becomes \textbf{divisible by 3}. The player who made that move \textbf{loses}.
-    \item If all potions are destroyed and the total essence is \textbf{not} divisible by 3, \textbf{Morgana automatically wins}.
+    \item If all potions are destroyed but the total essence is \textbf{not} divisible by 3, \textbf{Morgana automatically wins}.
 \end{itemize}
 
 \noindent
@@ -878,10 +878,10 @@ Both players play \textbf{optimally}, meaning they make the best possible moves 
 Your task is to determine whether Merlin can guarantee a win, or if Morgana will inevitably win. Print `"Yes"` if Merlin wins and `"No"` if Morgana wins.
 
 \subsection*{\fontsize{16}{12}Input}
-Line 1 contains a single integer \( N \) \((1 \leq N \leq 10^5)\), representing the number of potion bottles.
+Line 1 contains a single integer \( N \) \((1 \leq N \leq 10^5)\), denoting the number of potion bottles.
 \\\\
 \noindent
-Line 2 contains \( N \) space-separated integers, where the \( i^{th} \) integer represents the magical essence in the \( i^{th} \) potion bottle. Each integer \( K \) satisfies \( 1 \leq K \leq 10^4 \).
+Line 2 contains \( N \) space-separated integers $K_i$, denoting the magical essence in the \( i^{th} \) potion bottle. \( 1 \leq K_i \leq 10^4,\ \forall i\in[0,N)\).
 
 \subsection*{\fontsize{16}{12}Output}
 Print "Yes" if Merlin can force a win; otherwise, print "No".
