@@ -664,7 +664,7 @@ The prestigious National Museum of Technology operates a high-tech security syst
 \noindent
 To optimize energy efficiency, the power levels must be reconfigured while preserving the system's effectiveness. The new configuration must satisfy the following conditions:
 \begin{itemize}
-    \item If a sensor originally had a higher power level than another sensor in the \textbf{same row or column}, it must remain more powerful in the new configuration. i.e. If $P_a>P_b$, then $P_a'>P_b'$ must be true in the new configuration.
+    \item If a sensor originally had a higher power level than another sensor in the \textbf{same row or column}, it must remain more powerful in the new configuration.\\ i.e. If $P_a>P_b$, then $P_a'>P_b'$ must be true in the new configuration.
     \item The highest power level in the new configuration must be \textbf{as low as possible}.
     \item The minimum power level in the new configuration must be \textbf{at least 1}.
 \end{itemize}
@@ -1147,7 +1147,7 @@ This terrain forms a \textbf{closed basin} with walls of height 3:
 The year is 2184, and humanity has successfully colonized multiple planets in the solar system. The Interplanetary Communication Network (ICN) consists of \( N \) space stations connected by \( M \) bidirectional communication channels. Each channel has a specific maintenance cost.
 \\\\
 \noindent
-The ICN Administration seeks to establish a \textbf{minimum-cost network} that connects all space stations while ensuring its reliability. i.e. The administration seeks to find \textbf{a set of channels} with the minimum maintenance cost that connect all space stations. However, given the harsh space environment and potential meteor strikes, they must further classify the communication channels into two types:
+ICN Administration seeks to establish a \textbf{minimum-cost network} that connects all space stations while ensuring its reliability. i.e. The administration seeks to find \textbf{a set of channels} with the minimum cost that connect all space stations. However, given the harsh space environment, they must further classify the communication channels into two types:
 
 \begin{itemize}
     \item \textbf{Critical Channels}: If any of these channels are damaged, the total cost of maintaining a connected network will increase.
@@ -1177,12 +1177,11 @@ The next \( M \) lines each contain three integers \( U, V, W \), denoting a com
     \end{itemize}
 
 \subsection*{\fontsize{16}{12}Output}
-The output consists of two lines:
+The output consists of two lines, indices of the channels should be printed in ascending order:
 \begin{itemize}
     \item The first line contains the set of \textbf{critical channels} (space-separated indices).
     \item The second line contains the set of \textbf{backup-ready channels} (space-separated indices).
     \item If either set is empty, print \texttt{no channels} for that line.
-    \item The indices of the channels should be printed in ascending order.
 \end{itemize}
 
 \subsection*{\fontsize{16}{12}Example 1}
@@ -1208,10 +1207,9 @@ The output consists of two lines:
 The \textbf{minimum-cost network} has a total maintenance cost of \textbf{7 units}. 
 
 \begin{itemize}
-    \item \textbf{Channels 0 and 1} are critical because removing either would increase the minimum network cost.
+    \item \textbf{Channels 0 and 1} are critical because removing either would increase the cost.
     \item \textbf{Channels 2, 3, 4, and 5} are backup-ready since they can replace a critical channel without increasing the cost.
 \end{itemize}
-The visualizations of the channels and their costs which has a total maintenance cost of 7 units:
 \begin{center}
     \begin{minipage}{0.48\textwidth}
         \scalebox{1.2}{
