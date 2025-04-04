@@ -664,7 +664,16 @@ The prestigious National Museum of Technology operates a high-tech security syst
 \noindent
 To optimize energy efficiency, the power levels must be reconfigured while preserving the system's effectiveness. The new configuration must satisfy the following conditions:
 \begin{itemize}
-    \item If a sensor originally had a higher power level than another sensor in the \textbf{same row or column}, it must remain more powerful in the new configuration.\\ i.e. If $P_a>P_b$, then $P_a'>P_b'$ must be true in the new configuration.
+    \item If a sensor originally had a higher power level than another sensor in the \textbf{same row or column}, it must remain more powerful in the new configuration. i.e. Let \( P' \) be the reconfigured security system of the original one, say, \( P \). Then, for all indices \( i, j_1, j_2 \) such that \( j_1 > j_2 \), the following equivalence holds:
+    \[
+    P'_{i, j_1} > P'_{i, j_2} \iff P_{i, j_1} > P_{i, j_2}.
+    \]
+    
+    Similarly, for all indices \( j, i_1, i_2 \) such that \( i_1 > i_2 \), we have:
+    \[
+    P'_{i_1, j} > P'_{i_2, j} \iff P_{i_1, j} > P_{i_2, j}.
+    \]
+
     \item The highest power level in the new configuration must be \textbf{as low as possible}.
     \item The minimum power level in the new configuration must be \textbf{at least 1}.
 \end{itemize}
@@ -680,7 +689,7 @@ The next \(M\) lines each contain \(N\) integers, denoting the number of the sen
 \begin{itemize}
     \item \(1 \leq M, N \leq 1000\)
     \item $1\leq P \leq 10^5$
-    \item $P_{i_1, j_1} \neq P_{i_2, j_2} \quad \forall (i_1, j_1) \neq (i_2, j_2)$
+    \item $P_{i_1, j_1} \neq P_{i_2, j_2}, \quad \forall (i_1, j_1) \neq (i_2, j_2), i_1, i_2 \in [0, M-1], j_1, j_2 \in [0, N-1]$
     \item \(M \cdot N \leq 10^5\)
 \end{itemize}
 \subsection*{\fontsize{16}{12}Output}
