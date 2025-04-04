@@ -665,12 +665,14 @@ The prestigious National Museum of Technology operates a high-tech security syst
 \noindent
 To optimize energy efficiency, the power levels must be reconfigured while preserving the system's effectiveness. The new configuration must satisfy the following conditions:
 \begin{itemize}
-    \item If a sensor originally had a higher power level than another sensor in the \textbf{same row or column}, it must remain more powerful in the new configuration. i.e. Let \( P' \) be the reconfigured security system of the original one, say, \( P \). Then, for all indices \( i, j_1, j_2 \) such that \( j_1 > j_2 \), the following equivalence holds:
+    \item If a sensor originally had a higher power level than another sensor in the \textbf{same row or column}, it must remain more powerful in the new configuration.\\
+    i.e. Let \( P' \) be the reconfigured security system of the original one \( P \).\\
+    Then, for all indices \( i, j_1, j_2 \) s.t. \( j_1 \ne j_2,\ i\in [0,M),\ j_1,j_2\in [0,N)\),\\ the following statement holds:
     \[
     P'_{i, j_1} > P'_{i, j_2} \iff P_{i, j_1} > P_{i, j_2}.
     \]
     
-    Similarly, for all indices \( j, i_1, i_2 \) such that \( i_1 > i_2 \), we have:
+    Similarly, for all indices \( j, i_1, i_2 \) s.t. \( i_1 \ne i_2,\ i_1,i_2\in [0,M),\ j\in [0,N)\), we have:
     \[
     P'_{i_1, j} > P'_{i_2, j} \iff P_{i_1, j} > P_{i_2, j}.
     \]
@@ -688,15 +690,14 @@ Line 1 contains two integers \(M\) and \(N\), denoting the number of rows and co
 \noindent
 The next \(M\) lines each contain \(N\) integers, denoting the number of the sensors in the grid and $P$ denoting the power levels of the sensors. Each power level in initial configuration is \textbf{unique}.
 \begin{itemize}
-    \item \(1 \leq M, N \leq 1000\)
+    \item \(1 \leq M, N \leq 10^3\)
     \item $1\leq P \leq 10^5$
-    \item $P_{i_1, j_1} \neq P_{i_2, j_2}, \quad \forall (i_1, j_1) \neq (i_2, j_2), i_1, i_2 \in [0, M-1], j_1, j_2 \in [0, N-1]$
+    \item $P_{i_1, j_1} \neq P_{i_2, j_2}, \ \forall (i_1, j_1) \neq (i_2, j_2),\ i_1, i_2 \in [0, M),\ j_1, j_2 \in [0, N)$
     \item \(M \cdot N \leq 10^5\)
 \end{itemize}
 \subsection*{\fontsize{16}{12}Output}
 Output \(M\) lines, each containing \(N\) space-separated integers, denoting the reconfigured security grid.
 
-\newpage
 \subsection*{\fontsize{16}{12}Example 1}
 \begin{table}[h]
   \centering
