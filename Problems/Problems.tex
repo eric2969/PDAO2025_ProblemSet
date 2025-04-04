@@ -1428,7 +1428,7 @@ Total moves: \textbf{6}.
 \begin{alignat*} {2}
  &   \text{Input file:}   \quad     &&\text{stdin}\\
  &   \text{Output file:}  \quad     &&\text{stdout}\\
- &   \text{Time limit:}   \quad     &&\text{1.5 seconds}\\
+ &   \text{Time limit:}   \quad     &&\text{1 second}\\
  &   \text{Memory limit:} \quad     &&\text{64 MB}
 \end{alignat*}
 \noindent
@@ -1444,7 +1444,7 @@ With his eyes full of hope (and possibly tears), he asked for your help, being t
 You need to help uncle Roger manage his forest by keeping track of the growth and changes in tree heights over time. The forest consists of \textbf{\(N\) trees} planted in a straight line, each with an initial height. Over time, various events such as fertilization or natural disasters will alter the trees' heights.
 \\\\
 \noindent
-And sometimes, uncle Roger may wonder which part is the \textbf{most valuable segment} of the forest, of fixed length \textbf{\(LEN\)}, to determine which part to sell. The value of a segment is determined by the following formula:
+And sometimes, uncle Roger may wonder which part is the \textbf{most valuable segment} of the forest, of fixed length \textbf{LEN}, to determine which part to sell. The value of a segment is determined by the following formula:
 
 \[
 \text{Value} = (\max(H_L, H_{L+1}, \dots, H_{L+\textbf{LEN}-1}) \times P_1) + (\sum_{i=L}^{L+\textbf{LEN}-1} H_i \times P_2)
@@ -1452,53 +1452,45 @@ And sometimes, uncle Roger may wonder which part is the \textbf{most valuable se
 \noindent
 Where:
 \begin{itemize}
-    \item \( \max(H_L, H_{L+1}, \dots, H_{L+\textbf{LEN}-1}),\ \sum_{i=L}^{L+\textbf{LEN}-1} H_i \) is the \textbf{maximum and sum of tree height} in the segment, respectively.
+    \item \( \max(H_L, H_{L+1}, \dots, H_{L+\textbf{LEN}-1}),\ \sum_{i=L}^{L+\textbf{LEN}-1} H_i \) is the \textbf{maximum} and \textbf{sum} of tree height in the segment, respectively.
     \item \( P_1 \) and \( P_2 \) are the given price coefficients.
 \end{itemize}
 \noindent
 Your task is to track the changes of the forest and help your uncle.
 
 \subsection*{\fontsize{16}{12}Input}
-The first line contains two integers:
-\[
-N \quad Q
-\]
-
+Line 1 contains two integers $N$ and $Q$:
 \begin{itemize}
-    \item \( N \) (\( 1 \leq N \leq 20000 \)) - Number of trees in the forest.
-    \item \( Q \) (\( 1 \leq Q \leq 100000 \)) - Number of operations to be performed.
-\end{itemize}
-\newpage\noindent
-The second line contains \(N\) integers:
-
-\[
-H_1 \quad H_2 \quad \dots \quad H_N
-\]
-
-\begin{itemize}
-    \item \( H_i \) (\( 0 \leq H_i \leq 100 \)) - The initial height of the \( i^{th} \) tree.
+    \item \( N \) (\( 1 \leq N \leq 10^5 \)), denoting the number of trees in the forest.
+    \item \( Q \) (\( 1 \leq Q \leq 10^4 \)), denoting the number of operations to be performed.
 \end{itemize}
 \noindent
-The $3$ to $Q+2$ lines contain operation in one of the following formats:
+Line 2 contains \(N\) integers $H_i$, denoting the initial height of $i^{th}$ tree. \( 0 \leq H_i \leq 100,\ \forall i \in [0,N)\).
+\newpage
+\noindent
+Next $Q$ lines each contain operation in one of the following formats:
 
 \begin{enumerate}
-    \item \textbf{Fertilization/Natural Disaster}
-    \[
-    1/2 \quad L \quad R \quad v
-    \]
-    \begin{itemize}
-        \item Increase/Decrease the height of all trees in range \( [L, R] \) by \( v \).
-        \item Constraints: \( 1 \leq L \leq R \leq N \), \( 1 \leq v \leq 10 \).
-    \end{itemize}
-    
+    \item \textbf{Fertilization}
+    \[1 \quad L \quad R \quad v\]
+        \begin{itemize}
+            \item Increase the height of all trees in range \( [L, R] \) by \( v \).
+            \item Constraints: \( 0 \leq L \leq R < N \), \( 1 \leq v \leq 10 \).
+        \end{itemize}
+    \item \textbf{Natural Disaster}
+    \[2 \quad L \quad R \quad v\]
+        \begin{itemize}
+            \item Decrease the height of all trees in range \( [L, R] \) by \( v \).
+            \item Constraints: \( 0 \leq L \leq R < N \), \( 1 \leq v \leq 10 \).
+        \end{itemize}
     \item \textbf{Query of Most Valuable Segment}
     \[
     3 \quad \textbf{LEN} \quad P_1 \quad P_2
     \]
     \begin{itemize}
-        \item Find the best value segment of length $LN$.
-        \item Constraints: \( 1 \leq \textbf{LEN} \leq min(1000, N) \), \( 1 \leq P_1,\ P_2 \leq 1000 \).
-        \item There will be at most $100$ query operation.
+        \item Find the best value segment of length \textbf{LEN}.
+        \item Constraints: \( 1 \leq \textbf{LEN} \leq N \), \( 1 \leq P_1,P_2 \leq 1000 \).
+        \item There will be at most $10^3$ query operation.
     \end{itemize}
 \end{enumerate}
 
@@ -1518,7 +1510,6 @@ Where:
 \noindent
 If multiple segments have the same maximum value, print the one with the \textbf{smallest starting index}.
 If there is no segment with positive value, print \textbf{Oiiaioiiiai}.
-
 % Example 1
  \subsection*{\fontsize{16}{12}Example 1}
  \begin{table}[h]
@@ -1527,10 +1518,10 @@ If there is no segment with positive value, print \textbf{Oiiaioiiiai}.
   \hline
   \textbf{stdin} & \textbf{stdout} \\
   \hline
-  5 3 & 2 5 23 \\ 
+  5 3 & 1 4 23 \\ 
   1 3 2 5 4 &  \\  
-  1 1 3 2 &  \\  
-  2 2 4 1 &  \\
+  1 0 2 2 &  \\  
+  2 1 3 1 &  \\
   3 4 2 1 &  \\
   \hline
   \end{tabularx}
@@ -1547,11 +1538,11 @@ After operation 1-2 , the forest heights are:
 Finding the best segment of length \( \textbf{LEN} = 4 \):
 
 \begin{itemize}
-    \item Segment \( [1,4] \): \( \max(3,4,3,4) = 4 \), \( \sum = 3+4+3+4 = 14 \)  
+    \item Segment \( [0,3] \): \( \max(3,4,3,4) = 4 \), \( \sum = 3+4+3+4 = 14 \)  
       \[
       \text{Value} = (4 \times 2) + (14 \times 1) = 8 + 14 = 22
       \]
-    \item Segment \( [2,5] \): \( \max(4,3,4,4) = 4 \), \( \sum = 4+3+4+4 = 15 \)  
+    \item Segment \( [1,4] \): \( \max(4,3,4,4) = 4 \), \( \sum = 4+3+4+4 = 15 \)  
       \[
       \text{Value} = (4 \times 2) + (15 \times 1) = 8 + 15 = 23
       \]
@@ -1560,7 +1551,7 @@ Finding the best segment of length \( \textbf{LEN} = 4 \):
 Thus, the best segment is:
 
 \[
-2\ 5\ 23
+1\ 4\ 23
 \]
 
 % Example 2
@@ -1573,9 +1564,9 @@ Thus, the best segment is:
  \hline
  5 3 & Oiiaioiiiai \\ 
  1 2 1 3 0 &  \\  
- 2 1 5 8 &  \\ 
+ 2 0 4 8 &  \\ 
  3 4 2 1 &  \\ 
- 1 1 3 2 &  \\    
+ 1 0 2 2 &  \\    
  \hline
  \end{tabularx}
 \end{table}
@@ -1591,11 +1582,11 @@ After operation 1, the forest heights are:
 Finding the best segment of length \( \textbf{LEN} = 4 \):
 
 \begin{itemize}
-    \item Segment \( [1,4] \): \( \max(-7,-6,-7,-5) = -5 \), \( \sum = -7+(-6)+(-7)+(-5) = -25 \)  
+    \item Segment \( [0,3] \): \( \max(-7,-6,-7,-5) = -5 \), \( \sum = -7+(-6)+(-7)+(-5) = -25 \)  
      \[
      \text{Value} = (-5 \times 2) + (-25 \times 1) = -10 + (-25) = -35
      \]
-    \item Segment \( [2,5] \): \( \max(-6,-7,-5,-8) = -5 \), \( \sum = -6+(-7)+(-5)+(-8) = -26 \)  
+    \item Segment \( [1,4] \): \( \max(-6,-7,-5,-8) = -5 \), \( \sum = -6+(-7)+(-5)+(-8) = -26 \)  
      \[
      \text{Value} = (-5 \times 2) + (-26 \times 1) = -10 + (-26) = -36
      \]
