@@ -1364,7 +1364,7 @@ There are some rules to follow when selecting classes:
     \item Each class occupies a unique position.
     \item To insert a class at position \textbf{\( P \)}, all existing classes at position \textbf{\( P \)} and continuously beyond must be shifted down by one position.
     \item To delete a class at position \textbf{\( P \)}, the position remains empty, leaving a gap.
-    \item Each move consists of inserting, deleting, or shifting a class one position down.
+    \item Each move consists of a single inserting, deleting, or shifting a class one position down.
 \end{itemize}
 
 \noindent
@@ -1376,8 +1376,8 @@ Line 1 contains an integer \(\textbf{\textit{N}}\) \((1 \leq N \leq 1000)\), den
 \noindent
 Next \textbf{\( N \)} lines, each contains a command:
     \begin{itemize}
-        \item \textbf{I P} $\rightarrow$ Insert a class at position \( P \) \((1 \leq P \leq 1000)\). (1 move if $P$ is empty)
-        \item \textbf{D P} $\rightarrow$ Delete a class at position \( P \) \((1 \leq P \leq 1000)\). (1 move )
+        \item \textbf{I P} $\rightarrow$ Insert a class at position \( P \) \((0 \leq P < 1000)\). (1 move if $P$ is empty)
+        \item \textbf{D P} $\rightarrow$ Delete a class at position \( P \) \((0 \leq P < 1000,\ P\text{ is occupied})\). (1 move)
     \end{itemize}
 
 \subsection*{\fontsize{16}{12}Output}
@@ -1391,22 +1391,22 @@ Print a single integer, the minimum number of moves required to execute all oper
   \textbf{stdin} & \textbf{stdout} \\
   \hline
   5 & 8 \\
-  I 1 &  \\
+  I 0 &  \\
+  I 1 & \\
   I 2 & \\
-  I 3 & \\
-  I 1 &\\
-  D 1 & \\
+  I 0 &\\
+  D 0 & \\
   \hline
  \end{tabularx}
 \end{table}
 \newpage
 \subsection*{\fontsize{16}{12}Explanation}
 \begin{enumerate}
-    \item Insert class at \textbf{position 1} $\rightarrow$ \(\{\underline{A}\}\). (\textbf{1 move})
-    \item Insert class at \textbf{position 2} $\rightarrow$ \(\{A, \underline{B}\}\). (\textbf{1 move})
-    \item Insert class at \textbf{position 3}  $\rightarrow$ \(\{A, B, \underline{C}\}\). (\textbf{1 move})
-    \item Insert class at \textbf{position 1}: Shift \( A, B, C \) down by 1 \(\{\underline{D}, A, B, C\}\) (\textbf{4 moves. 3 moves by moving classes, 1 move by insertion the classes}).
-    \item Delete class at \textbf{position 1} $\rightarrow$ \(\{\underline{\ \ }, A, B, C\}\) (\textbf{1 move}).
+    \item Insert class at \textbf{position 0} $\rightarrow$ \(\{\underline{A}\}\). (\textbf{1 move})
+    \item Insert class at \textbf{position 1} $\rightarrow$ \(\{A, \underline{B}\}\). (\textbf{1 move})
+    \item Insert class at \textbf{position 2}  $\rightarrow$ \(\{A, B, \underline{C}\}\). (\textbf{1 move})
+    \item Insert class at \textbf{position 0}: Shift \( A, B, C \) down by 1 \(\{\underline{D}, A, B, C\}\) (\textbf{4 moves. 3 moves by moving classes, 1 move by insertion the classes}).
+    \item Delete class at \textbf{position 0} $\rightarrow$ \(\{\underline{\ \ }, A, B, C\}\) (\textbf{1 move}).
 \end{enumerate}
 Total moves: \textbf{8}.
 
@@ -1419,22 +1419,22 @@ Total moves: \textbf{8}.
   \textbf{stdin} & \textbf{stdout} \\
   \hline
   5 & 6 \\
-  I 1 &  \\
-  I 2 & \\
-  I 3 & \\
-  D 2 &\\
+  I 0 &  \\
   I 1 & \\
+  I 2 & \\
+  D 1 &\\
+  I 0 & \\
   \hline
  \end{tabularx}
 \end{table}
 
 \subsection*{\fontsize{16}{12}Explanation}
 \begin{enumerate}
-    \item Insert class at \textbf{position 1} $\rightarrow$ \(\{\underline{A}\}\). (\textbf{1 move})
-    \item Insert class at \textbf{position 2} $\rightarrow$ \(\{A, \underline{B}\}\). (\textbf{1 move})
-    \item Insert class at \textbf{position 3} $\rightarrow$ \(\{A, B, \underline{C}\}\). (\textbf{1 move})
-    \item Delete class at \textbf{position 2} $\rightarrow$ \(\{A, \_, C\}\) (\textbf{1 move, creates a gap}).
-    \item Insert class at \textbf{position 1}: Shift \( A \) down by 1 \(\{\underline{D}, A, C\}\) (\textbf{2 moves}).
+    \item Insert class at \textbf{position 0} $\rightarrow$ \(\{\underline{A}\}\). (\textbf{1 move})
+    \item Insert class at \textbf{position 1} $\rightarrow$ \(\{A, \underline{B}\}\). (\textbf{1 move})
+    \item Insert class at \textbf{position 2} $\rightarrow$ \(\{A, B, \underline{C}\}\). (\textbf{1 move})
+    \item Delete class at \textbf{position 1} $\rightarrow$ \(\{A, \_, C\}\) (\textbf{1 move, creates a gap}).
+    \item Insert class at \textbf{position 0}: Shift \( A \) down by 1 \(\{\underline{D}, A, C\}\) (\textbf{2 moves}).
 \end{enumerate}
 Total moves: \textbf{6}.
 
