@@ -1466,19 +1466,21 @@ For years, he has been growing trees and selling them blindly, never knowing whe
 With his eyes full of hope (and possibly tears), he asked for your help, being the good niece and nephew(haiyaa), you agreed. Now, it's time to use your programming skills to help uncle Roger maximize his profits!
 \\\\
 \noindent
-You need to help uncle Roger manage his forest by keeping track of the growth and changes in tree heights over time. The forest consists of \textbf{\(N\) trees} planted in a straight line, each with an initial height. Over time, various events such as fertilization or natural disasters will alter the trees' heights.
+You need to help uncle Roger keep track of the growth and changes in tree heights over time. The forest consists of \textbf{\(N\) trees} planted in a straight line, each with an initial height. Over time, various events such as fertilization or natural disasters will alter the trees' heights.
 \\\\
 \noindent
-And sometimes, uncle Roger may wonder which part is the \textbf{most valuable segment} of the forest, of fixed length \textbf{LEN}, to determine which part to sell. The value of a segment is determined by the following formula:
+Uncle Roger sometimes may wonder which part is the \textbf{most valuable segment} of the forest, of fixed length \textbf{LEN}. The value of a segment is defined by the following formula:
 
 \[
-\text{Value} = (\max(H_L, H_{L+1}, \dots, H_{L+\textbf{LEN}-1}) \times P_1) + (\sum_{i=L}^{L+\textbf{LEN}-1} H_i \times P_2)
+\text{Value} = (\max(H_L, H_{L+1}, \dots, H_{L+\textbf{LEN}-1}) \times P_1) + (\sum_{i=L}^{L+\textbf{LEN}-1} H_i \times P_2), L\in[0,N-\textbf{LEN})
 \]
 \noindent
 Where:
 \begin{itemize}
-    \item \( \max(H_L, H_{L+1}, \dots, H_{L+\textbf{LEN}-1}),\ \sum_{i=L}^{L+\textbf{LEN}-1} H_i \) is the \textbf{maximum} and \textbf{sum} of tree height in the segment, respectively.
+    \item \( N \) is the number of trees in the forest.
+    \item \( H_i \) is the height of the \( i^{th} \) tree.
     \item \( P_1 \) and \( P_2 \) are the given price coefficients.
+    \item \( \max(H_L, H_{L+1}, \dots, H_{L+\textbf{LEN}-1}),\ \sum_{i=L}^{L+\textbf{LEN}-1} H_i\) is the \textbf{maximum} and \textbf{sum} of tree height in the segment, respectively.
 \end{itemize}
 \noindent
 Your task is to track the changes of the forest and help your uncle.
@@ -1491,7 +1493,7 @@ Line 1 contains two integers $N$ and $Q$:
 \end{itemize}
 \noindent
 Line 2 contains \(N\) integers $H_i$, denoting the initial height of $i^{th}$ tree. \( 0 \leq H_i \leq 100,\ \forall i \in [0,N)\).
-\newpage
+\\\\
 \noindent
 Next $Q$ lines each contain operation in one of the following formats:
 
@@ -1633,31 +1635,34 @@ $$\textbf{Oiiaioiiiai}$$
 \noindent
 In a mysterious world, multiple ancient kingdoms exist, each ruled by powerful monarchs. Every few centuries, the kingdoms send their wisest envoys to participate in the legendary Moonlight Trial--a test designed to break an ancient curse.
 \begin{itemize}
-    \item Each of you has a shadow that is either circular or triangular.
-    \item There are at least one person with triangular shadow in each kingdom.
-    \item You can see the shadows of others, but you cannot see your own.
-    \item Every night, during the Moonlight Ritual, you may declare the shape of your shadow. If you are correct, you will awaken; if you are wrong, you will be forever lost in darkness.
-    \item The chosen individuals cannot communicate with each other and must deduce their shadow's shape over time.  
+    \item Each envoy has a shadow that is either \textbf{circular} or \textbf{triangular}.
+    \item There are \textbf{at least} one envoy with \textbf{triangular shadow} in each kingdom.
+    \item Envoys can see the shadows of others, but they cannot see their own.
+    \item Every night, during the Moonlight Ritual, each envoy may declare the shape of their shadow. If he/she is \textbf{correct}, he/she will be \textbf{awaken}; if he/she is \textbf{wrong}, he/she will be forever \textbf{lost in darkness}.
+    \item Every envoy cannot communicate with each other and must deduce their shadow's shape over time.  
+    \item Everyone in this trial plays \textbf{optimally}, meaning they will \textbf{only declare} their shadow shape when they are \textbf{sure} of it.
 \end{itemize}
 \noindent
 The trial's objective is clear:
-The first kingdom whose envoys all successfully identify their own shadow shapes and break the curse will claim ultimate victory.
+\\
+\noindent
+\textbf{The first kingdom} whose envoys \textbf{all successfully} identify their own shadow shapes and \textbf{no one} lost in darkness will claim \textbf{ultimate victory}.
 
 \subsection*{\fontsize{16}{12}Input}
 Line 1 contains an integer $K$, denoting the number of countries participating the Trial.
 \\\\
 \noindent
-The next \(K\) lines represent information for countries \(0\) to \(K-1\) in order. Each line consists of two integers, \(N_i\) and \(M_i\), where \(i\) denotes the country number.
+The next \(K\) lines provide information for countries \(0\) to \(K-1\), in order. Each line contains two integers, \(N_i\) and \(M_i\), where \(i \in[0,K)\) is the index of the country.
 \begin{itemize}
-    \item $1 \leq K \leq 10^4$
-    \item $1 \leq N_i \leq 10^5$ Denoting the number of chosen individuals in country \(i\).
-    \item $1 \leq M_i \leq N_i$ Denoting the number of people with triangular shadows in country \(i\).
+    \item $1 \leq K \leq 10^4$ Denoting the number of countries.
+    \item $1 \leq N_i \leq 10^5$ Denoting the number of envoys in country \(i\).
+    \item $1 \leq M_i \leq N_i$ Denoting the number of people with \textbf{triangular shadows} in country \(i\).
 \end{itemize}
 \subsection*{\fontsize{16}{12}Output}
-Print a single integer, the number of country that will win the Moonlight Trial. 
+Print a single integer, the index of country that will \textbf{win} the Moonlight Trial. 
 \\\\
 \noindent
-If there are more than one country that will win, print the country with the most number of people since they have more power. 
+If there are more than one countries that will win, print the country with the most number of people since they have more power. 
 \\\\
 \noindent
 But if there still are more than one country with the same number of people, print the one with the smaller number since they are lucky.
@@ -1672,19 +1677,19 @@ But if there still are more than one country with the same number of people, pri
         \hline
         2 & 1 \\
         10 2 &\\
-        2 1 &\\
+        3 1 &\\
         \hline
     \end{tabularx}
 \end{table}
 
 \subsection*{\fontsize{16}{12}Explanation}
-In country 1, there is only one person with a triangular shadow, the one with triangular shadow
-will find everyone is circular shadow. But there must be one person with triangular shadow,
-thus itself can determine its shape and awaken. And the second night everyone will find they
-are all circular shadow. It takes 2 days in total for country 1.
+In country 1, there is only one envoy with a \textbf{triangular} shadow, the one with \textbf{triangular} shadow
+will find everyone is \textbf{circular} shadow. But there must be \textbf{at least one} person with \textbf{triangular} shadow,
+thus itself can determine its shape is \textbf{triangular} and awaken. And the second night the others will find the \textbf{only one} with \textbf{triangular} shadow has awakened, thus they all can determine their own shape is \textbf{circular} and awaken.
+It takes \textbf{2 days} in total for country 1.
 \\\\
 \noindent
-Obviously 2 days are not enough for country 0 to determine everyone's shape.
+Obviously \textbf{2 days} are not enough for country 0 to determine everyone's shape.
 \\\\
 \noindent
 Thus, country 1 will win the Moonlight Trial.
@@ -1704,10 +1709,10 @@ Thus, country 1 will win the Moonlight Trial.
 \end{table}
 
 \subsection*{\fontsize{16}{12}Explanation}
-Since we know those two country will all identify their shadows in the same night, but country 0 has more people.
+Since we know those two country will all take only \textbf{2 days} to identify their shadows and awaken in the same night.
 \\\\
 \noindent
-Thus, country 0 will win the Moonlight Trial.
+However, country 0 has \textbf{more people}, thus country 0 will win the Moonlight Trial.
 
 \newpage
 \section*{\fontsize{18}{12}Problem N. Signal Synchronization in the Sky Port}
