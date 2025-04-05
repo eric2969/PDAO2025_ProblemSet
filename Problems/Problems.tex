@@ -1337,23 +1337,23 @@ At NTU, students use online system to register for their classes each semester. 
 \noindent
 There are some rules to follow when selecting classes:
 \begin{itemize}
-    \item Classes are arranged in a sequential order, with each class occupying a unique position.
-    \item To insert a class at position \textbf{\( P \)}, all existing classes at position \textbf{\( P \)} and beyond must be shifted down by one position.
+    \item Each class occupies a unique position.
+    \item To insert a class at position \textbf{\( P \)}, all existing classes at position \textbf{\( P \)} and continuously beyond must be shifted down by one position.
     \item To delete a class at position \textbf{\( P \)}, the position remains empty, leaving a gap.
-    \item Each move consists of shifting a class exactly one position up or down.
+    \item Each move consists of inserting, deleting, or shifting a class one position up or down.
 \end{itemize}
 
 \noindent
 Given a sequence of insertion and deletion commands, determine the minimum number of moves required to achieve the final class arrangement.
 
 \subsection*{\fontsize{16}{12}Input}
-Line 1 contains an integer \(\textbf{N}\) \((1 \leq N \leq 1000)\), denoting the number of operations.
+Line 1 contains an integer \(\textbf{\textit{N}}\) \((1 \leq N \leq 1000)\), denoting the number of operations.
 \\\\
 \noindent
 Next \textbf{\( N \)} lines, each contains a command:
     \begin{itemize}
-        \item \textbf{I P} $\rightarrow$ Insert a class at position \( P \) \((1 \leq P \leq 1000)\).
-        \item \textbf{D P} $\rightarrow$ Delete a class at position \( P \) \((1 \leq P \leq 1000)\). Position $P$ must contain a class.
+        \item \textbf{I P} $\rightarrow$ Insert a class at position \( P \) \((1 \leq P \leq 1000)\). (1 move if $P$ is empty)
+        \item \textbf{D P} $\rightarrow$ Delete a class at position \( P \) \((1 \leq P \leq 1000)\). (1 move )
     \end{itemize}
 
 \subsection*{\fontsize{16}{12}Output}
@@ -1420,6 +1420,7 @@ Total moves: \textbf{6}.
     \item Empty spaces may remain after deletions.
     \item Moves are counted when shifting existing classes up or down, inserting, or deleting classes.
     \item Deletion only happens when the position given exists a class.
+    \item Insertion of a class at any position is allowed as long as the position given empty.
 \end{itemize}
 
 \newpage
