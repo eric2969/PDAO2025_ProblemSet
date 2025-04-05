@@ -1733,21 +1733,24 @@ To ensure flight safety, a master synchronization array $c$ must be generated. T
 \noindent
 Here is how the synchronization system operates:
 \begin{itemize}
-    \item The control tower provides two sequences $a$ and $b$, each of length $N$, representing the plaintext message that drones of type-$A$ and type-$B$ should be able to recover.
-    \item Each type-$A$ drone extracts its message by XOR-ing every contiguous subarray of $k_1$ elements (in circular fashion) from the array $c$.
-    \item Each type-$B$ drone extracts its message by XOR-ing every contiguous subarray of $k_2$ elements (also circular) from the array $c$.
+    \item The control tower provides two sequences $a$ and $b$, each of length $N$, denoting the message that type-$A$ and type-$B$ drones should be able to recover.
+    \item Type-$A$ drones extract their message by \textbf{XOR-ing} every \textbf{contiguous} subarray of $k_1$ elements (in \textbf{circular} fashion) from the array $c$.
+    \item Type-$B$ drones extract their message by \textbf{XOR-ing} every \textbf{contiguous} subarray of $k_2$ elements (also \textbf{circular}) from the array $c$.
+    \item The mathematical representation of the extraction process is as follows:\begin{itemize}
+        \item $a_i = c_{i\%N} \oplus c_{(i+1)\%N} \oplus \cdots \oplus c_{(i+k_1-1)\%N},\ i\in [0,N)$ \\
+        \item $b_i = c_{i\%N} \oplus c_{(i+1)\%N} \oplus \cdots \oplus c_{(i+k_2-1)\%N},\ i\in [0,N)$
+        \end{itemize}
 \end{itemize}
 \noindent
-Your job is to generate such an array $c$ of $N$ non-negative integers, so that:
-\begin{itemize}
-    \item XOR of every $k_1$-length contiguous subsequence (circular) of $c$ equals the value in $a$.
-    \item XOR of every $k_2$-length contiguous subsequence (circular) of $c$ equals the value in $b$.
-\end{itemize}
-
+Your job is to generate an array $c$ of $N$ non-negative integers, so that:
+\\
 \noindent
-It is promised that there exists at least one valid $c$ extracted to recover both messages.
+XOR every $k_1, k_2$-length subsequence (circular) of $c$ equals the value in $a,b$, respectively.
+\\\\
+\noindent
+It is \textbf{promised} that there exists \textbf{at least one valid} $c$ extracted to recover both messages.
 
-\subsection*{\fontsize{16}{12}XOR Explanation}
+\subsubsection*{\fontsize{14}{12}XOR Explanation}
 XOR, denoted $\oplus$, is a binary operation. For two bits $a$ and $b$, the operation is defined as:
     \[
     a \oplus b =
@@ -1757,52 +1760,42 @@ XOR, denoted $\oplus$, is a binary operation. For two bits $a$ and $b$, the oper
     \end{cases}
     \]
 \noindent
-When doing XOR on integers, it is performed bitwise on their binary.
-For example, computing the XOR of two integers, 12 and 10.
+When doing $\oplus$ on integers, it is performed bitwise on their binary.
+For example, computing 12 $\oplus$ 10.
 We first convert 12 and 10 to binary representation:
 \[
 12_{10} = 1100_2 \quad \text{and} \quad 10_{10} = 1010_2.
 \]
 \noindent
-And recall that for two bits, the XOR operation $\oplus$ in binary operation.
+Use $\oplus$ in binary operation, and convert to decimal, then we can get the result of $12\oplus10=6$:
 \[
-\begin{array}{ccccc}
+\begin{array}{cccccc}
 \text{Bit:} & 1 & 1 & 0 & 0 \\
 \oplus \quad & 1 & 0 & 1 & 0 \\
-\hline&0&1&1&0 \\
+\hline&0&1&1&0&=(6)_{10}\\
 \end{array}
 \]
 
-\noindent
-Thus the result in binary and its decimal of $12\oplus10$ is:
-\[
-(0\,1\,1\,0)_2 = 0\cdot2^3 + 1\cdot2^2 + 1\cdot2^1 + 0\cdot2^0 = 0 + 4 + 2 + 0 = (6)_{10}\quad
-\Rightarrow 12 \oplus 10 = 6.
-\]
 
 \subsection*{\fontsize{16}{12}Input}
 Line 1 contains three integers $N$, $K_1$, and $K_2$.
 \\\\
 \noindent
-Line 2 contains $N$ integers $a_1, a_2, \dots, a_N$ the message to be extracted by type-$A$ drones.
-\\\\
-\noindent
-Line 3 contains $N$ integers $b_1, b_2, \dots, b_N$ the message to be extracted by type-$B$ drones.
+Line 2 and 3 each contains $N$ integers $a_i$ and $b_i$, the message to be extracted by type-$A$ and type-$B$ drones, respectively.
 
 \begin{itemize}
     \item $1 \leq N \leq 10^5$
     \item $1 \leq K_1, K_2 \leq N\wedge K_1 \ne K_2$
-    \item $0 \leq a_i, b_i < 2^{30}$
+    \item $0 \leq a_i, b_i < 2^{30},\ \forall i\in [0,N)$
 \end{itemize}
 
 \subsection*{\fontsize{16}{12}Output}
-Print $N$ non-negative integers $c_1, c_2, \dots, c_N$ representing the encrypted signal such that the XOR constraints allow recovery of both messages.\\
+Print $N$ non-negative integers $c_i,i\in [0,N)$, denoting the encrypted signal such that the XOR constraints allow recovery of both messages.\\\\\noindent
 It is promoised that there \textbf{exists at least one valid} $c$ extracted to recover both messages.
 \\\\
 \noindent
-If there are multiple valid arrays, print any one of them. any number you write to the output must be in the range of $[0, 2^{30})$, or you'll get a "\textbf{Wrong Answer}".
-
-\subsection*{\fontsize{16}{12}Example 1}
+If there are multiple valid arrays, print any \textbf{one of them}. any number you write to the output must be \textbf{in the range} of $[0, 2^{30})$, or you'll get a "\textbf{Wrong Answer}".
+\subsection*{\fontsize{16}{12}Examples}
 \begin{table}[h]
     \centering
     \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
@@ -1816,18 +1809,6 @@ If there are multiple valid arrays, print any one of them. any number you write 
     \end{tabularx}
 \end{table}
 
-\subsection*{\fontsize{16}{12}Explanation}
-To recover each $a_i$, type-$A$ drones perform XOR on every window of $k_1 = 2$ elements from $c$:
-\begin{itemize}
-    \item $c_1 \oplus c_2 = 2 \oplus 0 = 2 = a_1$
-    \item $c_2 \oplus c_3 = 0 \oplus 2 = 2 = a_2\dots$
-\end{itemize}
-Type-$B$ drones apply XOR on $k_2 = 4$-element windows, and the values match perfectly with $b$.
-\\
-\noindent
-Thus, the encrypted array is \textbf{valid}.
-
-\subsection*{\fontsize{16}{12}Example 2}
 \begin{table}[h]
     \centering
     \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
@@ -1840,5 +1821,16 @@ Thus, the encrypted array is \textbf{valid}.
         \hline
     \end{tabularx}
 \end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+In first example, to recover each $a_i$, type-$A$ drones perform XOR on every window of $k_1 = 2$ elements from $c$:
+\begin{itemize}
+    \item $c_0 \oplus c_1 = 2 \oplus 0 = 2 = a_0$
+    \item $c_1 \oplus c_2 = 0 \oplus 2 = 2 = a_1\dots$
+\end{itemize}
+Type-$B$ drones apply XOR on $k_2 = 4$-element windows, and the values match perfectly with $b$.
+\\
+\noindent
+Thus, the encrypted array is \textbf{valid}.
 
 \end{document}
