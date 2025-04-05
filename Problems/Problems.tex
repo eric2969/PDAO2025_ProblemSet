@@ -1364,7 +1364,7 @@ There are some rules to follow when selecting classes:
     \item Each class occupies a unique position.
     \item To insert a class at position \textbf{\( P \)}, all existing classes at position \textbf{\( P \)} and continuously beyond must be shifted down by one position.
     \item To delete a class at position \textbf{\( P \)}, the position remains empty, leaving a gap.
-    \item Each move consists of inserting, deleting, or shifting a class one position up or down.
+    \item Each move consists of inserting, deleting, or shifting a class one position down.
 \end{itemize}
 
 \noindent
@@ -1442,7 +1442,7 @@ Total moves: \textbf{6}.
 \begin{itemize}
     \item Each class occupies exactly one position and cannot overlap unless deleted.
     \item Empty spaces may remain after deletions.
-    \item Moves are counted when shifting existing classes up or down, inserting, or deleting classes.
+    \item Moves are counted when shifting existing classes down, inserting, or deleting classes.
     \item Deletion only happens when the position given exists a class.
     \item Insertion of a class at any position is allowed as long as the position given empty.
 \end{itemize}
