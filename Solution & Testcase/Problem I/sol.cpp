@@ -5,10 +5,9 @@
 #include <queue>
 using namespace std;
 
-int main()
-{
-    int m = 0;
-    int n = 0;
+signed main(int argc, char** argv) {
+    ios::sync_with_stdio(0); cin.tie(0);
+    int m, n;
     cin >> m >> n;
     vector<vector<int>> heightMap(m, vector<int>(n, 0));
     for (int i = 0; i < m; i++) {
@@ -45,23 +44,25 @@ int main()
     
     int ans = 0;
     while (!boundary.empty()) {
-        auto [height, position] = boundary.top();
-        auto [positionX, positionY] = position;
+        int height = boundary.top().first;
+        auto position = boundary.top().second;
+        
+        auto positionX = position.first;
+        auto positionY = position.second;
         boundary.pop();
     
         for (int direction = 0; direction < 4; direction++) {
-        int newX = positionX + dirs[direction].first;
-        int newY = positionY + dirs[direction].second;
-        
-        if (newX >= 0 && newX < a && newY >= 0 && newY < b &&  !visited[newX][newY]) {
-            int newHeight = heightMap[newX][newY];
+            int newX = positionX + dirs[direction].first;
+            int newY = positionY + dirs[direction].second;
             
-            if (newHeight < height) {
-                ans = ans + height - newHeight;
-            }
-            
-            boundary.push({max(newHeight, height), {newX, newY}});
-            visited[newX][newY] = true;
+            if (newX >= 0 && newX < a && newY >= 0 && newY < b && !visited[newX][newY]) {
+                int newHeight = heightMap[newX][newY];
+                
+                if (newHeight < height)
+                    ans += height - newHeight;
+                
+                boundary.push({max(newHeight, height), {newX, newY}});
+                visited[newX][newY] = true;
             }
         }
     }

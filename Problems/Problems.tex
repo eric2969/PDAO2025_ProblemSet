@@ -1074,22 +1074,22 @@ In the popular game \textbf{"Block Builder's Challenge"}, players design landsca
 Your task is to determine the \textbf{total volume of trapped water} after rainfall while following these rules:
 
 \begin{itemize}
-	\item The landscape is represented as an \( M \times N \) grid.
+	\item The landscape is represented as a \( M \times N \) grid.
 	\item Each grid cell contains a non-negative integer representing the height of a block.
 	\item Water flows downward and seeks the lowest available space.
-	\item Water can only flow horizontally or vertically (not diagonally).
+	\item Water can only flow \textbf{horizontally} or \textbf{vertically} (not \textbf{diagonally}).
 	\item Water \textbf{can escape} if it reaches the edges of the grid.
 	\item One unit of water fills one cubic unit of space.
 \end{itemize}
 
 \subsection*{\fontsize{16}{12}Input}
-Line 1 contains two integers \( M \) and \( N \), representing the grid dimensions.
+Line 1 contains two integers \( M \) and \( N \), denoting vertical and horizontal length of the grid, respectively.
 \\\\
 \noindent
-The next \( M \) lines contain \( N \) space-separated integers, where each integer represents the height of a block. The constraints are:
+The next \( M \) lines contain \( N \) space-separated integers $H_{ij}$, denoting the height of a block.
 \begin{itemize}
     \item \(1 \leq M, N \leq 200\)
-    \item \( 0 \leq \text{height} \leq 10^4\)
+    \item \( 0 \leq H_{ij} \leq 10^4,\ \forall i\in[0,M),\ j\in[0,N)\)
 \end{itemize}
 
 \subsection*{\fontsize{16}{12}Output}
