@@ -136,8 +136,8 @@ Line 1 contains a single integer $N$, denoting the quantity of stones. \\\\
 Line 2 contains $N$ integers $v_i$, denoting the value of each stone. 
 
 \begin{itemize}
-    \item $1 \leq N \leq 100000$
-    \item $1 \leq v_i \leq 100000$
+    \item $1 \leq N \leq 10^5$
+    \item $1 \leq V_i \leq 10^5$
 \end{itemize}
 
 \subsection*{\fontsize{16}{12}Output}
@@ -205,13 +205,13 @@ Your task is to determine the \textbf{minimum possible total prediction error} a
 
 \subsection*{\fontsize{16}{12}Input}
 Line 1 contains a single integer $N$, denoting the number of days. \\\\
-Line 2 contains $N$ positive integers $p_i$, denoting the \textbf{predicted stock prices}. \\\\
-Line 3 contains $N$ positive integers $a_i$, denoting the \textbf{actual stock prices}.
+Line 2 contains $N$ positive integers $P_i$, denoting the \textbf{predicted stock prices} on day $i$. \\\\
+Line 3 contains $N$ positive integers $A_i$, denoting the \textbf{actual stock prices} on day $i$.
 \\\\
 \noindent Constraints:
 \begin{itemize}
     \item \( 1 \leq N \leq 10^5 \)
-    \item \( 1 \leq p_i, a_i \leq 10^5\quad\forall i \in [0, N)\)
+    \item \( 1 \leq P_i, A_i \leq 10^5\ \forall i \in [0, N)\)
 \end{itemize}
 
 \subsection*{\fontsize{16}{12}Output}
@@ -245,7 +245,7 @@ The initial absolute sum difference is:
 
 \noindent The optimal solution is:
 \begin{itemize}
-    \item Replace the second element ($7$) with the first element ($1$), yielding:
+    \item Replace the predicted price on day 1 ($7$) with the predicted price on day 0 ($1$), yielding:
     \[
     [1, \mathbf{1}, 5]
     \]
@@ -254,7 +254,7 @@ The initial absolute sum difference is:
     \left| 1 - 2 \right| + \left| 1 - 3 \right| + \left| 5 - 5 \right| = 1 + 2 + 0 = 3.
     \]
     
-    \item Alternatively, replace the second element ($7$) with the third element ($5$), yielding:
+    \item Alternatively, replace the predicted price on day 1 ($7$) with the predicted price on day 2 ($5$), yielding:
     \[
     [1, \mathbf{5}, 5]
     \]
@@ -286,8 +286,8 @@ of capturing the enemy's \textbf{general} piece.
 \\\\
 \noindent
 Xiangqi is played on a $10\times9$ board and pieces are
-placed on the points. The upper left point is (1,1) and
-the lower right point is (10,9). There are two groups of pieces marked
+placed on the points. The upper left point is (0,0) and
+the lower right point is (9,8). There are two groups of pieces marked
 by black or red Chinese characters, belonging to the two players
 separately.
 \\\\
@@ -691,7 +691,7 @@ The next \(M\) lines each contain \(N\) integers, denoting the number of the sen
     \item \(1 \leq M, N \leq 10^3\)
     \item $1\leq P \leq 10^5$
     \item $P_{i_1, j_1} \neq P_{i_2, j_2}, \ \forall (i_1, j_1) \neq (i_2, j_2),\ i_1, i_2 \in [0, M),\ j_1, j_2 \in [0, N)$
-    \item \(M \cdot N \leq 10^5\)
+    \item \(M \times N \leq 10^5\)
 \end{itemize}
 \subsection*{\fontsize{16}{12}Output}
 Output \(M\) lines, each containing \(N\) space-separated integers, denoting the reconfigured security grid.
@@ -941,10 +941,10 @@ Since 15 is divisible by 3, Merlin \textbf{loses}, meaning Morgana wins. Thus, t
 \end{alignat*}
 
 \noindent
-You are the mastermind behind a covert operations unit tasked with executing high-stakes missions. Your team consist of a fixed number of agents and a list of \( m \) planned missions. 
+You are the mastermind behind a covert operations unit tasked with executing high-stakes missions. Your team consist of a fixed number of agents and a list of \( M \) planned missions. 
 \\\\
 \noindent
-Your goal is to select a subset of missions to achieve \textbf{at least} a total benefit of \( r \) while using \textbf{at most} \( n \) agents in total.
+Your goal is to select a subset of missions to achieve \textbf{at least} a total benefit of \( R \) while using \textbf{at most} \( N \) agents in total.
 \\\\
 \noindent
 There are some requirements for each mission:
@@ -962,8 +962,9 @@ Line 1 contains three integers \( N \), \( R \), \( M \), denoting the \textbf{n
 \\\\
 The next \( M \) lines each contain two integers \( G_i \) and \( B_i \), denoting \textbf{the number of agents} required to execute the mission, the \textbf{benefit} received from the mission, respectively.
 \begin{itemize}
-    \item \(1 \leq N,R,M \leq 100\)
-    \item \(1 \leq G_i,B_i \leq 100\quad \forall i \in [0, M)\)
+    \item \(1 \leq N,R,M \leq 10^3\)
+    \item \(1 \leq M \leq 10\)
+    \item \(1 \leq G_i,B_i \leq 10^2\quad \forall i \in [0, M)\)
 \end{itemize}
 
 \subsection*{\fontsize{16}{12}Output}
@@ -1111,7 +1112,7 @@ Print a single integer, the total volume of water (in cubic units) that is trapp
 
 \subsection*{\fontsize{16}{12}Explanation}
 \noindent
-After the rainfall, there will be \textbf{10} unit of water being trapped, since the water collected in the low areas escaped at the edge.
+After the rainfall, there will be \textbf{4} unit of water being trapped, since the water collected in the low areas escaped at the edge.
 
 \subsection*{\fontsize{16}{12}Example 2}
 \begin{table}[h]
@@ -1374,7 +1375,7 @@ There are some rules to follow when selecting classes:
     \item Each class occupies a unique position.
     \item To insert a class at position \textbf{\( P \)}, all existing classes at position \textbf{\( P \)} and continuously beyond must be shifted down by one position.
     \item To delete a class at position \textbf{\( P \)}, the position remains empty, leaving a gap.
-    \item Each move consists of a single inserting, deleting, or shifting a class one position down.
+    \item Each move contains a single inserting, deleting, or shifting a class one position down.
 \end{itemize}
 
 \noindent
@@ -1387,7 +1388,7 @@ Line 1 contains an integer \(\textbf{\textit{N}}\) \((1 \leq N \leq 1000)\), den
 Next \textbf{\( N \)} lines, each contains a command:
     \begin{itemize}
         \item \textbf{I P} $\rightarrow$ Insert a class at position \( P \) \((0 \leq P < 1000)\). (1 move if $P$ is empty)
-        \item \textbf{D P} $\rightarrow$ Delete a class at position \( P \) \((0 \leq P < 1000,\ P\text{ is occupied})\). (1 move)
+        \item \textbf{D P} $\rightarrow$ Delete a class at position \( P \) \((0 \leq P < 1000,\ P\text{ is \textbf{occupied}})\). (1 move)
     \end{itemize}
 
 \subsection*{\fontsize{16}{12}Output}
@@ -1791,7 +1792,10 @@ Use $\oplus$ in binary operation, and convert to decimal, then we can get the re
 Line 1 contains three integers $N$, $K_1$, and $K_2$.
 \\\\
 \noindent
-Line 2 and 3 each contains $N$ integers $a_i$ and $b_i$, the message to be extracted by type-$A$ and type-$B$ drones, respectively.
+Line 2 contains $N$ space-separated integers $a_i$, the message to be extracted by type-$A$ drones.
+\\\\
+\noindent
+Line 3 contains $N$ space-separated integers $b_i$, the message to be extracted by type-$B$ drones.
 
 \begin{itemize}
     \item $1 \leq N \leq 10^5$
@@ -1800,11 +1804,11 @@ Line 2 and 3 each contains $N$ integers $a_i$ and $b_i$, the message to be extra
 \end{itemize}
 
 \subsection*{\fontsize{16}{12}Output}
-Print $N$ non-negative integers $c_i,i\in [0,N)$, denoting the encrypted signal such that the XOR constraints allow recovery of both messages.\\\\\noindent
-It is promoised that there \textbf{exists at least one valid} $c$ extracted to recover both messages.
+Print $N$ space-separated integers $c_i\in [0,2^{30}),\forall i\in [0,N)$, denoting the encrypted signal allowing both drones to extract messages by the procedures above.\\\\\noindent
+We ensure that there \textbf{exists at least one valid} $c$ extracted to recover both messages.
 \\\\
 \noindent
-If there are multiple valid arrays, print any \textbf{one of them}. any number you write to the output must be \textbf{in the range} of $[0, 2^{30})$, or you'll get a "\textbf{Wrong Answer}".
+If there are multiple valid arrays, print any \textbf{one of them}. For all numbers you output must be \textbf{in the range} of $[0, 2^{30})$, or you will get "\textbf{Wrong Answer}".
 \subsection*{\fontsize{16}{12}Examples}
 \begin{table}[h]
     \centering
