@@ -85,5 +85,1799 @@ left=2cm, right=2cm, top=1.5cm
 \begin{document}
 \title{\textbf{NTUIM PDAO 2025}\\ April 19}
 \date{}
+% 封面
+\maketitle
+\thispagestyle{fancy}
+\section*{DO NOT turn to next page unless instructed to do so}
+\subsection*{CONTEST OVERVIEW}
+\begin{itemize} 
+    \item The contest runs from 12:00 to 17:00.
+    \item There are 14 problems in total, not ordered from easiest to hardest. However, the problems are equally weighted regardless of difficulty.
+    \item Teams are ranked according to the most problems solved. Teams who solve the same number of problems are ranked by least total time. The total time is the sum of the time consumed for each problem solved. 
+    \item The time consumed for a solved problem is the time elapsed from the beginning of the contest to the submission of the first accepted run plus 20 penalty minutes times the number of any other submission to that problem regardless of submission time. There is no time consumed for a problem that is not solved. If two teams have the same number of problems solved and least total time, then the winner goes to the team who made their first accepted submission on their lastly solved problem earlier.
+    \item Each team can only use a single computer with at most one mouse, one screen and one keyboard, so your team members cannot code simultaneously. Allocate your time wisely! 
+    \item \textbf{Online Judge}: You have to login to \textbf{PDOGS} with the username and password provided via email to make submissions.
+    \item Communicating with any creature other than your teammates is strictly forbidden. Violating this rule may result in a disqualification.
+    \item All sequence mentioned in this contest are \textbf{0-based}
+    \item If you have any questions, request a clarification via the Google form in \textbf{PDOGS info}. The judges (i.e. some members in the PDAO Team) will clarify with either \textquotedblleft Yes\textquotedblright, \textquotedblleft No\textquotedblright, \textquotedblleft No Comment\textquotedblright\ or \textquotedblleft Pardon\textquotedblright.
+\end{itemize}
+
+\noindent\vfill
+\hfill {\fontsize{13pt}{1cm}PDAO 2025 is sponsored by \space {\linesans LINE}}
+
+\blankpage
+
+% Problem A. Xiangqi (Former C)
+
+\section*{\fontsize{18}{12}Problem A. Xiangqi}
+
+\begin{alignat*} {2}
+ &   \text{Input file:}   \quad     &&\text{stdin}\\
+ &   \text{Output file:}  \quad     &&\text{stdout}\\
+ &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Memory limit:} \quad     &&\text{64 MB}
+\end{alignat*}
+\noindent
+Two Xiangqi masters Tokugawa and Gashuin said they've beaten every other master in the world. However, some said that there
+are some players with sharper skills. This brought them here
+to challenge master Junpi and Mahiro. There will be an award if they win or be a punishment if they lose.
+Therefore, they're careful about their play and clench every chance to win.
+\subsubsection*{Now let\textquotesingle s introduce the rules of Xiangqi:}
+Xiangqi is a game represents a battle between two armies with the goal
+of capturing the enemy's \textbf{general} piece.
+\\\\
+\noindent
+Xiangqi is played on a $10\times9$ board and pieces are
+placed on the points. The upper left point is (0,0) and
+the lower right point is (9,8). There are two groups of pieces marked
+by black or red Chinese characters, belonging to the two players
+separately.
+\\\\
+\noindent
+Each player, in turn, moves one piece from its own point to another point. No two pieces can occupy the
+same point at the same time. A piece can be moved to a point occupied
+by an enemy piece, in which case the enemy piece is \textbf{captured} and
+removed from the board. 
+\\\\
+\noindent
+When the \textbf{general} is in danger of captured
+by the enemy player on the enemy player's next move, the enemy player is
+said to have \textbf{delivered a check}. If the general's player can make no
+move to prevent the general's capture by next enemy move, the situation called \textbf{checkmate}.\\\\
+\noindent
+Each piece\textquotesingle s introduction is as follows:
+\\\noindent
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_General.png}General(G,g):}
+the generals can move and capture one point either vertically or
+horizontally and cannot leave the \textbf{palace} unless the situation called
+\textbf{flying general}. \textbf{Flying general} means that
+one general can \textbf{fly} across the board to capture the enemy general if
+they stand on the same line without intervening pieces.
+\\\noindent
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Advisor.png}Advisor(S,s):}
+the advisors can move and capture one point diagonally and may not leave
+the palace, which confines them to five points on the board.
+\\\noindent
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Elephant.png}Elephant(E,e):}
+the elephants move and capture exactly two points diagonally and may not
+jump over the intervening pieces; the move like the
+character \textbf{田}, in reference to the board\textquotesingle s squares. 
+However, it is possible to block an elephant with a diagonally adjacent piece, known as \textbf{blocking
+elephant\textquotesingle s eye} (see the figure below). When this
+happens, it cannot move or capture in that direction. The elephant cannot cross the river.
+\\\noindent
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Chariot.png}Chariot(R,r):}
+the chariots can move and capture vertically and horizontally by any
+distance, but may not jump over the intervening pieces.
+\\\noindent
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Cannon.png}Cannon(C,c):}
+the cannons move like the chariots, horizontally and vertically, but
+capture by jumping exactly one piece (whether it is friendly or enemy)
+over to its target.
+\\\noindent
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Horse.png}Horse(H,h):}
+the horses have 8 kinds of jumps to move and capture shown in the figure below. However, if there is any pieces lying on a point away from the
+horse horizontally or vertically it cannot move or capture in that
+direction (see the figure below), called \textbf{hobbling horse's
+leg}.
+\\\noindent
+\textbf{\includegraphics{Xiangqi.assets/75px-Xiangqi_Soldier.png}Soldier(P,p):}
+the solders move and capture by advancing one point. Once they have
+crossed the river, they may also move and capture one point
+horizontally. Soldiers cannot move backward, and therefore cannot
+retreat; after advancing to the last rank of the board, however, a
+soldier may still move sideways at the enemy\textquotesingle s edge.
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Xiangqi.assets/Board.jpg}
+        \caption{Game Board}
+    \end{minipage}
+    \begin{minipage}[b]{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Xiangqi.assets/180px-MovementOfHorsePiece.png}
+        \caption{hobbling horse's leg}
+    \end{minipage}
+    \begin{minipage}[b]{0.27\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Xiangqi.assets/Elephant_movement.png}
+        \caption{blocking elephant\textquotesingle s eye}
+    \end{minipage}
+\end{figure}
+\\
+\noindent
+Please be noted that only the \textbf{soldier}, \textbf{horse}, \textbf{canon} and \textbf{chariot} can \textbf{cross the river}.
+\\\\
+\noindent
+You're given a later game board. Now it's \textbf{black's turn} to move, determine whether it's possible for you, i.e. the \textbf{red/bottom} player to \textbf{capture} the \textbf{black general} immediately after the black player's turn. However, if you're already checked, the black player will, without a doubt, capture your general, which indicates your lost. Please be noted that in Xiangqi. Each player is \textbf{forced to make one move} in their turn. Therefore, being \textbf{stalemated} also count as losing.
+\\
+\subsection*{\fontsize{16}{12}Input}
+Given a $10\times9$ array full of characters, where the general, advisor, elephant, chariot, cannon, horse, soldier, and empty space are represented by G, S, E, R, C, H, P, and . (a single dot) respectively. Upper cases indicate \textbf{Black player} while lower cases indicate \textbf{Red player}.
+\subsection*{\fontsize{16}{12}Output}
+A single line of "Yes" or "No", indicating if \textbf{Red player} can and will capture the \textbf{Black general} immediately after \textbf{Black player} make their move without losing.
+\subsection*{\fontsize{16}{12}Examples}
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  stdin & stdout\\
+  \hline
+    ...G.....&No\\
+    ..r......&\\
+    .........&\\
+    .........&\\
+    .........&\\
+    .........&\\
+    .......P.&\\
+    .........&\\
+    .........&\\
+    ....g....&\\
+  \hline
+ \end{tabularx}
+\end{table}
+
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  stdin & stdout\\
+  \hline
+    ...G.....&Yes\\
+    ..r......&\\
+    .........&\\
+    .........&\\
+    .........&\\
+    .........&\\
+    .........&\\
+    .........&\\
+    .........&\\
+    ....g....&\\
+  \hline
+ \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+In Sample 1 and 2, both \textbf{Black generals} only can move to the spaces that will being attacked. However in Sample 1, the black has one pawn. Therefore, they are able to move the pawn and the game shall go on. Not like in Sample 2 where they don't have any choice other than move their general, which leads to their general being capture by their opponent.
+
+
+\subsection*{\fontsize{16}{12}Notes}
+\begin{itemize}
+\item The situation presented will always be achievable in normal game play, and you have already made your move while your opponent hasn't.
+\item Every player in this game is a master, so they will play optimally.
+\item Only the soldier, horse, canon, and chariot can cross the river.
+\item You cannot be checked.
+\end{itemize}
+
+\blankpage
+
+% Problem B. NTU I'm Forest Manager (Former L)
+
+\section*{\fontsize{18}{12}Problem B. NTU I'm Forest Master}
+
+\begin{alignat*} {2}
+ &   \text{Input file:}   \quad     &&\text{stdin}\\
+ &   \text{Output file:}  \quad     &&\text{stdout}\\
+ &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Memory limit:} \quad     &&\text{64 MB}
+\end{alignat*}
+\noindent
+Your uncle, Roger, a humble lumberyard farmer, sells the best part of his forest to earn a living. However, there is a big problem: he has absolutely no idea how to handle it! 
+\\\\
+\noindent
+For years, he has been growing trees and selling them blindly, never knowing whether he was cutting down the most valuable part of the forest. But this year, during the Lunar New Year, something changed. As you were trying to survive the usual storm of nosy relatives asking about your studies, uncle Roger overheard that you were studying at \textbf{NTUIM}.  
+\\\\
+\noindent
+With his eyes full of hope (and possibly tears), he asked for your help, being the good niece and nephew(haiyaa), you agreed. Now, it's time to use your programming skills to help uncle Roger maximize his profits!
+\\\\
+\noindent
+You need to help uncle Roger keep track of the growth and changes in tree heights over time. The forest consists of \textbf{\(N\) trees} planted in a straight line, each with an initial height. Over time, various events such as fertilization or natural disasters will alter the trees' heights.
+\\\\
+\noindent
+Uncle Roger sometimes may wonder which part is the \textbf{most valuable segment} of the forest, of fixed length \textbf{LEN}. The value of a segment is defined by the following formula:
+
+\[
+\text{Value} = (\max(H_L, H_{L+1}, \dots, H_{L+\textbf{LEN}-1}) \times P_1) + (\sum_{i=L}^{L+\textbf{LEN}-1} H_i \times P_2), L\in[0,N-\textbf{LEN})
+\]
+\noindent
+Where:
+\begin{itemize}
+    \item \( N \) is the number of trees in the forest.
+    \item \( H_i \) is the height of the \( i^{th} \) tree.
+    \item \( P_1 \) and \( P_2 \) are the given price coefficients.
+    \item \( \max(H_L, H_{L+1}, \dots, H_{L+\textbf{LEN}-1}),\ \sum_{i=L}^{L+\textbf{LEN}-1} H_i\) is the \textbf{maximum} and \textbf{sum} of tree height in the segment, respectively.
+\end{itemize}
+\noindent
+Your task is to track the changes of the forest and help your uncle.
+
+\subsection*{\fontsize{16}{12}Input}
+Line 1 contains two integers $N$ and $Q$:
+\begin{itemize}
+    \item \( N \) (\( 1 \leq N \leq 10^5 \)), denoting the number of trees in the forest.
+    \item \( Q \) (\( 1 \leq Q \leq 10^4 \)), denoting the number of operations to be performed.
+\end{itemize}
+\noindent
+Line 2 contains \(N\) integers $H_i$, denoting the initial height of $i^{th}$ tree. \( 0 \leq H_i \leq 100,\ \forall i \in [0,N)\).
+\\\\
+\noindent
+Next $Q$ lines each contain operation in one of the following formats:
+
+\begin{enumerate}
+    \item \textbf{Fertilization}
+    \[1 \quad L \quad R \quad v\]
+        \begin{itemize}
+            \item Increase the height of all trees in range \( [L, R] \) by \( v \).
+            \item Constraints: \( 0 \leq L \leq R < N \), \( 1 \leq v \leq 10 \).
+        \end{itemize}
+    \item \textbf{Natural Disaster}
+    \[2 \quad L \quad R \quad v\]
+        \begin{itemize}
+            \item Decrease the height of all trees in range \( [L, R] \) by \( v \).
+            \item Constraints: \( 0 \leq L \leq R < N \), \( 1 \leq v \leq 10 \).
+        \end{itemize}
+    \item \textbf{Query of Most Valuable Segment}
+    \[
+    3 \quad \textbf{LEN} \quad P_1 \quad P_2
+    \]
+    \begin{itemize}
+        \item Find the best value segment of length \textbf{LEN}.
+        \item Constraints: \( 1 \leq \textbf{LEN} \leq N \), \( 1 \leq P_1,P_2 \leq 1000 \).
+        \item There will be at most $10^3$ query operation.
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{\fontsize{16}{12}Output}
+If there is a query operation, print the segment of length \textbf{LEN} that has the highest value.\\
+\noindent
+Print the best segment in the format:
+\[
+L\ R\ V
+\]
+
+Where:
+\begin{itemize}
+    \item \( L, R\) is the starting index and ending index of the best segment.
+    \item \( V \) is the maximum value of the segment.
+\end{itemize}
+\noindent
+If multiple segments have the same maximum value, print the one with the \textbf{smallest starting index}.
+If there is no segment with positive value, print \textbf{Oiiaioiiiai}.
+% Example 1
+ \subsection*{\fontsize{16}{12}Example 1}
+ \begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  \textbf{stdin} & \textbf{stdout} \\
+  \hline
+  5 3 & 1 4 23 \\ 
+  1 3 2 5 4 &  \\  
+  1 0 2 2 &  \\  
+  2 1 3 1 &  \\
+  3 4 2 1 &  \\
+  \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+
+After operation 1-2 , the forest heights are:
+
+\[
+[3, 4, 3, 4, 4]
+\]
+\noindent
+Finding the best segment of length \( \textbf{LEN} = 4 \):
+
+\begin{itemize}
+    \item Segment \( [0,3] \): \( \max(3,4,3,4) = 4 \), \( \sum = 3+4+3+4 = 14 \)  
+      \[
+      \text{Value} = (4 \times 2) + (14 \times 1) = 8 + 14 = 22
+      \]
+    \item Segment \( [1,4] \): \( \max(4,3,4,4) = 4 \), \( \sum = 4+3+4+4 = 15 \)  
+      \[
+      \text{Value} = (4 \times 2) + (15 \times 1) = 8 + 15 = 23
+      \]
+\end{itemize}
+
+Thus, the best segment is:
+
+\[
+1\ 4\ 23
+\]
+
+% Example 2
+\subsection*{\fontsize{16}{12}Example 2}
+\begin{table}[h]
+ \centering
+ \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+ \hline
+ \textbf{stdin} & \textbf{stdout} \\
+ \hline
+ 5 3 & Oiiaioiiiai \\ 
+ 1 2 1 3 0 &  \\  
+ 2 0 4 8 &  \\ 
+ 3 4 2 1 &  \\ 
+ 1 0 2 2 &  \\    
+ \hline
+ \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+
+After operation 1, the forest heights are:
+
+\[
+[-7, -6, -7, -5, -8]
+\]
+
+Finding the best segment of length \( \textbf{LEN} = 4 \):
+
+\begin{itemize}
+    \item Segment \( [0,3] \): \( \max(-7,-6,-7,-5) = -5 \), \( \sum = -7+(-6)+(-7)+(-5) = -25 \)  
+     \[
+     \text{Value} = (-5 \times 2) + (-25 \times 1) = -10 + (-25) = -35
+     \]
+    \item Segment \( [1,4] \): \( \max(-6,-7,-5,-8) = -5 \), \( \sum = -6+(-7)+(-5)+(-8) = -26 \)  
+     \[
+     \text{Value} = (-5 \times 2) + (-26 \times 1) = -10 + (-26) = -36
+     \]
+\end{itemize}
+
+Since there is no any segment has positive value, the output is:
+$$\textbf{Oiiaioiiiai}$$
+
+\blankpage
+
+% Problem C. NTU Class Picking (Former K)
+
+\section*{\fontsize{18}{12}Problem C. NTU Class Picking}
+
+\begin{alignat*} {2}
+ &   \text{Input file:}   \quad     &&\text{stdin}\\
+ &   \text{Output file:}  \quad     &&\text{stdout}\\
+ &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Memory limit:} \quad     &&\text{64 MB}
+\end{alignat*}
+
+\noindent
+At NTU, students use online system to register for their classes each semester. However, the system has a significant limitation: students cannot insert a class between two existing classes directly. Instead, they must manually shift other classes to make space for the new class.
+\\
+\noindent
+There are some rules to follow when selecting classes:
+\begin{itemize}
+    \item Each class occupies a unique position.
+    \item To insert a class at position \textbf{\( P \)}, all existing classes at position \textbf{\( P \)} and continuously beyond must be shifted down by one position.
+    \item To delete a class at position \textbf{\( P \)}, the position remains empty, leaving a gap.
+    \item Each move contains a single inserting, deleting, or shifting a class one position down.
+\end{itemize}
+
+\noindent
+Given a sequence of insertion and deletion commands, determine the minimum number of moves required to achieve the final class arrangement.
+
+\subsection*{\fontsize{16}{12}Input}
+Line 1 contains an integer \(\textbf{\textit{N}}\) \((1 \leq N \leq 1000)\), denoting the number of operations.
+\\\\
+\noindent
+Next \textbf{\( N \)} lines, each contains a command:
+    \begin{itemize}
+        \item \textbf{I P} $\rightarrow$ Insert a class at position \( P \) \((0 \leq P < 1000)\). (1 move if $P$ is empty)
+        \item \textbf{D P} $\rightarrow$ Delete a class at position \( P \) \((0 \leq P < 1000,\ P\text{ is \textbf{occupied}})\). (1 move)
+    \end{itemize}
+
+\subsection*{\fontsize{16}{12}Output}
+Print a single integer, the minimum number of moves required to execute all operations.
+\subsection*{\fontsize{16}{12}Example 1}
+
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  \textbf{stdin} & \textbf{stdout} \\
+  \hline
+  5 & 8 \\
+  I 0 &  \\
+  I 1 & \\
+  I 2 & \\
+  I 0 &\\
+  D 0 & \\
+  \hline
+ \end{tabularx}
+\end{table}
+\newpage
+\subsection*{\fontsize{16}{12}Explanation}
+\begin{enumerate}
+    \item Insert class at \textbf{position 0} $\rightarrow$ \(\{\underline{A}\}\). (\textbf{1 move})
+    \item Insert class at \textbf{position 1} $\rightarrow$ \(\{A, \underline{B}\}\). (\textbf{1 move})
+    \item Insert class at \textbf{position 2}  $\rightarrow$ \(\{A, B, \underline{C}\}\). (\textbf{1 move})
+    \item Insert class at \textbf{position 0}: Shift \( A, B, C \) down by 1 \(\{\underline{D}, A, B, C\}\) (\textbf{4 moves. 3 moves by moving classes, 1 move by insertion the classes}).
+    \item Delete class at \textbf{position 0} $\rightarrow$ \(\{\underline{\ \ }, A, B, C\}\) (\textbf{1 move}).
+\end{enumerate}
+Total moves: \textbf{8}.
+
+\subsection*{\fontsize{16}{12}Example 2}
+
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  \textbf{stdin} & \textbf{stdout} \\
+  \hline
+  5 & 6 \\
+  I 0 &  \\
+  I 1 & \\
+  I 2 & \\
+  D 1 &\\
+  I 0 & \\
+  \hline
+ \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+\begin{enumerate}
+    \item Insert class at \textbf{position 0} $\rightarrow$ \(\{\underline{A}\}\). (\textbf{1 move})
+    \item Insert class at \textbf{position 1} $\rightarrow$ \(\{A, \underline{B}\}\). (\textbf{1 move})
+    \item Insert class at \textbf{position 2} $\rightarrow$ \(\{A, B, \underline{C}\}\). (\textbf{1 move})
+    \item Delete class at \textbf{position 1} $\rightarrow$ \(\{A, \_, C\}\) (\textbf{1 move, creates a gap}).
+    \item Insert class at \textbf{position 0}: Shift \( A \) down by 1 \(\{\underline{D}, A, C\}\) (\textbf{2 moves}).
+\end{enumerate}
+Total moves: \textbf{6}.
+
+\subsection*{\fontsize{16}{12}Notes}
+\begin{itemize}
+    \item Each class occupies exactly one position and cannot overlap unless deleted.
+    \item Empty spaces may remain after deletions.
+    \item Moves are counted when shifting existing classes down, inserting, or deleting classes.
+    \item Deletion only happens when the position given exists a class.
+    \item Insertion of a class at any position is allowed as long as the position given empty.
+\end{itemize}
+
+\newpage
+
+% Problem D. Ingenious Missions (Former H)
+
+\section*{\fontsize{18}{12}Problem D. Ingenious Missions}
+
+\begin{alignat*} {2}
+ &   \text{Input file:}   \quad     &&\text{stdin}\\
+ &   \text{Output file:}  \quad     &&\text{stdout}\\
+ &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Memory limit:} \quad     &&\text{64 MB}
+\end{alignat*}
+
+\noindent
+You are the mastermind behind a covert operations unit tasked with executing high-stakes missions. Your team consist of a fixed number of agents and a list of \( M \) planned missions. 
+\\
+\noindent
+Your goal is to select a subset of missions to achieve \textbf{at least} a total benefit of \( R \) while using \textbf{at most} \( N \) agents in total.
+\\\\
+\noindent
+There are some requirements for each mission:
+\begin{itemize}
+  \item Each mission requires a specific number of agents and yields a corresponding benefit.
+  \item Each mission can be executed at most once.
+  \item Each agent can be assigned to only one mission.
+\end{itemize}
+
+\noindent
+The order in which missions are selected doesn't matter; only the set of missions chosen does.
+
+\subsection*{\fontsize{16}{12}Input}
+Line 1 contains three integers \( N \), \( R \), \( M \), denoting the \textbf{number of agents available}, the \textbf{minimum required benefit}, and the \textbf{number of missions}, respectively.
+\\\\
+The next \( M \) lines each contain two integers \( G_i \) and \( B_i \), denoting \textbf{the number of agents} required to execute the mission, the \textbf{benefit} received from the mission, respectively.
+\begin{itemize}
+    \item \(1 \leq N \leq 10^3\)
+    \item \(1 \leq R,M \leq 10^2\)
+    \item \(1 \leq G_i,B_i \leq 10^2\quad \forall i \in [0, M)\)
+\end{itemize}
+
+\subsection*{\fontsize{16}{12}Output}
+Print a single integer, the total number of valid mission schemes modulo \( 10^9 + 7 \).
+
+\subsection*{\fontsize{16}{12}Example}
+
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  \textbf{stdin} & \textbf{stdout} \\
+  \hline
+  5 3 3 & 5 \\
+  2 2 & \\
+  2 3 & \\
+  1 1 & \\
+  \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+
+There are 3 missions:
+\begin{itemize}
+ \item \textbf{Mission 0}: Requires 2 agents($G_0$), yields a benefit of 2($B_0$).
+ \item \textbf{Mission 1}: Requires 2 agents($G_1$), yields a benefit of 3($B_1$).
+ \item \textbf{Mission 2}: Requires 1 agent($G_2$), yields a benefit of 1($B_2$).
+\end{itemize}
+
+\noindent
+Your objective is to achieve at least a total benefit of \( 3 \), using at most 5 agents.
+
+\noindent
+Possible valid schemes:
+\begin{enumerate}
+ \item \textbf{Select Mission 1 only}:
+  \begin{itemize}
+   \item Agents used: 2, total benefit: 3.
+   \item \textbf{Valid}.
+  \end{itemize}
+
+ \item \textbf{Select Missions 0 and 1}:
+  \begin{itemize}
+   \item Agents used: 4, total benefit: 5.
+   \item \textbf{Valid}.
+  \end{itemize}
+
+ \item \textbf{Select Missions 1 and 2}:
+  \begin{itemize}
+   \item Agents used: 3, total benefit: 4.
+   \item \textbf{Valid}.
+  \end{itemize}
+
+ \item \textbf{Select Missions 0 and 2}:
+  \begin{itemize}
+   \item Agents used: 3, total benefit: 3.
+   \item \textbf{Valid}.
+  \end{itemize}
+
+ \item \textbf{Select Missions 0, 1, and 2}:
+  \begin{itemize}
+   \item Agents used: 5, total benefit: 6.
+   \item \textbf{Valid}.
+  \end{itemize}
+\end{enumerate}
+
+\noindent
+Invalid schemes:
+\begin{enumerate}
+    \item \begin{itemize}
+        \item \textbf{Select Mission 0 only}: Agents used = 2, total benefit = 2. 
+        \item \textbf{Invalid} (benefit \( < 3 \)).
+    \end{itemize}
+    \item \begin{itemize}
+        \item \textbf{Select Mission 2 only}: Agents used = 1, total benefit = 1. 
+        \item \textbf{Invalid} (benefit \( < 3 \)).
+    \end{itemize}
+\end{enumerate}
+
+\noindent
+In conclusion, there are \textbf{5} valid schemes. The output is:
+
+\[
+\mathbf{5}
+\]
+
+\noindent
+\textbf{Side Note:} A scheme where no missions are selected is always invalid, as it yields no benefit.
+
+\newpage
+
+% Problem E. Stock Price Prediction Adjustment (Former B)
+
+\section*{\fontsize{18}{12}Problem E. Stock Price Prediction Adjustment}
+
+\begin{alignat*} {2}
+ &   \text{Input file:}   \quad     &&\text{stdin}\\
+ &   \text{Output file:}  \quad     &&\text{stdout}\\
+ &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Memory limit:} \quad     &&\text{64 MB}
+\end{alignat*}
+
+\noindent
+HappyCorp, a leading investment firm, predicts stock prices daily. However, when compared to actual prices, the prediction error is too high! To save their reputation, they can adjust one prediction by swapping it with another from their forecast. 
+\\\\
+\noindent
+Analysts have access to two sequences of positive integers representing stock prices:
+
+\begin{itemize}
+    \item \textbf{predicted prices}: The stock prices predicted over a period of $n$ days.
+    \item \textbf{actual prices}: The actual stock prices observed over the same $n-day$ period.
+\end{itemize}
+
+\noindent 
+The \textbf{total prediction error} is defined as the sum:
+
+\[
+\sum_{i=0}^{n-1} \left| \textbf{actual prices}_i - \textbf{predicted prices}_i \right|
+\]
+
+\noindent You are allowed to replace \textbf{at most one} element of \textbf{predicted prices} with \textbf{any} other element in \textbf{predicted prices} to \textbf{minimize} the total prediction error. 
+\\\\
+\noindent
+Your task is to determine the \textbf{minimum possible total prediction error} after making at most one such replacement.
+
+\subsection*{\fontsize{16}{12}Input}
+Line 1 contains a single integer $N$, denoting the number of days. \\\\
+Line 2 contains $N$ positive integers $P_i$, denoting the \textbf{predicted stock prices} on day $i$. \\\\
+Line 3 contains $N$ positive integers $A_i$, denoting the \textbf{actual stock prices} on day $i$.
+\\\\
+\noindent Constraints:
+\begin{itemize}
+    \item \( 1 \leq N \leq 10^5 \)
+    \item \( 1 \leq P_i, A_i \leq 10^5\ \forall i \in [0, N)\)
+\end{itemize}
+
+\subsection*{\fontsize{16}{12}Output}
+Print a single integer, the minimum possible total prediction error after at most one replacement.
+
+\newpage
+
+\subsection*{\fontsize{16}{12}Example}
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  stdin & stdout \\
+  \hline
+    3 & 3 \\
+    1 7 5 & \\
+    2 3 5 & \\  
+  \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+Given:
+\[
+\textbf{predicted prices} = [1, 7, 5], \quad \textbf{actual prices} = [2, 3, 5]
+\]
+The initial absolute sum difference is:
+\[
+\left| 1 - 2 \right| + \left| 7 - 3 \right| + \left| 5 - 5 \right| = 1 + 4 + 0 = 5.
+\]
+
+\noindent The optimal solution is:
+\begin{itemize}
+    \item Replace the predicted price on day 1 ($7$) with the predicted price on day 0 ($1$), yielding:
+    \[
+    [1, \mathbf{1}, 5]
+    \]
+    The new sum difference is:
+    \[
+    \left| 1 - 2 \right| + \left| 1 - 3 \right| + \left| 5 - 5 \right| = 1 + 2 + 0 = 3.
+    \]
+    
+    \item Alternatively, replace the predicted price on day 1 ($7$) with the predicted price on day 2 ($5$), yielding:
+    \[
+    [1, \mathbf{5}, 5]
+    \]
+    The new sum difference is:
+    \[
+    \left| 1 - 2 \right| + \left| 5 - 3 \right| + \left| 5 - 5 \right| = 1 + 2 + 0 = 3.
+    \]
+\end{itemize}
+
+\noindent Since both cases yield a minimum absolute sum difference of \( 3 \), the output is: $3$
+
+\newpage
+
+% Problem F. The Interplanetary Network (Former J)
+
+\section*{\fontsize{18}{12}Problem F. The Interplanetary Network}
+
+\begin{alignat*} {2}
+ &   \text{Input file:}   \quad     &&\text{stdin}\\
+ &   \text{Output file:}  \quad     &&\text{stdout}\\
+ &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Memory limit:} \quad     &&\text{64 MB}
+\end{alignat*}
+
+\noindent
+The year is 2184, and humanity has successfully colonized multiple planets in the solar system. The Interplanetary Communication Network (ICN) consists of \( N \) space stations connected by \( M \) bidirectional communication channels. Each channel has a specific maintenance cost.
+\\\\
+\noindent
+ICN Administration seeks to establish a \textbf{minimum-cost network} that connects all space stations while ensuring its reliability. i.e. The administration seeks to find \textbf{a set of channels} with the minimum total maintenance cost that connect all space stations. However, given the harsh space environment, they must further classify the communication channels into two types:
+
+\begin{itemize}
+    \item \textbf{Critical Channels}: If any of these channels are damaged, the total cost of maintaining a connected network will increase, or even disconnect the whole network.
+    \item \textbf{Backup-Ready Channels}: These channels can be seamlessly integrated into a minimum-cost network if another backup-ready channel fails, without increasing the total cost.\\ (That is, if these channels are part of \textbf{any possible minimum-cost network} but they are not \textbf{Critical Channels}, they are \textbf{Backup-Ready Channels}).
+\end{itemize}
+
+\noindent
+Your task is to identify:
+\begin{itemize}
+    \item All \textbf{critical channels} that will \textbf{increase} the minimum maintenance cost, or \textbf{disconnect} the network, if damaged.
+    \item All \textbf{backup-ready channels} that can replace backup-ready channels without increasing total cost.
+\end{itemize}
+
+\subsection*{\fontsize{16}{12}Input}
+Line 1 contains two integers \( N \) and \( M \), denoting the number of space stations and communication channels:
+    \[
+    2 \leq N \leq 10^4, \quad N-1 \leq M \leq \text{min}(\frac{N(N-1)}{2},10^5).
+    \]
+\noindent
+The next \( M \) lines each contain three integers \( U, V, W \), denoting a communication channel:
+    \begin{itemize}
+        \item \( U \) and \( V \) are space stations connected by the channel \((0 \leq U, V < N)\).
+        \item \( W \) is the maintenance cost of the channel \((1 \leq W \leq 1000)\).
+        \item Each channel connects \textbf{two distinct} space stations.
+        \item There is at most \textbf{one direct channel} between any pair of stations.
+        \item All space stations are \textbf{initially connected} through at least one path.
+    \end{itemize}
+
+\subsection*{\fontsize{16}{12}Output}
+The output consists of two lines, indices of the channels should be printed in ascending order:
+\begin{itemize}
+    \item The first line contains the set of \textbf{critical channels} (space-separated indices).
+    \item The second line contains the set of \textbf{backup-ready channels} (space-separated indices).
+    \item If either set is empty, print "\textbf{no channels}" for that line.
+\end{itemize}
+
+\subsection*{\fontsize{16}{12}Example 1}
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  \textbf{stdin} & \textbf{stdout} \\
+  \hline
+    6 7 & 1 2 3 \\
+    0 1 6 & 4 5 6 \\
+    1 2 1 & \\
+    2 0 1 & \\
+    2 3 2 & \\
+    3 4 1 & \\
+    4 5 1 & \\
+    3 5 1 & \\
+  \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+The \textbf{minimum-cost network} has a total cost of \textbf{7 units}.
+
+\begin{itemize}
+    \item \textbf{Channels 1(1-2), 2(2-0)} are \textbf{critical}, because removing any of them would increase the minimum cost to maintain full connectivity.
+    \item \textbf{Channels 3(2-3)} are \textbf{critical}, because removing it would separate the network into two individual part.
+    \item \textbf{Channels 4(3-4), 5(4-5), and 6(3-5)} are \textbf{backup-ready}, since they can be swapped in without increasing the cost.
+\end{itemize}
+
+\subsection*{\fontsize{16}{12}Example 2}
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  \textbf{stdin} & \textbf{stdout} \\
+  \hline
+    3 3 & no channels \\
+    0 1 1 & 0 1 2 \\
+    1 2 1 & \\
+    0 2 1 & \\
+  \hline
+  \end{tabularx}
+\end{table}
+
+\newpage
+\subsection*{\fontsize{16}{12}Visual Explanation for Example 1}
+
+\begin{center}
+    \begin{minipage}{0.48\textwidth}
+        \scalebox{1.1}{
+        \begin{tikzpicture}
+            % Nodes
+            \node (0) at (0, 0) [circle, draw, minimum size=1cm] {0};
+            \node (1) at (2, 1.5) [circle, draw, minimum size=1cm] {1};
+            \node (2) at (4, 0) [circle, draw, minimum size=1cm] {2};
+            \node (3) at (4, -2.5) [circle, draw, minimum size=1cm] {3};
+            \node (4) at (2, -4) [circle, draw, minimum size=1cm] {4};
+            \node (5) at (0, -2.5) [circle, draw, minimum size=1cm] {5};
+
+            % MST Edges (critical in black, rest in gray)
+            \draw[very thick] (1) -- node[above] {1} (2);   % edge 1
+            \draw[very thick] (2) -- node[above] {1} (0);   % edge 2
+            \draw[very thick] (2) -- node[right] {2} (3);   % edge 3
+
+            % Backup-Ready Edges
+            \draw[dashed, thick, gray] (4) -- node[below left] {1} (5);
+            \draw[dashed, thick, gray] (5) -- node[above] {1} (3);
+            \draw[dashed, thick, gray] (3) -- node[below right] {1} (4); % edge 4
+        \end{tikzpicture}}
+        \captionof*{figure}{Minimum-cost network with total cost 7.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \scalebox{1.1}{
+        \begin{tikzpicture}
+            % Nodes
+            \node (0) at (0, 0) [circle, draw, minimum size=1cm] {0};
+            \node (1) at (2, 1.5) [circle, draw, minimum size=1cm] {1};
+            \node (2) at (4, 0) [circle, draw, minimum size=1cm] {2};
+            \node (3) at (4, -2.5) [circle, draw, minimum size=1cm] {3};
+            \node (4) at (2, -4) [circle, draw, minimum size=1cm] {4};
+            \node (5) at (0, -2.5) [circle, draw, minimum size=1cm] {5};
+
+            % Remaining MST edges (after removing channel 1)
+            \draw[very thick] (2) -- node[above] {1} (0);   % edge 2
+            \draw[very thick] (2) -- node[right] {2} (3);   % edge 3
+            \draw[gray, very thick] (3) -- node[below right] {1} (4);   % edge 4
+            \draw[gray, very thick] (4) -- node[below left] {1} (5);   % edge 5
+            \draw[gray, very thick] (3) -- node[above] {1} (5);    % edge 6
+
+            % Dashed replacement edge (0–1)
+            \draw[dashed, thick] (0) -- node[above left] {6} (1); % edge 0 (high cost)
+        \end{tikzpicture}}
+        \captionof*{figure}{If channel 1 is removed, the cheapest way to reconnect node 1 is via channel 0 with cost 6, increasing total cost from 7 to 12.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \scalebox{1.1}{
+        \begin{tikzpicture}
+            % Nodes
+            \node (0) at (0, 0) [circle, draw, minimum size=1cm] {0};
+            \node (1) at (2, 1.5) [circle, draw, minimum size=1cm] {1};
+            \node (2) at (4, 0) [circle, draw, minimum size=1cm] {2};
+            \node (3) at (4, -2.5) [circle, draw, minimum size=1cm] {3};
+            \node (4) at (2, -4) [circle, draw, minimum size=1cm] {4};
+            \node (5) at (0, -2.5) [circle, draw, minimum size=1cm] {5};
+
+            % Left triangle
+            \draw[very thick] (1) -- node[above] {1} (2);   % edge 1
+            \draw[very thick] (2) -- node[above] {1} (0);   % edge 2
+            % Removed bridge: edge 3 (2–3)
+            \draw[dashed, thick] (2) -- node[right] {2} (3); % channel 3 removed
+
+            % Right square still connected
+            \draw[gray, very thick] (3) -- node[below right] {1} (4);   % edge 4
+            \draw[gray, very thick] (4) -- node[below left] {1} (5);   % edge 5
+            \draw[gray, very thick] (3) -- node[above] {1} (5);    % edge 6
+        \end{tikzpicture}}
+        \captionof*{figure}{Removing channel 3 disconnects the graph.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \scalebox{1.1}{
+        \begin{tikzpicture}
+            % Nodes
+            \node (0) at (0, 0) [circle, draw, minimum size=1cm] {0};
+            \node (1) at (2, 1.5) [circle, draw, minimum size=1cm] {1};
+            \node (2) at (4, 0) [circle, draw, minimum size=1cm] {2};
+            \node (3) at (4, -2.5) [circle, draw, minimum size=1cm] {3};
+            \node (4) at (2, -4) [circle, draw, minimum size=1cm] {4};
+            \node (5) at (0, -2.5) [circle, draw, minimum size=1cm] {5};
+
+            % Backup-Ready Edges
+            \draw[dashed, thick, gray] (4) -- node[below left] {1} (5);
+            \draw[dashed, thick, gray] (5) -- node[above] {1} (3);
+            \draw[dashed, thick, gray] (3) -- node[below right] {1} (4); % edge 4
+        \end{tikzpicture}}
+        \captionof*{figure}{Backup-ready cycle: edges 4, 5, 6}
+    \end{minipage}
+\end{center}
+
+\blankpage
+
+% Problem G. Mischievous Elves and Magic Sorting Spell (Former A)
+
+\section*{\fontsize{18}{12}Problem G. Mischievous Elves and Magic Sorting Spell}
+
+\begin{alignat*} {2}
+ &   \text{Input file:}   \quad     &&\text{stdin}\\
+ &   \text{Output file:}  \quad     &&\text{stdout}\\
+ &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Memory limit:} \quad     &&\text{64 MB}
+\end{alignat*}
+\noindent
+Deep in an enchanted forest, a group of mischievous elves loves playing a game called \textbf{Number Gathering}. During the game, they arrange a row of magic stones, each with a value in a completely random order!
+\\\\
+\noindent
+The Elf King, however, has established a \textbf{sacred rule} for how these valued stones should be arranged:
+
+\begin{itemize}
+    \item One of the \textbf{largest} valued stones must be placed in the \textbf{rightmost} position.
+    \item One of the \textbf{smallest} valued stones must be placed in the \textbf{leftmost} position.
+\end{itemize}
+
+\noindent
+The elves possess a special power -- the \textbf{Adjacent Swap Spell}, which allows them to swap two neighboring stones. Now, the Elf King wants to know:
+\\\\
+\noindent
+What is the \textbf{minimum number of swaps} needed to rearrange the stones to satisfy his rule?
+
+\subsection*{\fontsize{16}{12}Input}
+Line 1 contains a single integer $N$, denoting the quantity of stones. \\\\
+Line 2 contains $N$ integers $v_i$, denoting the value of each stone. 
+
+\begin{itemize}
+    \item $1 \leq N \leq 10^5$
+    \item $1 \leq V_i \leq 10^5$
+\end{itemize}
+
+\subsection*{\fontsize{16}{12}Output}
+Print a single integer, the minimum number of adjacent swaps required to place:
+\begin{itemize}
+    \item One of the smallest valued stones at the leftmost position.
+    \item One of the largest valued stones at the rightmost position.
+\end{itemize}
+
+\newpage
+\subsection*{\fontsize{16}{12}Example}
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  stdin & stdout \\
+  \hline
+    6 & 3 \\
+    3 4 1 5 5 3 & \\
+  \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+Given the initial arrangement: \{3, 4, 1, 5, 5, 3\}
+
+\begin{enumerate}
+    \item Swap index 1 and 2: \{3, \underline{1}, \underline{4}, 5, 5, 3\}
+    \item Swap index 0 and 1: \{\underline{1}, \underline{3}, 4, 5, 5, 3\} (smallest valued is now at the leftmost position)
+    \item Swap index 4 and 5: \{1, 3, 4, 5, \underline{3}, \underline{5}\} (largest valued is now at the rightmost position)
+\end{enumerate}
+Thus, the minimum number of swaps required is \textbf{3}.
+
+\newpage
+
+% Problem H. Block Builder’s Challenge: Rainfall Simulator (Former I)
+
+\section*{\fontsize{18}{12}Problem H. Block Builder's Challenge: Rainfall Simulator}
+
+\begin{alignat*} {2}
+ &   \text{Input file:}   \quad     &&\text{stdin}\\
+ &   \text{Output file:}  \quad     &&\text{stdout}\\
+ &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Memory limit:} \quad     &&\text{64 MB}
+\end{alignat*}
+
+\noindent
+In the popular game \textbf{"Block Builder's Challenge"}, players design landscapes using cubic blocks arranged in a grid. After completing their creation, the game enters the \textbf{"Rainfall Simulation"} phase, where water falls from the sky and fills the terrain's low points. The objective is to calculate how much water is trapped within the block structure.
+\\\\
+\noindent
+Your task is to determine the \textbf{total volume of trapped water} after rainfall while following these rules:
+
+\begin{itemize}
+	\item The landscape is represented as a \( M \times N \) grid.
+	\item Each grid cell contains a non-negative integer representing the height of a block.
+	\item Water flows downward and seeks the lowest available space.
+	\item Water can only flow \textbf{horizontally} or \textbf{vertically} (not \textbf{diagonally}).
+	\item Water \textbf{can escape} if it reaches the edges of the grid.
+	\item One unit of water fills one cubic unit of space.
+\end{itemize}
+
+\subsection*{\fontsize{16}{12}Input}
+Line 1 contains two integers \( M \) and \( N \), denoting vertical and horizontal length of the grid, respectively.
+\\\\
+\noindent
+The next \( M \) lines contain \( N \) space-separated integers $H_{ij}$, denoting the height of a block.
+\begin{itemize}
+    \item \(1 \leq M, N \leq 200\)
+    \item \( 0 \leq H_{ij} \leq 10^4,\ \forall i\in[0,M),\ j\in[0,N)\)
+\end{itemize}
+
+\subsection*{\fontsize{16}{12}Output}
+Print a single integer, the total volume of water (in cubic units) that is trapped after rainfall.
+
+\newpage
+\subsection*{\fontsize{16}{12}Example 1}
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  \textbf{stdin} & \textbf{stdout} \\
+  \hline
+  3 6 & 4 \\ 
+  1 4 3 1 3 2 &  \\
+  3 2 1 3 2 4 &  \\
+  2 3 3 2 3 1 &  \\
+  \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+\noindent
+After the rainfall, there will be \textbf{4} unit of water being trapped, since the water collected in the low areas escaped at the edge.
+
+\subsection*{\fontsize{16}{12}Example 2}
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  \textbf{stdin} & \textbf{stdout} \\
+  \hline
+  5 5 & 10 \\
+  3 3 3 3 3 &  \\
+  3 2 2 2 3 &  \\
+  3 2 1 2 3 &  \\
+  3 2 2 2 3 &  \\
+  3 3 3 3 3 &  \\
+  \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+\noindent
+This terrain forms a \textbf{closed basin} with walls of height 3, so the water can fill up to level 3 in this basin. Therefore, the total volume of water is \textbf{10} units.
+
+\subsection*{\fontsize{16}{12}Example 3}
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  \textbf{stdin} & \textbf{stdout} \\
+  \hline
+  5 5 & 1 \\
+  3 3 3 3 3 &  \\
+  3 2 2 2 3 &  \\
+  2 2 1 2 2 &  \\
+  3 2 2 2 3 &  \\
+  3 3 3 3 3 &  \\
+  \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+\noindent
+After the rainfall only \textbf{1} unit of water is trapped, while the remaining 9 units escape.
+
+\newpage
+
+% Problem I. The Museum’s Security Grid (Former E)
+
+\section*{\fontsize{18}{12}Problem I. The Museum's Security Grid}
+
+\begin{alignat*} {2}
+ &   \text{Input file:}   \quad     &&\text{stdin}\\
+ &   \text{Output file:}  \quad     &&\text{stdout}\\
+ &   \text{Time limit:}   \quad     &&\text{500 milliseconds}\\
+ &   \text{Memory limit:} \quad     &&\text{64 MB}
+\end{alignat*}
+
+\noindent
+The prestigious National Museum of Technology operates a high-tech security system based on an \(M \times N\) grid of laser sensors. Each sensor has a \textbf{unique} power level used to detect intruders. However, the chief security officer noticed that the power levels are unnecessarily high, leading to excessive energy consumption.
+\\\\
+\noindent
+To optimize energy efficiency, the power levels must be reconfigured while preserving the system's effectiveness. The new configuration must satisfy the following conditions:
+\begin{itemize}
+    \item If a sensor originally had a higher power level than another sensor in the \textbf{same row or column}, it must remain more powerful in the new configuration.\\
+    i.e. Let \( P' \) be the reconfigured security system of the original one \( P \).\\
+    Then, for all indices \( i, j_1, j_2 \) s.t. \( j_1 \ne j_2,\ i\in [0,M),\ j_1,j_2\in [0,N)\),\\ the following statement holds:
+    \[
+    P'_{i, j_1} > P'_{i, j_2} \iff P_{i, j_1} > P_{i, j_2}.
+    \]
+    
+    Similarly, for all indices \( j, i_1, i_2 \) s.t. \( i_1 \ne i_2,\ i_1,i_2\in [0,M),\ j\in [0,N)\), we have:
+    \[
+    P'_{i_1, j} > P'_{i_2, j} \iff P_{i_1, j} > P_{i_2, j}.
+    \]
+
+    \item The highest power level in the new configuration must be \textbf{as low as possible}.
+    \item The minimum power level in the new configuration must be \textbf{at least 1}.
+\end{itemize}
+
+\noindent
+As the museum's security consultant, your task is to determine the optimal power levels for each sensor in the grid while ensuring that the conditions above are met.
+
+\subsection*{\fontsize{16}{12}Input}
+Line 1 contains two integers \(M\) and \(N\), denoting the number of rows and columns in security grid.
+\\\\
+\noindent
+The next \(M\) lines each contain \(N\) integers, denoting the number of the sensors in the grid and $P$ denoting the power levels of the sensors. Each power level in initial configuration is \textbf{unique}.
+\begin{itemize}
+    \item \(1 \leq M, N \leq 10^3\)
+    \item $1\leq P \leq 10^5$
+    \item $P_{i_1, j_1} \neq P_{i_2, j_2}, \ \forall (i_1, j_1) \neq (i_2, j_2),\ i_1, i_2 \in [0, M),\ j_1, j_2 \in [0, N)$
+    \item \(M \times N \leq 10^5\)
+\end{itemize}
+\subsection*{\fontsize{16}{12}Output}
+Output \(M\) lines, each containing \(N\) space-separated integers, denoting the reconfigured security grid.
+
+\subsection*{\fontsize{16}{12}Example 1}
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  \textbf{stdin} & \textbf{stdout} \\
+  \hline
+  2 2 & 2 1 \\
+  3 1 & 1 2 \\
+  2 5 & \\
+  \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+The original grid is:
+
+\[
+\begin{bmatrix}
+3 & 1 \\
+2 & 5
+\end{bmatrix}
+\]
+\noindent
+After reconfiguration, the new grid is:
+
+\[
+\begin{bmatrix}
+2 & 1 \\
+1 & 2
+\end{bmatrix}
+\]
+
+\noindent The maximum power level in this new grid is 2, and it can be shown that no smaller power level configuration satisfies the conditions.
+
+\subsection*{\fontsize{16}{12}Example 2}
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  \textbf{stdin} & \textbf{stdout} \\
+  \hline
+  1 1 & 1 \\
+  10 & \\
+  \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+Since there is only one sensor, it must be assigned the minimum power level of 1.
+
+\newpage
+
+% Problem J. Signal Synchronization in the Sky Port (Former N)
+
+\section*{\fontsize{18}{12}Problem J. Signal Synchronization in the Sky Port}
+
+\begin{alignat*}{2}
+ &   \text{Input file:}   \quad     &&\text{stdin}\\
+ &   \text{Output file:}  \quad     &&\text{stdout}\\
+ &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Memory limit:} \quad     &&\text{64 MB}
+\end{alignat*}
+
+\noindent
+In the futuristic Sky Port, thousands of aerial drones arrive and depart every second. Each drone is equipped with a synchronization chip that ensures it remains in alignment with two different transmission frequencies used by the control tower.
+\\\\
+\noindent
+To ensure flight safety, a master synchronization array $c$ must be generated. This array serves as an encrypted signal. Each drone will decode this signal using their own decoding window.
+\\\\
+\noindent
+Here is how the synchronization system operates:
+\begin{itemize}
+    \item The control tower provides two sequences $a$ and $b$, each of length $N$, denoting the message that type-$A$ and type-$B$ drones should be able to recover.
+    \item Type-$A$ drones extract their message by \textbf{XOR-ing} every \textbf{contiguous} subarray of $k_1$ elements (in \textbf{circular} fashion) from the array $c$.
+    \item Type-$B$ drones extract their message by \textbf{XOR-ing} every \textbf{contiguous} subarray of $k_2$ elements (also \textbf{circular}) from the array $c$.
+    \item The mathematical representation of the extraction process is as follows:\begin{itemize}
+        \item $a_i = c_{i\%N} \oplus c_{(i+1)\%N} \oplus \cdots \oplus c_{(i+k_1-1)\%N},\ \forall i\in [0,N)$ \\
+        \item $b_i = c_{i\%N} \oplus c_{(i+1)\%N} \oplus \cdots \oplus c_{(i+k_2-1)\%N},\ \forall i\in [0,N)$
+        \end{itemize}
+\end{itemize}
+\noindent
+Your job is to generate an array $c$ of $N$ non-negative integers, so that:
+\\
+\noindent
+XOR every $k_1, k_2$-length subsequence (circular) of $c$ equals the value in $a,b$, respectively.
+\\\\
+\noindent
+It is \textbf{promised} that there exists \textbf{at least one valid} $c$ extracted to recover both messages.
+
+\subsubsection*{\fontsize{14}{12}XOR Explanation}
+XOR, denoted $\oplus$, is a binary operation. For two bits $a$ and $b$, the operation is defined as:
+    \[
+    a \oplus b =
+    \begin{cases}
+    1, & \text{if } a \neq b; \\
+    0, & \text{if } a = b.
+    \end{cases}
+    \]
+\noindent
+When doing $\oplus$ on integers, it is performed bitwise on their binary.
+For example, computing 12 $\oplus$ 10.
+We first convert 12 and 10 to binary representation:
+\[
+12_{10} = 1100_2 \quad \text{and} \quad 10_{10} = 1010_2.
+\]
+\noindent
+Use $\oplus$ in binary operation, and convert to decimal, then we can get the result of $12\oplus10=6$:
+\[
+\begin{array}{cccccc}
+\text{Bit:} & 1 & 1 & 0 & 0 \\
+\oplus \quad & 1 & 0 & 1 & 0 \\
+\hline&0&1&1&0&=(6)_{10}\\
+\end{array}
+\]
+
+
+\subsection*{\fontsize{16}{12}Input}
+Line 1 contains three integers $N$, $K_1$, and $K_2$.
+\\\\
+\noindent
+Line 2 contains $N$ space-separated integers $a_i$, the message to be extracted by type-$A$ drones.
+\\\\
+\noindent
+Line 3 contains $N$ space-separated integers $b_i$, the message to be extracted by type-$B$ drones.
+
+\begin{itemize}
+    \item $1 \leq N \leq 10^5$
+    \item $1 \leq K_1, K_2 \leq N\wedge K_1 \ne K_2$
+    \item $0 \leq a_i, b_i < 2^{30},\ \forall i\in [0,N)$
+\end{itemize}
+
+\subsection*{\fontsize{16}{12}Output}
+Print $N$ space-separated integers $c_i\in [0,2^{30}),\forall i\in [0,N)$, denoting the encrypted signal allowing both drones to extract messages by the procedures above.\\\\\noindent
+We ensure that there \textbf{exists at least one valid} $c$ extracted to recover both messages.
+\\\\
+\noindent
+If there are multiple valid arrays, print any \textbf{one of them}. For all numbers you output must be \textbf{in the range} of $[0, 2^{30})$, or you will get "\textbf{Wrong Answer}".
+\subsection*{\fontsize{16}{12}Examples}
+\begin{table}[h]
+    \centering
+    \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+        \hline
+        \textbf{stdin} & \textbf{stdout} \\
+        \hline
+        5 2 4 & 2 0 2 3 1 \\
+        2 2 1 2 3 & \\
+        3 0 2 0 1 & \\
+        \hline
+    \end{tabularx}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+        \hline
+        \textbf{stdin} & \textbf{stdout} \\
+        \hline
+        7 2 5 & 3 1 0 5 5 4 4 \\
+        2 1 5 0 1 0 7 & \\
+        2 5 0 3 7 2 3 & \\
+        \hline
+    \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+In first example, to recover each $a_i$, type-$A$ drones perform XOR on every window of $k_1 = 2$ elements from $c$:
+\begin{itemize}
+    \item $c_0 \oplus c_1 = 2 \oplus 0 = 2 = a_0$
+    \item $c_1 \oplus c_2 = 0 \oplus 2 = 2 = a_1\dots$
+\end{itemize}
+Type-$B$ drones apply XOR on $k_2 = 4$-element windows, and the values match perfectly with $b$.
+\\
+\noindent
+Thus, the encrypted array is \textbf{valid}.
+
+\newpage
+
+% Problem K. The Ancient Formula (Former F)
+
+\section*{\fontsize{18}{12}Problem K. The Ancient Formula}
+
+\begin{alignat*} {2}
+ &   \text{Input file:}   \quad     &&\text{stdin}\\
+ &   \text{Output file:}  \quad     &&\text{stdout}\\
+ &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Memory limit:} \quad     &&\text{64 MB}
+\end{alignat*}
+\noindent
+During an archaeological dig, Dr. Yee uncovered ancient tablets inscribed with strange chemical formulas in an old script. After careful translation, the formulas were finally decoded.
+\\\\
+\noindent
+As a chemist, Dr. Yee recognized some symbols as elements, though the structures seemed unusual. Were these early chemical notations—or something more valuable?
+\\\\
+\noindent
+On closer examination, some formulas resembled those in his own notes, but used parentheses and different groupings. Could they represent the same compounds, written in another notation system?
+\\\\
+\noindent
+Can you help Dr. Yee verify if the ancient formula matches the modern one?
+\subsubsection*{The chemical formula are defined as follows:}
+\begin{itemize}
+    \item Atom Symbol: An Atom Symbol represents a single atom type. It consists of one uppercase letter, optionally followed by one lowercase letter.
+    \item An Atom Symbol followed immediately by a Count is a chemical formula. This indicates the multiplicity of that atom. If no Count is present, the multiplicity is 1.
+    \begin{itemize}
+        \item e.x. H, O, Na, Fe, H1, O2, Na3, Fe4 are chemical formulas.
+    \end{itemize}
+    \item If $S$ is a chemical formula, then $(S)$ follows optionally by a count is a chemical formula. The count indicates the multiplicity of the entire group.
+    \item If $S_1$ and $S_2$ are both chemical formulas, then their concatenation $S_1S_2$ is also a chemical formula.
+    \item Any string that can't be constructed by applying the rules above is invalid chemical formula.
+\end{itemize}
+
+\subsection*{\fontsize{16}{12}Input}
+Line 1 contains two integers $N_1$ and $N_2$, denoting the length of following two formulas.
+\\\\
+\noindent
+Line 2 - 3 each contains a string represents valid ancient and modern formula respectively.
+\begin{itemize}
+    \item $1 \leq N_1, N_2 \leq 10^4$
+    \item The number of every atom in each formula will not exceed \(10^5\).
+    \item Parentheses are with a maximum nesting depth of \( 15 \).
+\end{itemize}  
+\noindent
+\textit{Note: Atoms, elements and formulas may not exist on Earth.}  
+
+
+\subsection*{\fontsize{16}{12}Output}
+Print "Yes" if every atom in two formulas has the same quantity; otherwise, print "No".
+
+\subsection*{\fontsize{16}{12}Example 1}
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+    \hline
+    stdin & stdout \\
+    \hline
+    11 9 & No \\
+    (X3(OeR)2)3 & \\
+    X8(OeR2)3 &  \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+
+Expanding the formulas:
+\begin{itemize}
+    \item \texttt{(X3(OeR)2)3} expands as:
+      \begin{itemize}
+          \item \texttt{X3} is repeated 3 times $\rightarrow$ \texttt{X9}
+          \item \texttt{(OeR)2} expands to \texttt{Oe2R2}, and repeating this 3 times gives \texttt{Oe6R6}.
+      \end{itemize}
+      So, the full expansion is \texttt{X9Oe6R6}.
+      
+    \item \texttt{X8(OeR2)3} expands as:
+      \begin{itemize}
+          \item \texttt{X8} remains as is.
+          \item \texttt{(OeR2)3} expands to \texttt{Oe3R6}.
+      \end{itemize}
+      So, the full expansion is \texttt{X8Oe3R6}.
+\end{itemize}
+\noindent
+Since the number of atoms does not match, the two formulas represent different compounds.
+
+\subsection*{\fontsize{16}{12}Example 2}
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+    \hline
+    stdin & stdout \\
+    \hline
+    9 15 & Yes \\ 
+    SO2(ORe)4 & \\
+    (ORe)2S(ORe)2O2 & \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\newpage
+
+% Problem L. Cursed Envoys and Race for Awakening (Former M)
+
+\section*{\fontsize{18}{12}Problem L. Cursed Envoys and Race for Awakening}
+
+\begin{alignat*} {2}
+ &   \text{Input file:}   \quad     &&\text{stdin}\\
+ &   \text{Output file:}  \quad     &&\text{stdout}\\
+ &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Memory limit:} \quad     &&\text{64 MB}
+\end{alignat*}
+\noindent
+In a mysterious world, multiple ancient kingdoms exist, each ruled by powerful monarchs. Every few centuries, the kingdoms send their wisest envoys to participate in the legendary Moonlight Trial--a test designed to break an ancient curse.
+\begin{itemize}
+    \item Each envoy has a shadow that is either \textbf{circular} or \textbf{triangular}.
+    \item There are \textbf{at least} one envoy with \textbf{triangular shadow} in each kingdom.
+    \item Envoys can see the shadows of others, but they cannot see their own.
+    \item Every night, during the Moonlight Ritual, each envoy may declare the shape of their shadow. If he/she is \textbf{correct}, he/she will be \textbf{awaken}; if he/she is \textbf{wrong}, he/she will be forever \textbf{lost in darkness}.
+    \item Every envoy cannot communicate with each other and must deduce their shadow's shape over time.  
+    \item Everyone in this trial plays \textbf{optimally}, meaning they will \textbf{only declare} their shadow shape when they are \textbf{sure} of it.
+\end{itemize}
+\noindent
+The trial's objective is clear:
+\\
+\noindent
+\textbf{The first kingdom} whose envoys \textbf{all successfully} identify their own shadow shapes and \textbf{no one} lost in darkness will claim \textbf{ultimate victory}.
+
+\subsection*{\fontsize{16}{12}Input}
+Line 1 contains an integer $K$, denoting the number of countries participating the Trial.
+\\\\
+\noindent
+The next \(K\) lines provide information for countries \(0\) to \(K-1\), in order. Each line contains two integers, \(N_i\) and \(M_i\), where \(i \in[0,K)\) is the index of the country.
+\begin{itemize}
+    \item $1 \leq K \leq 10^4$ Denoting the number of countries.
+    \item $1 \leq N_i \leq 10^5$ Denoting the number of envoys in country \(i\).
+    \item $1 \leq M_i \leq N_i$ Denoting the number of people with \textbf{triangular shadows} in country \(i\).
+\end{itemize}
+\subsection*{\fontsize{16}{12}Output}
+Print a single integer, the index of country that will \textbf{win} the Moonlight Trial. 
+\\\\
+\noindent
+If there are more than one countries that will win, print the country with the most number of people since they have more power. 
+\\\\
+\noindent
+But if there still are more than one country with the same number of people, print the one with the smaller number since they are lucky.
+\newpage
+% Example 1
+\subsection*{\fontsize{16}{12}Example 1}
+\begin{table}[h]
+    \centering
+    \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+        \hline
+        \textbf{stdin} & \textbf{stdout} \\
+        \hline
+        2 & 1 \\
+        10 2 &\\
+        3 1 &\\
+        \hline
+    \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+In country 1, there is only one envoy with a \textbf{triangular} shadow, the one with \textbf{triangular} shadow
+will find everyone is \textbf{circular} shadow. But there must be \textbf{at least one} person with \textbf{triangular} shadow,
+thus itself can determine its shape is \textbf{triangular} and awaken. And the second night the others will find the \textbf{only one} with \textbf{triangular} shadow has awakened, thus they all can determine their own shape is \textbf{circular} and awaken.
+It takes \textbf{2 days} in total for country 1.
+\\\\
+\noindent
+Obviously \textbf{2 days} are not enough for country 0 to determine everyone's shape.
+\\\\
+\noindent
+Thus, country 1 will win the Moonlight Trial.
+
+\subsection*{\fontsize{16}{12}Example 2}
+\begin{table}[h]
+    \centering
+    \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+        \hline
+        \textbf{stdin} & \textbf{stdout} \\
+        \hline
+        2 & 0 \\
+        3 1 &\\
+        2 1 &\\
+        \hline
+    \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+Since we know those two country will all take only \textbf{2 days} to identify their shadows and awaken in the same night.
+\\\\
+\noindent
+However, country 0 has \textbf{more people}, thus country 0 will win the Moonlight Trial.
+
+\newpage
+
+% Problem M. Magic Potion Battle (Former G)
+
+\section*{\fontsize{18}{12}Problem M. Magic Potion Battle}
+
+\begin{alignat*} {2}
+ &   \text{Input file:}   \quad     &&\text{stdin}\\
+ &   \text{Output file:}  \quad     &&\text{stdout}\\
+ &   \text{Time limit:}   \quad     &&\text{500 milliseconds}\\
+ &   \text{Memory limit:} \quad     &&\text{64 MB}
+\end{alignat*}
+
+\noindent
+In the dark ages of wizardry, the legendary sorcerers \textbf{Merlin} and \textbf{Morgana} engaged in a fierce \textbf{Magic Potion Battle}. In this battle, they took turns casting spells to destroy potion bottles infused with magical essence. 
+\\\\
+\noindent
+The game follows these rules:
+\begin{itemize}
+    \item \textbf{Merlin} always plays first.
+    \item \textbf{Merlin} and \textbf{Morgana} take turns destroying exactly one potion bottle per turn.
+    \item The game ends immediately if the total amount of magical essence destroyed becomes \textbf{divisible by 3}. The player who made that move \textbf{loses}.
+    \item If all potions are destroyed but the total essence is \textbf{not} divisible by 3, \textbf{Morgana automatically wins}.
+\end{itemize}
+
+\noindent
+Both players play \textbf{optimally}, meaning they make the best possible moves to maximize their chances of winning. 
+\\\\
+\noindent
+Your task is to determine whether Merlin can guarantee a win, or if Morgana will inevitably win. Print `"Yes"` if Merlin wins and `"No"` if Morgana wins.
+
+\subsection*{\fontsize{16}{12}Input}
+Line 1 contains a single integer \( N \) \((1 \leq N \leq 10^5)\), denoting the number of potion bottles.
+\\\\
+\noindent
+Line 2 contains \( N \) space-separated integers $K_i$, denoting the magical essence in the \( i^{th} \) potion bottle. \( 1 \leq K_i \leq 10^4,\ \forall i\in[0,N)\).
+
+\subsection*{\fontsize{16}{12}Output}
+Print "Yes" if Merlin can force a win; otherwise, print "No".
+
+\subsection*{\fontsize{16}{12}Example 1}
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  \textbf{stdin} & \textbf{stdout} \\
+  \hline
+  2 & Yes \\
+  2 1 & \\
+  \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+The game proceeds as follows:
+\begin{itemize}
+    \item \textbf{Turn 1:} Merlin removes either potion bottle.
+    \item \textbf{Turn 2:} Morgana removes the remaining bottle. 
+\end{itemize}
+The sum of the destroyed potion bottles is \( 2 + 1 = 3 \), which is divisible by 3. Since Morgana made the move that resulted in this, she \textbf{loses}, and Merlin wins.
+
+\subsection*{\fontsize{16}{12}Example 2}
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  \textbf{stdin} & \textbf{stdout} \\
+  \hline
+  5 & No \\
+  5 1 2 4 3 & \\
+  \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+One possible sequence of moves for Morgana to win:
+\begin{itemize}
+    \item \textbf{Turn 1:} Merlin removes the potion with value 1. Sum = \( 1 \).
+    \item \textbf{Turn 2:} Morgana removes the potion with value 3. Sum = \( 1 + 3 = 4 \).
+    \item \textbf{Turn 3:} Merlin removes the potion with value 4. Sum = \( 1 + 3 + 4 = 8 \).
+    \item \textbf{Turn 4:} Morgana removes the potion with value 2. Sum = \( 1 + 3 + 4 + 2 = 10 \).
+    \item \textbf{Turn 5:} Merlin removes the potion with value 5. Sum = \( 1 + 3 + 4 + 2 + 5 = 15 \).
+\end{itemize}
+Since 15 is divisible by 3, Merlin \textbf{loses}, meaning Morgana wins. Thus, the output is "No".
+
+\newpage
+
+% Problem N. Pirate Code: The Black Spot Game (Former D)
+
+\section*{\fontsize{18}{12}Problem N. Pirate Code: The Black Spot Game}
+
+\begin{alignat*} {2}
+ &   \text{Input file:}   \quad     &&\text{stdin}\\
+ &   \text{Output file:}  \quad     &&\text{stdout}\\
+ &   \text{Time limit:}   \quad     &&\text{1 second}\\
+ &   \text{Memory limit:} \quad     &&\text{64 MB}
+\end{alignat*}
+\noindent
+During the Golden Age of Piracy, Captain Henry Ironhook Vance and his crew of \(N\) pirates had just seized the legendary Bloodstone Compass-a mystical artifact said to guide its owner to untold riches. 
+But greed is a pirate's curse, and the crew soon fell into a deadly dispute over who would claim it.\\
+\noindent\\
+Following the ancient Pirate Code, they resorted to the dreaded Black Spot Game to decide. 
+In this game, the $M$ pirates formed a circle and passed around the cursed medallion. Every $K^{th}$ pirate receiving the medallion was marked for doom and thrown overboard.
+The process repeated until only one pirate remained.\\
+\noindent\\
+Here is a detailed description of the Black Spot Game:
+Before the game starts, there will be \(M\) pirates in total and an elimination number \(K\) will be pre-decided.
+\begin{enumerate}
+    \setlength{\itemsep}{-3pt} % Reduce space between items
+    \item A total of \(M\) pirates (numbered 0 to \(M-1\)) stand in a circle.
+    \item The game starts at pirate 0.
+    \item Counting proceeds \textbf{clockwise}, eliminating every \(K^{th}\) pirate.
+    \item The pirate who is eliminated is \textbf{removed} from the circle.
+    \item The next round starts with the pirate immediately clockwise to the eliminated one.
+    \item The process continues until only one pirate remains.
+\end{enumerate}
+
+\noindent
+For a more detailed illustration of how Black Spot Game proceeds, below is an illustration of the 
+Black Spot Game with a total of \(M = 5\) pirates and elimination number \(K = 2\).
+\begin{center}
+    \begin{tikzpicture}[scale=0.9]
+        
+        \begin{scope}[shift={(-6.25,0)}] 
+            % Draw eliminated pirate
+            \node[circle, draw, fill=white!50, minimum size=1.2cm] (2) at (18:2.5cm) {\textbf{2}};
+        \end{scope}
+
+        % First Circle (Initial State)
+        \begin{scope}[shift={(-6.25,0)}] % Adjust position for first diagram
+            % Draw large outer circle
+            \draw[thick] (0,0) circle (2.5cm);
+        
+            % Draw remaining pirates (white)
+            \foreach \i/\label in {90/0, -54/2, -126/3, 162/4} {
+                \node[circle, draw, fill=white!50, minimum size=1cm] (\label) at (\i:2.5cm) {\textbf{\label}};
+            }
+            % Draw eliminated pirate
+            \node[circle, draw, fill=white!50, minimum size=1cm] (2) at (18:2.5cm) {\textbf{1}};
+
+            % Label step number
+            \node at (-3, 2.5) {\textbf{1)}};
+        \end{scope}
+
+        % Second Circle (After eliminating 1)
+        \begin{scope}[shift={(0,0)}]
+            % Draw eliminated pirate (red)
+            \node[circle, draw, fill=white!50, minimum size=1.2cm] (4) at (-126:2.5cm) {\textbf{4}};
+        \end{scope}
+        
+        % Second Circle (After eliminating 1)
+        \begin{scope}[shift={(0,0)}] % Adjust position for second diagram
+            % Draw large outer circle
+            \draw[thick] (0,0) circle (2.5cm);
+        
+            % Draw remaining pirates
+            \foreach \i/\label in {90/0, -54/2, 162/4} {
+                \node[circle, draw, fill=white!50, minimum size=1cm] (\label) at (\i:2.5cm) {\textbf{\label}};
+            }
+            % Draw eliminated pirate
+            \node[circle, draw, fill=white!50, minimum size=1cm] (4) at (-126:2.5cm) {\textbf{3}};
+            
+            % Label step number
+            \node at (-3, 2.5) {\textbf{2)}};
+        \end{scope}
+
+        % Third Circle (After eliminating 3)
+        \begin{scope}[shift={(6,0)}]
+            % Draw eliminated pirate (red)
+            \node[circle, draw, fill=white!50, minimum size=1.2cm] (1) at (90:2.5cm) {\textbf{1}};
+        \end{scope}
+
+        % Third Circle (After eliminating 3)
+        \begin{scope}[shift={(6,0)}] % Adjust position for third diagram
+            % Draw large outer circle
+            \draw[thick] (0,0) circle (2.5cm);
+        
+            % Draw remaining pirates
+            \foreach \i/\label in {-54/2, 162/4} {
+                \node[circle, draw, fill=white!50, minimum size=1cm] (\label) at (\i:2.5cm) {\textbf{\label}};
+            }
+            % Draw eliminated pirate
+            \node[circle, draw, fill=white!50, minimum size=1cm] (1) at (90:2.5cm) {\textbf{0}};
+
+            % Label step number
+            \node at (-3, 2.5) {\textbf{3)}};
+        \end{scope}
+    \end{tikzpicture}
+    \newpage
+    \begin{tikzpicture}[scale=0.9] % Adjust scale to fit better
+
+        % Fourth Circle (After eliminating 0)
+        \begin{scope}[shift={(-3,-4)}] 
+            % Draw eliminated pirate (red)
+            \node[circle, draw, fill=white!50, minimum size=1.2cm] (4) at (162:2.5cm) {\textbf{4}};
+        \end{scope}
+        
+        % Fourth Circle (After eliminating 0)
+        \begin{scope}[shift={(-3,-4)}] % Position fourth diagram
+            % Draw large outer circle
+            \draw[thick] (0,0) circle (2.5cm);
+        
+            % Draw remaining pirate
+            \node[circle, draw, fill=white!50, minimum size=1cm] (2) at (-54:2.5cm) {\textbf{2}};
+            
+            % Draw eliminated pirate (red)
+            \node[circle, draw, fill=white!50, minimum size=1cm] (4) at (162:2.5cm) {\textbf{4}};
+
+            % Label step number
+            \node at (-3, 2.3) {\textbf{4)}};
+        \end{scope}
+
+        % Fifth Circle (Final Winner)
+        \begin{scope}[shift={(3,-4)}] % Position fifth diagram
+            % Draw large outer circle
+            \draw[thick] (0,0) circle (2.5cm);
+        
+            % Draw winner pirate (green)
+            \node[circle, draw, fill=white!50, minimum size=1cm] (2) at (-54:2.5cm) {\textbf{2}};
+
+            % Label step number
+            \node at (-2.5, 2.3) {\textbf{5)}};
+        \end{scope}
+    \end{tikzpicture}
+\end{center}
+
+\noindent
+Each pirate is labeled with a number from 0 to 4 in clockwise direction. Each round, one pirate will be eliminated. 
+The eliminated pirate is labeled in a double-circle. The winner is the last remaining pirate, which is pirate number 2.\\
+
+\noindent
+However, after listening to the explanation of the game, the pirates thought that it was too plain and simple.
+To make the game more complex and sophisticated, the pirates decided to elevate the game to another level. The \(P\) pirates would be divided into \(N\) \textbf{non-identical groups},
+each group \(i \in [0,n)\) consisted of \(M_i\) pirates, and the group would be assigned an elimination number \(K_i\).
+Every group would play the Black Spot Game \textbf{clockwise} until only \textbf{one pirate} remained in the group. After all groups had sorted out a final survivor,
+the \(N\) remaining pirates (one from each group) would gather to play the \textbf{final round} of the Black Spot Game \textbf{clockwise}, their numbers in the last round were their own group number, and the final round would be assigned an elimination number \(K_f\). The last pirate to survive this round would be the true heir to the untold treasures.
+\\
+\noindent
+Your task is to determine which pirate will outlast the curse and claim their fortune.
+You need to determine which group the winning pirate was originally in, and the pirate's number in that original group. 
+
+\subsection*{\fontsize{16}{12}Input}
+The first line of input consists of two integers \(N\) and \(K_f\):
+\begin{itemize}
+    \item \(1 \leq N \leq 500\) Representing the number of groups to split the pirates in,
+    \item \(1 \leq K_f \leq N\) Denoting the elimination number for the \textbf{final round}.
+\end{itemize}
+The following \(N\) lines represent group information for groups \(0\) to \(N-1\) in order. Each line consists of two integers, \(M_i\) and \(K_i\), where \(i\) denotes the group number.
+\begin{itemize}
+    \item \(1 \leq M_i \leq 500\) Denoting the number of pirates in group \(i\),
+    \item \(1 \leq K_i \leq M_i\) Denoting the assigned elimination number for group \(i\).
+\end{itemize}
+\noindent
+Note that we did not explicitely input the total number of pirates onboard \(P\), since 
+\(\Sigma_{i=0}^{N-1}M_i=P\) (number of pirates in each group will naturally sum up to \(P\)).
+\\
+\noindent
+Please also note that the groups are non-identical, so the number of pirates in each group varies, 
+the elimination number for each group also varies.
+
+\subsection*{\fontsize{16}{12}Output}
+You should output two integers to tell us who the winner is:
+\begin{enumerate}
+    \item The group the winner was initially in.
+    \item The number of the winner in the group.
+\end{enumerate}
+\noindent
+For example, the winner was in the group $0$ and the number $2$ pirate in the group, output 0 2. 
+\subsection*{\fontsize{16}{12}Example 1}
+% Example Table
+\begin{table}[h]
+    \centering
+    \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+    \hline
+    \textbf{stdin} & \textbf{stdout} \\
+    \hline
+    5 2 & 2 3 \\
+    6 3 & \\
+    7 4 & \\
+    10 3 & \\
+    3 2 & \\
+    5 2 & \\
+    \hline
+    \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Example 2}
+% Example Table
+\begin{table}[h]
+    \centering
+    \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+    \hline
+    \textbf{stdin} & \textbf{stdout} \\
+    \hline
+    7 3 & 3 2 \\
+    10 2 & \\
+    5 3 & \\
+    4 3 & \\
+    5 2 & \\
+    12 4 & \\
+    21 10 & \\
+    8 3 & \\
+    \hline
+    \end{tabularx}
+\end{table}
+
+\newpage
+\vspace*{\fill}
+{\centering \huge This is the end of the problem set.\par}
+\vspace{\fill}
+\newpage
 
 \end{document}
