@@ -1747,8 +1747,8 @@ Here is how the synchronization system operates:
     \item Type-$A$ drones extract their message by \textbf{XOR-ing} every \textbf{contiguous} subarray of $k_1$ elements (in \textbf{circular} fashion) from the array $c$.
     \item Type-$B$ drones extract their message by \textbf{XOR-ing} every \textbf{contiguous} subarray of $k_2$ elements (also \textbf{circular}) from the array $c$.
     \item The mathematical representation of the extraction process is as follows:\begin{itemize}
-        \item $a_i = c_{i\%N} \oplus c_{(i+1)\%N} \oplus \cdots \oplus c_{(i+k_1-1)\%N},\ i\in [0,N)$ \\
-        \item $b_i = c_{i\%N} \oplus c_{(i+1)\%N} \oplus \cdots \oplus c_{(i+k_2-1)\%N},\ i\in [0,N)$
+        \item $a_i = c_{i\%N} \oplus c_{(i+1)\%N} \oplus \cdots \oplus c_{(i+k_1-1)\%N},\ \forall i\in [0,N)$ \\
+        \item $b_i = c_{i\%N} \oplus c_{(i+1)\%N} \oplus \cdots \oplus c_{(i+k_2-1)\%N},\ \forall i\in [0,N)$
         \end{itemize}
 \end{itemize}
 \noindent
