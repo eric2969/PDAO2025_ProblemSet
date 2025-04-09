@@ -1111,11 +1111,7 @@ Print a single integer, the total volume of water (in cubic units) that is trapp
 
 \subsection*{\fontsize{16}{12}Explanation}
 \noindent
-After the rainfall:
-\begin{itemize}
-    \item Water collects in low areas but \textbf{can escape at the edges}.
-    \item The total trapped water volume is \textbf{4} cubic units.
-\end{itemize}
+After the rainfall, there will be \textbf{10} unit of water being trapped, since the water collected in the low areas escaped at the edge.
 
 \subsection*{\fontsize{16}{12}Example 2}
 \begin{table}[h]
@@ -1136,12 +1132,28 @@ After the rainfall:
 
 \subsection*{\fontsize{16}{12}Explanation}
 \noindent
-This terrain forms a \textbf{closed basin} with walls of height 3:
-\begin{itemize}
-    \item Water fills up to level 3 inside the basin.
-    \item The total volume of trapped water is \textbf{10} cubic units.
-\end{itemize}
+This terrain forms a \textbf{closed basin} with walls of height 3, so the water can fill up to level 3 in this basin. Therefore, the total volume of water is \textbf{10} units.
 
+\subsection*{\fontsize{16}{12}Example 3}
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\ttfamily}X|>{\ttfamily}X|}
+  \hline
+  \textbf{stdin} & \textbf{stdout} \\
+  \hline
+  5 5 & 1 \\
+  3 3 3 3 3 &  \\
+  3 2 2 2 3 &  \\
+  2 2 1 2 2 &  \\
+  3 2 2 2 3 &  \\
+  3 3 3 3 3 &  \\
+  \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{\fontsize{16}{12}Explanation}
+\noindent
+After the rainfall only \textbf{1} unit of water is trapped, while the remaining 9 units escape.
 \newpage
 
 \section*{\fontsize{18}{12}Problem J. The Interplanetary Network}
