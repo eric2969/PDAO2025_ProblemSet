@@ -1,10 +1,12 @@
 #include <iostream>
-
+#define IOS ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0)
+#define endl '\n'
 using namespace std;
 
 int cntry[10000+5][2] = {};
 
 signed main() {
+    IOS;
     int n, max_people = 0, min_day = 0, min_ctry = -1;
     int days;
     cin >> n;

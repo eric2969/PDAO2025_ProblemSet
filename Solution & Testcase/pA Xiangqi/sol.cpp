@@ -1,5 +1,7 @@
 //check whether the general can move in chinese chess
 #include <bits/stdc++.h>
+#define IOS ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0)
+#define endl '\n'
 using namespace std;
 
 // const int EMPTY = 0;
@@ -315,6 +317,7 @@ bool isWin(){
     return true;
 }
 int main(){
+    IOS;
     for (int i=0;i<10;i++){
         cin.getline(board[i],10);
         for(int j=0;j<9;j++){

@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#define IOS ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0)
+#define endl '\n'
 using namespace std;
 
 bool magicPotionBattle(const vector<int>& potions) {
@@ -13,6 +15,7 @@ bool magicPotionBattle(const vector<int>& potions) {
 }
 
 int main() {
+    IOS;
     int n;
     cin >> n;
     vector<int> potions(n);

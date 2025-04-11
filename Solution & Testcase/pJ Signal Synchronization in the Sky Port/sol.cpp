@@ -2,6 +2,8 @@
 #include <iostream>
 #include <functional>
 #include <vector>
+#define IOS ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0)
+#define endl '\n'
 using namespace std;
 
 int _gcd(int a, int b) {while ((a %= b) && (b %= a)); return a + b;}
@@ -29,6 +31,7 @@ void arr_gcd(int &k1, vector<int> &a1, int &k2, vector<int> &a2) {
 }
 
 int main() {
+    IOS;
     int n, k1, k2, mmax = 0;
     cin >> n >> k1 >> k2;
     vector<int> a1(n), a2(n), ans(n, 0);

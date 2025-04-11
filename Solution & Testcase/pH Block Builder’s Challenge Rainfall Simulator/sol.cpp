@@ -6,7 +6,7 @@
 using namespace std;
 
 signed main(int argc, char** argv) {
-    ios::sync_with_stdio(0); cin.tie(0);
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     int m, n;
     cin >> m >> n;
     vector<vector<int>> heightMap(m, vector<int>(n, 0));

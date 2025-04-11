@@ -2,7 +2,8 @@
 using namespace std;
 #define X first
 #define Y second
-#define IOS ios_base::sync_with_stdio(0);cin.tie(0)
+#define IOS ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0)
+#define endl '\n'
 template<class T> bool chmin(T &a, T b) { return b < a && (a = b, true); }
 template<class T> bool chmax(T &a, T b) { return a < b && (a = b, true); }
 typedef long long ll;

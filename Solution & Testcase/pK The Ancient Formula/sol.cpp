@@ -4,7 +4,8 @@
 #include <map>
 #include <stack>
 #include <cctype>
-
+#define IOS ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0)
+#define endl '\n'
 using namespace std;
 
 class Solution {
@@ -76,6 +77,7 @@ private:
 };
 
 int main() {
+    IOS;
     int n1, n2;
     cin >> n1 >> n2; // Read the number of elements in each formula
     string f1, f2;

@@ -3,7 +3,8 @@
 #include <string>
 #include <algorithm>
 #include <cmath>
-
+#define IOS ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0)
+#define endl '\n'
 using namespace std;
 
 class Solution {
@@ -46,21 +47,21 @@ class Solution {
 
     
 signed main() {
+    IOS;
     vector<long long> nums1, nums2;  // 動態大小的 vector
     string line;
     
     // 讀取 nums1
+    int n;
     long long num;
-    cin >> num;
-    while (cin >> num) {
+    cin >> n;
+    for(int i = 0; i < n; i++) {
+        cin >> num;
         nums1.push_back(num);
-        if (cin.peek() == '\n') break; // 遇到換行則停止
     }
-    
-    // 讀取 nums2
-    while (cin >> num) {
+    for(int i = 0; i < n; i++) {
+        cin >> num;
         nums2.push_back(num);
-        if (cin.peek() == '\n') break; // 遇到換行則停止
     }
     
     Solution solution;

@@ -1,8 +1,11 @@
 #include<iostream>
 #include<vector>
+#define IOS ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0)
+#define endl '\n'
 using namespace std ;
 
 int main(){
+    IOS;
     int maxId=0, minId=0 ;
     int element=0 ;
     cin >> element;
