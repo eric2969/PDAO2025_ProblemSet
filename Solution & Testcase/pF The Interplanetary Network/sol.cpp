@@ -58,7 +58,8 @@ void Solve() {
   vector<vector<pair<int, int>>> g(N, vector<pair<int, int>>());
   auto Dfs = [&](auto self, int u) -> int {
     int lowu = tin[u] = ++dfs_clock;
-    for (auto [v, idx] : g[u]) {
+    for (auto& iter : g[u]) {
+      int v = iter.first, idx = iter.second;
       if (vis[idx]) continue;
 
       vis[idx] = true;
@@ -75,7 +76,7 @@ void Solve() {
 
   auto Process = [&](int l, int r) {
     for (int i = l; i < r; i++) {
-      auto &[w, u, v, idx] = edges[i];
+      int w = edges[i][0], u = edges[i][1], v = edges[i][2], idx = edges[i][3];
       u = dsu.find(u), v = dsu.find(v);
       if (u == v) edges_type[idx] = 0;
       else {
@@ -84,13 +85,13 @@ void Solve() {
       }
     }
     for (int i = l; i < r; i++) {
-      auto &[w, u, v, idx] = edges[i];
+      int w = edges[i][0], u = edges[i][1], v = edges[i][2], idx = edges[i][3];
       if (!vis[idx]) Dfs(Dfs, dsu.find(u));
     }
 
     dfs_clock = 0;
     for (int i = l; i < r; i++) {
-      auto &[w, u, v, idx] = edges[i];
+      int w = edges[i][0], u = edges[i][1], v = edges[i][2], idx = edges[i][3];
       u = dsu.find(u), v = dsu.find(v);
       tin[u] = tin[v] = 0;
       g[u].clear(), g[v].clear();
