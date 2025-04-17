@@ -1,23 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-template<typename Ostream, typename Cont>
-typename enable_if<is_same<Ostream, ostream>::value, Ostream&>::type operator<<(Ostream& os,  const Cont& v){
-  os << "[ ";
-	for(auto &x : v)
-    os << x << ' ';
-	return os << "]";
-}
-template<typename Ostream, typename ...Ts>
-Ostream& operator << (Ostream &os, const pair<Ts...> &p){
-  return os << "{" << p.first << ", " << p.second << "}";
-}
-void dbg_cerr() { cerr << "\e[0m\n"; }
-template<typename Head, typename... Tail> void dbg_cerr(Head H, Tail... T) { cerr << ' ' << H; dbg_cerr(T...); }
-#ifdef LTF
-#define DEBUG(...) cerr << "\e[1;31m[" #__VA_ARGS__ "]:", dbg_cerr(__VA_ARGS__)
-#else
-#define DEBUG(...)
-#endif
 
 struct UnionSet {
   int n;
@@ -52,7 +34,6 @@ void Solve() {
   vector<int> edges_type(M, -1);
   UnionSet dsu(N);
 
-
   vector<int> vis(M), tin(N);
   int dfs_clock = 0;
   vector<vector<pair<int, int>>> g(N, vector<pair<int, int>>());
@@ -60,12 +41,10 @@ void Solve() {
     int lowu = tin[u] = ++dfs_clock;
     for (auto& iter : g[u]) {
       int v = iter.first, idx = iter.second;
-      if (vis[idx]) continue;
-
-      vis[idx] = true;
-      if (tin[v]) {
+      if (vis[idx]++) continue;
+      if (tin[v])
         lowu = min(lowu, tin[v]);
-      } else {
+      else {
         int lowv = self(self, v);
         lowu = min(lowu, lowv);
         if (lowv > tin[u]) edges_type[idx] = 1;
@@ -103,8 +82,6 @@ void Solve() {
       j++;
     Process(i, j);
   }
-
-  DEBUG(edges_type);
   vector<int> edges_critical, edges_backup;
   for (int i = 0; i < M; i++) {
     if (edges_type[i] == -1) edges_backup.push_back(i);
@@ -124,10 +101,6 @@ void Solve() {
 
 int main() {
   ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
-  int T = 1;
-  // cin >> T;
-  while (T--) {
-    Solve();
-  }
+  Solve();
   return 0;
 }
